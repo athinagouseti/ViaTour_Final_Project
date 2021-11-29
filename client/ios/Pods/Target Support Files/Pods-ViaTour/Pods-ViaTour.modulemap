@@ -1,0 +1,6 @@
+module Pods_ViaTour {
+  umbrella header "Pods-ViaTour-umbrella.h"
+
+  export *
+  module * { export * }
+}
