@@ -17,9 +17,9 @@ const Container = () => {
         <NavigationContainer>
             <Tab.Navigator>
                 <Tab.Screen name="Homepage" component={Homepage} />
-                <Tab.Screen name="Trips" component={Trips} />
-                <Tab.Screen name="Map" component={ReactMap} />
                 <Tab.Screen name="Wishlist" component={Wishlist} />
+                <Tab.Screen name="Map" component={ReactMap} />
+                <Tab.Screen name="Trips" component={Trips} />
                 <Tab.Screen name="Profile" component={Profile} />
             </Tab.Navigator>
         </NavigationContainer>
