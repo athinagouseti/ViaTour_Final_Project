@@ -7,6 +7,7 @@ import Homepage from "../homepage/Homepage";
 import Wishlist from "../wishlist/Wishlist";
 import Profile from "../profile/Profile";
 import ReactMap from "../map/ReactMap";
+import SvgMapIcon from "../navigation_icons/MapIcon.js";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -18,7 +19,7 @@ const Container = () => {
             <Tab.Navigator>
                 <Tab.Screen name="Homepage" component={Homepage} />
                 <Tab.Screen name="Wishlist" component={Wishlist} />
-                <Tab.Screen name="Map" component={ReactMap} />
+                <Tab.Screen name="Map" component={ReactMap} options={{tabBarIcon: () => (<SvgMapIcon  name="map-icon" /> )}} />
                 <Tab.Screen name="Trips" component={Trips} />
                 <Tab.Screen name="Profile" component={Profile} />
             </Tab.Navigator>
