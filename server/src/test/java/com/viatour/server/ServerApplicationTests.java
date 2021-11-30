@@ -3,9 +3,11 @@ package com.viatour.server;
 import com.viatour.server.models.Image;
 import com.viatour.server.models.Location;
 import com.viatour.server.models.Trip;
+import com.viatour.server.models.User;
 import com.viatour.server.repositories.ImageRepository;
 import com.viatour.server.repositories.LocationRepository;
 import com.viatour.server.repositories.TripRepository;
+import com.viatour.server.repositories.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,6 +25,9 @@ class ServerApplicationTests {
 
 	@Autowired
 	TripRepository tripRepository;
+
+	@Autowired
+	UserRepository userRepository;
 
 	@Test
 	void contextLoads() {
@@ -50,5 +55,12 @@ class ServerApplicationTests {
 		Trip trip = new Trip("Europe");
 		tripRepository.save(trip);
 		assertEquals(1, tripRepository.findAll().size());
+	}
+
+	@Test
+	public void usersPersist() {
+		User user = new User("czubillaga", "Carlos", "Zubillaga", "car.zubillaga@gmail.com", "Scar!et1");
+		userRepository.save(user);
+		assertEquals(1, userRepository.findAll().size());
 	}
 }
