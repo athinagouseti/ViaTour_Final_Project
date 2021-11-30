@@ -101,4 +101,8 @@ public class Trip {
     public void addUser(User user) {
         this.users.add(user);
     }
+
+    public void addImage(Image image) {
+        this.images.add(image);
+    }
 }

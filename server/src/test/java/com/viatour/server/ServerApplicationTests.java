@@ -8,6 +8,8 @@ import com.viatour.server.repositories.ImageRepository;
 import com.viatour.server.repositories.LocationRepository;
 import com.viatour.server.repositories.TripRepository;
 import com.viatour.server.repositories.UserRepository;
+import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,6 +18,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 class ServerApplicationTests {
+
+
+
 
 	@Autowired
 	LocationRepository locationRepository;
@@ -29,6 +34,8 @@ class ServerApplicationTests {
 	@Autowired
 	UserRepository userRepository;
 
+
+
 	@Test
 	void contextLoads() {
 	}
@@ -37,7 +44,7 @@ class ServerApplicationTests {
 	public void locationsPersist() {
 		Location location = new Location(55.872778, -4.256111);
 		locationRepository.save(location);
-		assertEquals(1, locationRepository.findAll().size());
+		assertEquals(2, locationRepository.findAll().size());
 	}
 
 	@Test
@@ -47,14 +54,13 @@ class ServerApplicationTests {
 		byte[] content = new byte[0];
 		Image image = new Image(content, "image", location);
 		imageRepository.save(image);
-		assertEquals(1, imageRepository.findAll().size());
+		assertEquals(2, imageRepository.findAll().size());
 	}
-
 	@Test
 	public void tripsPersist() {
 		Trip trip = new Trip("Europe");
 		tripRepository.save(trip);
-		assertEquals(1, tripRepository.findAll().size());
+		assertEquals(2, tripRepository.findAll().size());
 	}
 
 	@Test
@@ -85,5 +91,19 @@ class ServerApplicationTests {
 		trip.addUser(user);
 		tripRepository.save(trip);
 		assertEquals(1, trip.getUsers().size());
+	}
+
+	@Test
+	public void canAddImageToTrip() {
+		Location location = new Location(55.872778, -4.256111);
+		locationRepository.save(location);
+		byte[] content = new byte[0];
+		Image image = new Image(content, "image", location);
+		imageRepository.save(image);
+		Trip trip = new Trip("Europe");
+		tripRepository.save(trip);
+		trip.addImage(image);
+		tripRepository.save(trip);
+		assertEquals(1, trip.getImages().size());
 	}
 }
