@@ -39,7 +39,7 @@ public class User {
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
             name = "locations_wishList",
-            joinColumns = {@JoinColumn(name = "wishlist_id", nullable = false, updatable = false)},
+            joinColumns = {@JoinColumn(name = "wishList_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name="location_id", nullable = false, updatable = false)}
     )
     private List<Location> wishList;
