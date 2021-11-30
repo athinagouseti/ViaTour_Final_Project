@@ -1,6 +1,8 @@
 package com.viatour.server.components;
 
 import com.viatour.server.models.Location;
+import com.viatour.server.models.Trip;
+import com.viatour.server.models.User;
 import com.viatour.server.repositories.ImageRepository;
 import com.viatour.server.repositories.LocationRepository;
 import com.viatour.server.repositories.TripRepository;
@@ -32,5 +34,32 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) {
         Location paris = new Location(48.856592, 2.341309);
         locationRepository.save(paris);
+
+        Location london = new Location(51.506108, -0.127992);
+        locationRepository.save(london);
+
+        Location vienna = new Location(48.209839, 16.368413);
+        locationRepository.save(vienna);
+
+        User carlos = new User("czubillaga", "Carlos", "Zubillaga", "car.zubillaga@gmail.com", "Scar!et1");
+        userRepository.save(carlos);
+        User oscar = new User("osweso", "Oscar", "Webber", "osweso@gmail.com", "bojangles");
+        userRepository.save(oscar);
+
+        Trip euroTrip = new Trip("Europe");
+        tripRepository.save(euroTrip);
+
+        euroTrip.addLocation(paris);
+        euroTrip.addLocation(london);
+        euroTrip.addLocation(vienna);
+
+        euroTrip.addUser(carlos);
+        carlos.joinTrip(euroTrip);
+        oscar.joinTrip(euroTrip);
+
+        tripRepository.save(euroTrip);
+        userRepository.save(carlos);
+        userRepository.save(oscar);
+
     }
 }

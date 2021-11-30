@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -49,6 +50,7 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.trips = new ArrayList<>();
     }
 
     public User() {}
@@ -115,5 +117,9 @@ public class User {
 
     public void setWishList(List<Location> wishList) {
         this.wishList = wishList;
+    }
+
+    public void joinTrip(Trip trip) {
+        this.trips.add(trip);
     }
 }
