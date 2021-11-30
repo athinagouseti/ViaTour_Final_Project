@@ -20,7 +20,7 @@ const Container = () => {
             <Tab.Navigator>
                 <Tab.Screen name="Homepage" component={Homepage} />
                 <Tab.Screen name="Wishlist" component={Wishlist} />
-                <Tab.Screen name=" " component={ReactMap} options={{tabBarIcon: () => (<Image  source={require('../navigation_icons/map_icon_1.png')} style={styles.mapIcon} name="map-icon" /> )}} />
+                <Tab.Screen name=" " component={ReactMap} options={{tabBarIcon: () => (<Image source={require('../navigation_icons/map_icon_1.png')} style={styles.mapIcon} name="map-icon" /> )}} />
                 <Tab.Screen name="Trips" component={Trips} />
                 <Tab.Screen name="Profile" component={Profile} />
             </Tab.Navigator>
