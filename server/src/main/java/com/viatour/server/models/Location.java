@@ -1,9 +1,18 @@
 package models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "locations")
 public class Location {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+    @Column(name = "latitude")
     private double latitude;
+    @Column(name = "longitude")
     private double longitude;
 
     public Location(double latitude, double longitude) {
