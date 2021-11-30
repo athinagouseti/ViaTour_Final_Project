@@ -63,4 +63,16 @@ class ServerApplicationTests {
 		userRepository.save(user);
 		assertEquals(1, userRepository.findAll().size());
 	}
+
+	@Test
+	public void canAddLocationToTrip() {
+		Location location = new Location(55.872778, -4.256111);
+		locationRepository.save(location);
+		Trip trip = new Trip("Europe");
+		tripRepository.save(trip);
+		trip.addLocation(location);
+		tripRepository.save(trip);
+		assertEquals(1, trip.getLocations().size());
+		assertEquals(55.872778, trip.getLocations().get(0).getLatitude());
+	}
 }

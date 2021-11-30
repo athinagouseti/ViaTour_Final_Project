@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,7 +21,7 @@ public class Trip {
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
-            name = "locations_trips",
+            name = "locations_trip",
             joinColumns = {@JoinColumn(name = "trip_id", nullable = true, updatable = true)},
             inverseJoinColumns = {@JoinColumn(name="location_id", nullable = true, updatable = true)}
     )
@@ -29,7 +30,7 @@ public class Trip {
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
-            name = "users_trips",
+            name = "users_trip",
             joinColumns = {@JoinColumn(name = "trip_id", nullable = true, updatable = true)},
             inverseJoinColumns = {@JoinColumn(name="user_id", nullable = true, updatable = true)}
     )
@@ -38,7 +39,7 @@ public class Trip {
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
-            name = "images_trips",
+            name = "images_trip",
             joinColumns = {@JoinColumn(name = "trip_id", nullable = true, updatable = true)},
             inverseJoinColumns = {@JoinColumn(name="image_id", nullable = true, updatable = true)}
     )
@@ -46,6 +47,9 @@ public class Trip {
 
     public Trip(String name) {
         this.name = name;
+        this.locations = new ArrayList<>();
+        this.users = new ArrayList<>();
+        this.images = new ArrayList<>();
     }
 
     public Trip() {}
@@ -88,5 +92,9 @@ public class Trip {
 
     public void setImages(List<Image> images) {
         this.images = images;
+    }
+
+    public void addLocation(Location location) {
+        this.locations.add(location);
     }
 }
