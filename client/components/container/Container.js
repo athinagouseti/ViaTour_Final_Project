@@ -18,11 +18,29 @@ const Container = () => {
     return(
         <NavigationContainer>
             <Tab.Navigator>
-                <Tab.Screen name="Homepage" component={Homepage} />
-                <Tab.Screen name="Wishlist" component={Wishlist} />
-                <Tab.Screen name=" " component={ReactMap} options={{tabBarIcon: () => (<Image source={require('../navigation_icons/map_icon_1.png')} style={styles.mapIcon} name="map-icon" /> )}} />
-                <Tab.Screen name="Trips" component={Trips} />
-                <Tab.Screen name="Profile" component={Profile} />
+                <Tab.Screen name="Homepage" component={Homepage} options=
+                {{
+                    tabBarIcon: () => (<Image source={require('../navigation_icons/home_icon.png')} style={styles.homeIcon} name="home-icon" /> ), 
+                    tabBarLabel: () => {return null} 
+                    }}/>
+                <Tab.Screen name="Wishlist" component={Wishlist} options=
+                {{
+                    tabBarIcon: () => (<Image source={require('../navigation_icons/wishlist_icon.png')} style={styles.wishlistIcon} name="wishlist-icon" /> ),
+                    tabBarLabel: () => {return null} 
+                    }}/>
+                <Tab.Screen name="Map" component={ReactMap} options=
+                {{
+                    tabBarIcon: () => (<Image source={require('../navigation_icons/map_icon_1.png')} style={styles.mapIcon} name="map-icon" /> ),
+                    tabBarLabel: () => {return null} 
+                    }} />
+                <Tab.Screen name="Trips" component={Trips} options=
+                {{tabBarIcon: () => (<Image source={require('../navigation_icons/trips_icon.png')} style={styles.tripsIcon} name="trips-icon" /> ),
+                tabBarLabel: () => {return null} 
+                }}/>
+                <Tab.Screen name="Profile" component={Profile} options=
+                {{tabBarIcon: () => (<Image source={require('../navigation_icons/profile_icon.png')} style={styles.profileIcon} name="profile-icon" /> ),
+                tabBarLabel: () => {return null} 
+                }}/>
             </Tab.Navigator>
         </NavigationContainer>
     )
@@ -30,10 +48,30 @@ const Container = () => {
 
 const styles = StyleSheet.create({
     mapIcon: {
-      width: 100,
-      height: 100,
-      padding: 70,
+      width: 150,
+      height: 150,
+      padding: 60,
     },
+    homeIcon: {
+        width: 80,
+        height: 80,
+        marginTop: 15
+      },
+    wishlistIcon: {
+        width: 80,
+        height: 80,
+        marginTop: 20
+      },
+    tripsIcon: {
+        width: 100,
+        height: 100,
+        marginTop: 15
+      },
+    profileIcon: {
+        width: 100,
+        height: 100,
+        marginTop: 15
+      },
   });
 
 // options={{tabBarIcon: () => (<SvgMapIcon  name="map-icon" /> )}}
