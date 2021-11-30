@@ -1,13 +1,47 @@
 package com.viatour.server.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.hibernate.annotations.Cascade;
+
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "trips")
 public class Trip {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+    @Column(name = "name")
     private String name;
+    @JsonBackReference
+    @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            name = "locations_trips",
+            joinColumns = {@JoinColumn(name = "trip_id", nullable = true, updatable = true)},
+            inverseJoinColumns = {@JoinColumn(name="location_id", nullable = true, updatable = true)}
+    )
     private List<Location> locations;
+    @JsonBackReference
+    @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            name = "users_trips",
+            joinColumns = {@JoinColumn(name = "trip_id", nullable = true, updatable = true)},
+            inverseJoinColumns = {@JoinColumn(name="user_id", nullable = true, updatable = true)}
+    )
     private List<User> users;
+    @JsonBackReference
+    @ManyToMany
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            name = "images_trips",
+            joinColumns = {@JoinColumn(name = "trip_id", nullable = true, updatable = true)},
+            inverseJoinColumns = {@JoinColumn(name="image_id", nullable = true, updatable = true)}
+    )
     private List<Image> images;
 
     public Trip(String name) {

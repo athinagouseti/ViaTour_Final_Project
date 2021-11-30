@@ -2,8 +2,10 @@ package com.viatour.server;
 
 import com.viatour.server.models.Image;
 import com.viatour.server.models.Location;
+import com.viatour.server.models.Trip;
 import com.viatour.server.repositories.ImageRepository;
 import com.viatour.server.repositories.LocationRepository;
+import com.viatour.server.repositories.TripRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,6 +20,9 @@ class ServerApplicationTests {
 
 	@Autowired
 	ImageRepository imageRepository;
+
+	@Autowired
+	TripRepository tripRepository;
 
 	@Test
 	void contextLoads() {
@@ -38,5 +43,12 @@ class ServerApplicationTests {
 		Image image = new Image(content, "image", location);
 		imageRepository.save(image);
 		assertEquals(1, imageRepository.findAll().size());
+	}
+
+	@Test
+	public void tripsPersist() {
+		Trip trip = new Trip("Europe");
+		tripRepository.save(trip);
+		assertEquals(1, tripRepository.findAll().size());
 	}
 }
