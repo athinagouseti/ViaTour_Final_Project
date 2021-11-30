@@ -1,4 +1,4 @@
-package models;
+package com.viatour.server.models;
 
 import java.util.List;
 
