@@ -18,11 +18,15 @@ const Container = () => {
     return(
         <NavigationContainer>
             <Tab.Navigator>
-                <Tab.Screen name="Homepage" component={Homepage} />
-                <Tab.Screen name="Wishlist" component={Wishlist} />
-                <Tab.Screen name=" " component={ReactMap} options={{tabBarIcon: () => (<Image source={require('../navigation_icons/map_icon_1.png')} style={styles.mapIcon} name="map-icon" /> )}} />
-                <Tab.Screen name="Trips" component={Trips} />
-                <Tab.Screen name="Profile" component={Profile} />
+                <Tab.Screen name="Homepage" component={Homepage} options={{ tabBarLabel: () => {return null} }} />
+                <Tab.Screen name="Wishlist" component={Wishlist} options={{ tabBarLabel: () => {return null} }} />
+                <Tab.Screen name="Map" component={ReactMap} options=
+                {{
+                    tabBarIcon: () => (<Image source={require('../navigation_icons/map_icon_1.png')} style={styles.mapIcon} name="map-icon" /> ),
+                    tabBarLabel: () => {return null} 
+                }} />
+                <Tab.Screen name="Trips" component={Trips} options={{ tabBarLabel: () => {return null} }}/>
+                <Tab.Screen name="Profile" component={Profile} options={{ tabBarLabel: () => {return null} }} />
             </Tab.Navigator>
         </NavigationContainer>
     )
