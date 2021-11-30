@@ -34,12 +34,14 @@ const Container = () => {
                     tabBarLabel: () => {return null} 
                     }} />
                 <Tab.Screen name="Trips" component={Trips} options=
-                {{tabBarIcon: () => (<Image source={require('../navigation_icons/trips_icon.png')} style={styles.tripsIcon} name="trips-icon" /> ),
-                tabBarLabel: () => {return null} 
+                {{
+                    tabBarIcon: () => (<Image source={require('../navigation_icons/trips_icon.png')} style={styles.tripsIcon} name="trips-icon" /> ),
+                    tabBarLabel: () => {return null} 
                 }}/>
                 <Tab.Screen name="Profile" component={Profile} options=
-                {{tabBarIcon: () => (<Image source={require('../navigation_icons/profile_icon.png')} style={styles.profileIcon} name="profile-icon" /> ),
-                tabBarLabel: () => {return null} 
+                {{
+                    tabBarIcon: () => (<Image source={require('../navigation_icons/profile_icon.png')} style={styles.profileIcon} name="profile-icon" /> ),
+                    tabBarLabel: () => {return null} 
                 }}/>
             </Tab.Navigator>
         </NavigationContainer>
@@ -53,13 +55,13 @@ const styles = StyleSheet.create({
       padding: 60,
     },
     homeIcon: {
-        width: 80,
-        height: 80,
+        width: 100,
+        height: 100,
         marginTop: 15
       },
     wishlistIcon: {
-        width: 80,
-        height: 80,
+        width: 100,
+        height: 100,
         marginTop: 20
       },
     tripsIcon: {
