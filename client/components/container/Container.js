@@ -22,17 +22,17 @@ const Container = () => {
                 {{
                     tabBarIcon: () => (<Image source={require('../navigation_icons/home_icon.png')} style={styles.homeIcon} name="home-icon" /> ), 
                     tabBarLabel: () => {return null} 
-                    }}/>
+                }}/>
                 <Tab.Screen name="Wishlist" component={Wishlist} options=
                 {{
                     tabBarIcon: () => (<Image source={require('../navigation_icons/wishlist_icon.png')} style={styles.wishlistIcon} name="wishlist-icon" /> ),
                     tabBarLabel: () => {return null} 
-                    }}/>
+                }}/>
                 <Tab.Screen name="Map" component={ReactMap} options=
                 {{
                     tabBarIcon: () => (<Image source={require('../navigation_icons/map_icon_1.png')} style={styles.mapIcon} name="map-icon" /> ),
                     tabBarLabel: () => {return null} 
-                    }} />
+                }} />
                 <Tab.Screen name="Trips" component={Trips} options=
                 {{
                     tabBarIcon: () => (<Image source={require('../navigation_icons/trips_icon.png')} style={styles.tripsIcon} name="trips-icon" /> ),
