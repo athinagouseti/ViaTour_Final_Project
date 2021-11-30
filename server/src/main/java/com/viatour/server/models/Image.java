@@ -1,10 +1,23 @@
 package com.viatour.server.models;
 
+import javax.persistence.*;
+import java.sql.Blob;
+
+@Entity
+@Table(name = "images")
 public class Image {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+    @Lob
+    @Column(name = "content")
     private byte[] content;
+    @Column(name = "name")
     private String name;
+    @ManyToOne
+    @JoinColumn(name = "location_id", nullable = false)
     private Location location;
 
     public Image(byte[] content, String name, Location location) {
