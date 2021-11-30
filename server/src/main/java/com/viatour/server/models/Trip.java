@@ -97,4 +97,8 @@ public class Trip {
     public void addLocation(Location location) {
         this.locations.add(location);
     }
+
+    public void addUser(User user) {
+        this.users.add(user);
+    }
 }

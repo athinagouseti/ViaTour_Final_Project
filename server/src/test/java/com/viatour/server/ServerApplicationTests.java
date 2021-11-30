@@ -75,4 +75,15 @@ class ServerApplicationTests {
 		assertEquals(1, trip.getLocations().size());
 		assertEquals(55.872778, trip.getLocations().get(0).getLatitude());
 	}
+
+	@Test
+	public void canAddUserToTrip() {
+		User user = new User("czubillaga", "Carlos", "Zubillaga", "car.zubillaga@gmail.com", "Scar!et1");
+		userRepository.save(user);
+		Trip trip = new Trip("Europe");
+		tripRepository.save(trip);
+		trip.addUser(user);
+		tripRepository.save(trip);
+		assertEquals(1, trip.getUsers().size());
+	}
 }
