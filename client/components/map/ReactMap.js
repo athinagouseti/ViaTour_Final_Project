@@ -7,18 +7,17 @@ const ReactMap = () => {
     return(
         <View>
             <MapView style={styles.map}
-                initialRegion={{
-    latitude: 37.78825,
-    longitude: -122.4324,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
-    }}
-    >
-        <Marker coordinate = {{latitude: 37.78825,longitude: -122.4324}}
-         pinColor = {"purple"} // any color
-         title={"title"}
-         description={"description"}/>
-        </MapView>
+              initialRegion={{
+                latitude: 37.78825,
+                longitude: -122.4324,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+              }}>
+              <Marker coordinate = {{latitude: 37.78825,longitude: -122.4324}}
+              pinColor = {"purple"} 
+              title={"Trip"}
+              description={"Tap to view trip"}/>
+            </MapView>
         </View>
     )
 }
