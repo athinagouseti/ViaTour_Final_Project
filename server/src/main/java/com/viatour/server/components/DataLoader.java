@@ -1,5 +1,6 @@
 package com.viatour.server.components;
 
+import com.viatour.server.models.Image;
 import com.viatour.server.models.Location;
 import com.viatour.server.models.Trip;
 import com.viatour.server.models.User;
@@ -49,17 +50,23 @@ public class DataLoader implements ApplicationRunner {
         Trip euroTrip = new Trip("Europe");
         tripRepository.save(euroTrip);
 
+        byte[] content = new byte[0];
+        Image eifelTower = new Image(content, "The Eifel Tower", paris);
+        imageRepository.save(eifelTower);
+
         euroTrip.addLocation(paris);
         euroTrip.addLocation(london);
         euroTrip.addLocation(vienna);
 
         euroTrip.addUser(carlos);
+        euroTrip.addUser(oscar);
         carlos.joinTrip(euroTrip);
         oscar.joinTrip(euroTrip);
+        euroTrip.addImage(eifelTower);
 
-        tripRepository.save(euroTrip);
+
         userRepository.save(carlos);
         userRepository.save(oscar);
-
+        tripRepository.save(euroTrip);
     }
 }
