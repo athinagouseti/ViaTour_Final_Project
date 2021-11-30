@@ -58,11 +58,15 @@ public class DataLoader implements ApplicationRunner {
         euroTrip.addLocation(london);
         euroTrip.addLocation(vienna);
 
+        carlos.addToWishList(paris);
+        oscar.addToWishList(paris);
+
         euroTrip.addUser(carlos);
         euroTrip.addUser(oscar);
         carlos.joinTrip(euroTrip);
         oscar.joinTrip(euroTrip);
         euroTrip.addImage(eifelTower);
+
 
 
         userRepository.save(carlos);

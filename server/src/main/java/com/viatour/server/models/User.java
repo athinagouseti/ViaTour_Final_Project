@@ -39,7 +39,7 @@ public class User {
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
             name = "locations_wishList",
-            joinColumns = {@JoinColumn(name = "user_id", nullable = false, updatable = false)},
+            joinColumns = {@JoinColumn(name = "wishlist_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name="location_id", nullable = false, updatable = false)}
     )
     private List<Location> wishList;
@@ -51,6 +51,7 @@ public class User {
         this.email = email;
         this.password = password;
         this.trips = new ArrayList<>();
+        this.wishList = new ArrayList<>();
     }
 
     public User() {}
@@ -121,5 +122,9 @@ public class User {
 
     public void joinTrip(Trip trip) {
         this.trips.add(trip);
+    }
+
+    public void addToWishList(Location location) {
+        this.wishList.add(location);
     }
 }
