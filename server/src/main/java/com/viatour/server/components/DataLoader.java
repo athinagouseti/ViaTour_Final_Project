@@ -71,6 +71,7 @@ public class DataLoader implements ApplicationRunner {
         euroTrip.addImage(eifelTower);
         euroTrip.setStartingDate(new Date(1638316800000L));
         euroTrip.setEndDate(new Date(1638748800000L));
+        euroTrip.setLength();
 
 
 

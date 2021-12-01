@@ -5,8 +5,10 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 @Entity
 @Table(name = "trips")
@@ -49,6 +51,8 @@ public class Trip {
     private Date startingDate;
     @Column(name = "endDate")
     private Date endDate;
+    @Column(name = "length")
+    private int length;
 
     public Trip(String name) {
         this.name = name;
@@ -127,5 +131,15 @@ public class Trip {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength() {
+        Stream<LocalDate> days = startingDate.toLocalDate().datesUntil(endDate.toLocalDate());
+        int length = Math.toIntExact(days.count());
+        this.length = length;
     }
 }
