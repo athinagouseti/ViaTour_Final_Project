@@ -13,6 +13,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.sql.Date;
+
 @Component
 public class DataLoader implements ApplicationRunner {
 
@@ -67,6 +69,8 @@ public class DataLoader implements ApplicationRunner {
         carlos.joinTrip(euroTrip);
         oscar.joinTrip(euroTrip);
         euroTrip.addImage(eifelTower);
+        euroTrip.setStartingDate(new Date(1638316800000L));
+        euroTrip.setEndDate(new Date(1638748800000L));
 
 
 
