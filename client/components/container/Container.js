@@ -7,7 +7,6 @@ import Homepage from "../homepage/Homepage";
 import Wishlist from "../wishlist/Wishlist";
 import Profile from "../profile/Profile";
 import ReactMap from "../map/ReactMap";
-import MapIcon from "../navigation_icons/Map_Icon.js";
 import { Image , StyleSheet} from 'react-native';
 
 const Tab = createBottomTabNavigator();
@@ -30,7 +29,6 @@ const Container = () => {
                 }}/>
                 <Tab.Screen name="Map" component={ReactMap} options=
                 {{
-                    // tabBarIcon: () => (<MapIcon  name="map-icon" fill="red" height={1000} width={1000} /> ),
                     tabBarIcon: () => (<Image source={require('../navigation_icons/map_icon_1.png')} style={styles.mapIcon} name="map-icon" /> ),
                     tabBarLabel: () => {return null} 
                 }} />
@@ -77,5 +75,5 @@ const styles = StyleSheet.create({
       },
   });
 
-// options={{tabBarIcon: () => (<SvgMapIcon  name="map-icon" /> )}}
+// options={{tabBarIcon: () => (<MapIcon  name="map-icon" /> )}}
 export default Container;
