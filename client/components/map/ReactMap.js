@@ -2,6 +2,7 @@ import React from "react";
 import MapView, { Marker } from 'react-native-maps';
 import { View, StyleSheet, Dimensions, TextInput } from 'react-native';
 
+
 const ReactMap = () => {
 
     return(
@@ -18,7 +19,7 @@ const ReactMap = () => {
               title={"Trip"}
               description={"Tap to view trip"}/>
             </MapView>
-            <View style={{ position: 'absolute', top: 10, width: '100%' }}>
+            {/* <View style={{ position: 'absolute', top: 10, width: '100%' }}>
               <TextInput
                 style={{
                   borderRadius: 100,
@@ -34,7 +35,8 @@ const ReactMap = () => {
                 placeholder={'Search'}
                 placeholderTextColor={'#343652'}
               />
-            </View>
+            </View> */}
+            
         </View>
     )
 }
