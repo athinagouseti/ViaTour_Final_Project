@@ -1,11 +1,11 @@
 import React from "react";
 import MapView, { Marker } from 'react-native-maps';
-import { View, StyleSheet, Dimensions } from 'react-native';
+import { View, StyleSheet, Dimensions, ScrollView} from 'react-native';
 
 const ReactMap = () => {
 
     return(
-        <View>
+        <ScrollView>
             <MapView style={styles.map}
               initialRegion={{
                 latitude: 37.78825,
@@ -18,7 +18,7 @@ const ReactMap = () => {
               title={"Trip"}
               description={"Tap to view trip"}/>
             </MapView>
-        </View>
+        </ScrollView>
     )
 }
 
