@@ -4,7 +4,9 @@
   "summary": "Utilities for reading NSDictionaries (iOS) and JSONObjects (Android).",
   "description": "Utilities for reading NSDictionaries (iOS) and JSONObjects (Android).",
   "license": "MIT",
-  "authors": "650 Industries, Inc.",
+  "authors": {
+    "name": "650 Industries, Inc."
+  },
   "homepage": "https://docs.expo.dev/versions/latest/sdk/module-template",
   "platforms": {
     "ios": "12.0"

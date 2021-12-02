@@ -1,0 +1,97 @@
+{
+  "name": "expo-dev-menu",
+  "version": "0.8.4",
+  "summary": "Expo/React Native module with the developer menu.",
+  "description": "Expo/React Native module with the developer menu.",
+  "license": "MIT",
+  "authors": {
+    "name": "650 Industries, Inc."
+  },
+  "homepage": "https://docs.expo.io",
+  "platforms": {
+    "ios": "11.0"
+  },
+  "swift_versions": "5.2",
+  "source": {
+    "git": "https://github.com/expo/expo.git"
+  },
+  "static_framework": true,
+  "source_files": "ios/**/*.{h,m,swift}",
+  "preserve_paths": "ios/**/*.{h,m,swift}",
+  "exclude_files": "ios/*Tests/**",
+  "requires_arc": true,
+  "header_dir": "EXDevMenu",
+  "resource_bundles": {
+    "EXDevMenu": [
+      "assets/*.ios.js",
+      "assets/dev-menu-packager-host",
+      "assets/*.ttf"
+    ]
+  },
+  "xcconfig": {
+    "GCC_PREPROCESSOR_DEFINITIONS": "EX_DEV_MENU_ENABLED=1",
+    "OTHER_SWIFT_FLAGS": "-DEX_DEV_MENU_ENABLED=1"
+  },
+  "pod_target_xcconfig": {
+    "DEFINES_MODULE": "YES"
+  },
+  "dependencies": {
+    "React-Core": [
+
+    ],
+    "expo-dev-menu-interface": [
+
+    ]
+  },
+  "default_subspecs": "Main",
+  "testspecs": [
+    {
+      "name": "Tests",
+      "test_type": "unit",
+      "requires_app_host": false,
+      "source_files": "ios/Tests/**",
+      "dependencies": {
+        "React-CoreModules": [
+
+        ]
+      },
+      "platforms": {
+        "ios": "12.0"
+      }
+    },
+    {
+      "name": "UITests",
+      "test_type": "unit",
+      "requires_app_host": true,
+      "source_files": "ios/UITests/**",
+      "dependencies": {
+        "React-CoreModules": [
+
+        ],
+        "React": [
+
+        ]
+      },
+      "platforms": {
+        "ios": "12.0"
+      }
+    }
+  ],
+  "subspecs": [
+    {
+      "name": "Vendored",
+      "source_files": "vendored/**/*.{h,m}",
+      "private_header_files": "vendored/**/*.h",
+      "compiler_flags": "-w -Xanalyzer -analyzer-disable-all-checks"
+    },
+    {
+      "name": "Main",
+      "dependencies": {
+        "expo-dev-menu/Vendored": [
+
+        ]
+      }
+    }
+  ],
+  "swift_version": "5.2"
+}
