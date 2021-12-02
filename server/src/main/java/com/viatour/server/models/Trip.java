@@ -1,7 +1,11 @@
 package com.viatour.server.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.viatour.server.repositories.DayRepository;
+import com.viatour.server.repositories.TripRepository;
 import org.hibernate.annotations.Cascade;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -10,9 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+
+
 @Entity
 @Table(name = "trips")
 public class Trip {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,6 +55,8 @@ public class Trip {
     @Column(name = "length")
     private int length;
 
+
+
     public Trip(String name) {
         this.name = name;
         this.itinerary = new ArrayList<>();
@@ -58,6 +67,7 @@ public class Trip {
     }
 
     public Trip() {}
+
 
     public Long getId() {
         return id;
@@ -139,5 +149,14 @@ public class Trip {
         Stream<LocalDate> days = startingDate.toLocalDate().datesUntil(endDate.toLocalDate());
         int length = Math.toIntExact(days.count());
         this.length = length;
+    }
+
+    public List<Day> createBlankItinerary() {
+        List<Day> days = new ArrayList<>();
+        for(int i = 0; i < this.length; i++) {
+            Day day = new Day(this);
+            days.add(day);
+        }
+        return days;
     }
 }

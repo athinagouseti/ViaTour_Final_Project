@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
 
 @Component
 public class DataLoader implements ApplicationRunner {
@@ -53,6 +54,12 @@ public class DataLoader implements ApplicationRunner {
 
         Trip euroTrip = new Trip("Europe");
         tripRepository.save(euroTrip);
+
+        Trip secondTrip = new Trip("Asia");
+        tripRepository.save(secondTrip);
+        secondTrip.setLength(5);
+        List<Day> days = secondTrip.createBlankItinerary();
+        dayRepository.saveAll(days);
 
         byte[] content = new byte[0];
         Image eifelTower = new Image(content, "The Eifel Tower", paris);
