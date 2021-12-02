@@ -21,14 +21,8 @@ public class Trip {
     @Column(name = "name")
     private String name;
     @JsonBackReference
-    @ManyToMany
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JoinTable(
-            name = "locations_trip",
-            joinColumns = {@JoinColumn(name = "trip_id", nullable = true, updatable = true)},
-            inverseJoinColumns = {@JoinColumn(name="location_id", nullable = true, updatable = true)}
-    )
-    private List<Location> locations;
+    @OneToMany(mappedBy = "trip", fetch = FetchType.LAZY)
+    private List<Day> itinerary;
     @JsonBackReference
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
@@ -56,7 +50,7 @@ public class Trip {
 
     public Trip(String name) {
         this.name = name;
-        this.locations = new ArrayList<>();
+        this.itinerary = new ArrayList<>();
         this.users = new ArrayList<>();
         this.images = new ArrayList<>();
         this.startingDate = new Date(0L);
@@ -81,12 +75,16 @@ public class Trip {
         this.name = name;
     }
 
-    public List<Location> getLocations() {
-        return locations;
+    public List<Day> getItinerary() {
+        return itinerary;
     }
 
-    public void setLocations(List<Location> locations) {
-        this.locations = locations;
+    public void setItinerary(List<Day> itinerary) {
+        this.itinerary = itinerary;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
     }
 
     public List<User> getUsers() {
@@ -105,8 +103,8 @@ public class Trip {
         this.images = images;
     }
 
-    public void addLocation(Location location) {
-        this.locations.add(location);
+    public void addDay(Day day) {
+        this.itinerary.add(day);
     }
 
     public void addUser(User user) {

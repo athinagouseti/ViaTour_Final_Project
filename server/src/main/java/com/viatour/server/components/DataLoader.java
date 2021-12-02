@@ -1,19 +1,14 @@
 package com.viatour.server.components;
 
-import com.viatour.server.models.Image;
-import com.viatour.server.models.Location;
-import com.viatour.server.models.Trip;
-import com.viatour.server.models.User;
-import com.viatour.server.repositories.ImageRepository;
-import com.viatour.server.repositories.LocationRepository;
-import com.viatour.server.repositories.TripRepository;
-import com.viatour.server.repositories.UserRepository;
+import com.viatour.server.models.*;
+import com.viatour.server.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
+import java.sql.Time;
 
 @Component
 public class DataLoader implements ApplicationRunner {
@@ -29,6 +24,12 @@ public class DataLoader implements ApplicationRunner {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    ActivityRepository activityRepository;
+
+    @Autowired
+    DayRepository dayRepository;
 
     public DataLoader() {
 
@@ -57,9 +58,19 @@ public class DataLoader implements ApplicationRunner {
         Image eifelTower = new Image(content, "The Eifel Tower", paris);
         imageRepository.save(eifelTower);
 
-        euroTrip.addLocation(paris);
-        euroTrip.addLocation(london);
-        euroTrip.addLocation(vienna);
+
+        Day day = new Day(euroTrip);
+        day.setDate(new Date(System.currentTimeMillis()));
+        dayRepository.save(day);
+
+        Activity activity = new Activity(day);
+        activity.setDescription("Visiting city centre");
+        activity.setTimeSlot(new Time(System.currentTimeMillis()));
+        activity.setLocation(paris);
+        activityRepository.save(activity);
+
+        day.addActivity(activity);
+
 
         carlos.addToWishList(paris);
         oscar.addToWishList(paris);
@@ -78,5 +89,6 @@ public class DataLoader implements ApplicationRunner {
         userRepository.save(carlos);
         userRepository.save(oscar);
         tripRepository.save(euroTrip);
+        dayRepository.save(day);
     }
 }
