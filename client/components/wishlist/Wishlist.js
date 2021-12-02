@@ -62,32 +62,13 @@ const Wishlist = () => {
               />
             </View>  */}
 
-
-
             <View style={{ position: 'absolute', top: 10, width: '100%' }}>
-            <GooglePlacesAutocomplete
-              placeholder='Search'
-              onPress={(data, details = null) => {
-        // 'details' is provided when fetchDetails = true
-              // console.log(data);
-              setPlaceData(data);
-              }}
-              query={{
+            <GooglePlacesAutocomplete placeholder='Search' onPress={(data, details = null) => { setPlaceData(data); }} 
+            query={{ 
               key: 'AIzaSyCz8SUN9oI8b5YJ5ZdA5Jry_2sFRsm3xsw',
               language: 'en',
-              }}
-
-            />
+              }}/>
             </View>
-
-
-            {/* <View>
-              <PlaceSearch 
-                apikey="AIzaSyCz8SUN9oI8b5YJ5ZdA5Jry_2sFRsm3xsw" // required *
-                SelectedAddress={(data)=>console.log(data)} // required *
-                onClose={(data)=>console.log(data)}
-              />
-            </View> */}
         </View>
     )
 }
