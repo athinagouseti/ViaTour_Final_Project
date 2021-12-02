@@ -24,7 +24,7 @@ const Container = () => {
                 tabBarLabelPosition: "below-icon",
                 tabBarStyle: {
                     position: 'absolute',
-                    opacity: 0.85,
+                    opacity: 1,
                     backgroundColor: '#333652'
                 },
                 tabBarActiveTintColor: '#fad02C',
@@ -42,13 +42,13 @@ const Container = () => {
                     tabBarIcon: () => (<Image source={require('../navigation_icons/Wishlist_Icon.png')}
                     style={styles.wishlistIcon} name="wishlist-icon" /> ),
                 }}/>
-                <Tab.Screen name='Map' component={ReactMap} 
+                <Tab.Screen name=" " component={ReactMap} 
                 options={{
-                    tabBarIcon: () => (<Image source={require('../navigation_icons/map_icon_1.png')}
+                    tabBarIcon: () => (<Image source={require('../navigation_icons/map_icon2.png')}
                     style={styles.mapIcon} name="map-icon"/> ),
                 }} />
                
-                <Tab.Screen name="Trips" component={Trips} 
+                <Tab.Screen name="My Trips" component={Trips} 
                 options={{
                     tabBarIcon: () => (<Image source={require('../navigation_icons/trips_icon.png')}
                     style={styles.tripsIcon} name="trips-icon" /> ),
@@ -84,8 +84,8 @@ const styles = StyleSheet.create({
     mapIcon: {
         width: 150,
         height: 100,
-        padding: 45,
-        marginBottom: 25
+        paddingBottom: 25,
+        marginBottom: 15
       },
     tripsIcon: {
         width: 70,

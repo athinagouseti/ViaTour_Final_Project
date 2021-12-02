@@ -10,10 +10,22 @@ const Trips = () => {
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} 
             pagingEnabled={true}
             style={styles.imageContainer}>
+            <View>
             <Image source={require('../trip_icons/Budapest.jpeg')} style={styles.images}/>
+            <Text style={styles.imagetext}>City Name - Date - Length</Text>
+            </View>
+            <View>
             <Image source={require('../trip_icons/pest.jpeg')} style={styles.images}/>
+            <Text style={styles.imagetext}>City Name - Date - Length</Text>
+            </View>
+            <View>
             <Image source={require('../trip_icons/Stockholm.jpeg')} style={styles.images}/>
+            <Text style={styles.imagetext}>City Name - Date - Length</Text>
+            </View>
+            <View>
             <Image source={require('../trip_icons/stock.jpg')} style={styles.images}/>
+            <Text style={styles.imagetext}>City Name - Date - Length</Text>
+            </View>
             </ScrollView>
         </View>
 
@@ -22,10 +34,22 @@ const Trips = () => {
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}
             pagingEnabled={true}
             style={styles.imageContainer}>
+            <View>
             <Image source={require('../trip_icons/Sweden.jpeg')} style={styles.images1}/>
+            <Text style={styles.imagetext}>City Name - Date</Text>
+            </View>
+            <View>
             <Image source={require('../trip_icons/pest.jpeg')} style={styles.images1}/>
+            <Text style={styles.imagetext}>City Name - Date</Text>
+            </View>
+            <View>
             <Image source={require('../trip_icons/Stockholm.jpeg')} style={styles.images1}/>
+            <Text style={styles.imagetext}>City Name - Date</Text>
+            </View>
+            <View>
             <Image source={require('../trip_icons/stock.jpg')} style={styles.images1}/>
+            <Text style={styles.imagetext}>City Name - Date</Text>
+            </View>
             </ScrollView>
         </View>
         </>
@@ -58,15 +82,23 @@ const styles = StyleSheet.create({
     },
     images: {
         width: 350,
-        height: 250,
+        height: 225,
         marginBottom: 15,
         marginHorizontal: 10,
     },
     images1: {
         width: 350,
-        height: 250,
+        height: 225,
         marginBottom: 15,
         marginHorizontal: 10,
+    },
+    imagetext:{
+        alignItems:'flex-start',
+        justifyContent:'center',
+        marginLeft: 10,
+        color: '#333652',
+        fontSize: 20,
+        fontWeight: 'bold'
     }
   });
 

@@ -12,9 +12,9 @@ const New_Trip = () => {
     const [open, setOpen] = useState(false)
 
     return (
-        <View >
-        <Text styles={styles.text}> Add a New Trip </Text>
         <View style={styles.container}>
+        <Text styles={styles.text}> Add a New Trip </Text>
+        <View>
           <TextInput 
             placeholder="City Name" style={styles.input}/>
           <TextInput
@@ -30,7 +30,8 @@ const New_Trip = () => {
 
 const styles = StyleSheet.create({
   container:{
-    height: 70
+    height: 70,
+    backgroundColor: 'white'
   },
   input: {
     marginTop: 10,

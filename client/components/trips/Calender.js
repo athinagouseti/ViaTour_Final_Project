@@ -28,7 +28,7 @@ export default class App extends Component {
         <CalendarPicker
           onDateChange={this.onDateChange}
         />
-        <View style={styles.text}>
+        <View style={styles.text} style={styles.container} >
           <Text>SELECTED DATE: { startDate }</Text>
         </View>
       </View>
@@ -38,7 +38,7 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20
+    backgroundColor: 'white'
   },
   text: {
       padding: 20
