@@ -2,16 +2,13 @@ import React, { useState, useEffect } from "react";
 import { View, Text, TextInput } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import PlaceSearch from 'react-native-placesearch';
+import { log } from "react-native-reanimated";
 
 const Wishlist = () => {
     
-    const [location, setLocation] = useState(
-      {
-        place_id: null,
-        latitude: null,
-        longitute: null,
-      }
-    );
+    const [location, setLocation] = useState(null);
+
+    const [placeData, setPlaceData] = useState(null);
   
     // const onPressLocation = function () {
     //   fetch(`https://maps.googleapis.com/maps/api/geocode/json?place_id=${locationData.place_id}&sensor=false&key=AIzaSyCz8SUN9oI8b5YJ5ZdA5Jry_2sFRsm3xsw`)
@@ -19,25 +16,31 @@ const Wishlist = () => {
     //   .then(geoData => setLocation(geoData))
     // }
 
-    // const fetchLocationData = () => {
-    //   fetch(`https://maps.googleapis.com/maps/api/geocode/json?place_id=${locData.place_id}&sensor=false&key=AIzaSyCz8SUN9oI8b5YJ5ZdA5Jry_2sFRsm3xsw`)
-    //   .then(res => res.json())
-    //   .then(data => setLocation(locationData(data)))
-    // }
+    const fetchLocationData = () => {
+      const url = `https://maps.googleapis.com/maps/api/geocode/json?place_id=${placeData.place_id}&sensor=false&key=AIzaSyCz8SUN9oI8b5YJ5ZdA5Jry_2sFRsm3xsw`
+      // fetch("https://maps.googleapis.com/maps/api/geocode/json?place_id=ChIJxRO7WVEDdkgRrGM1fCYoHqY&sensor=false&key=AIzaSyCz8SUN9oI8b5YJ5ZdA5Jry_2sFRsm3xsw")
+      console.log(url);
+      fetch(url)
+      .then(res => res.json())
+      .then(data => setLocation(locationData(data)))
+      .catch(console.error)
+    }
 
-    // const locationData = (data) => {
-    //   return data.map((results) => {
-    //       return {
-    //           place_id: results.place_id,
-    //           latitude: results.geometry.location.lat,
-    //           longitute: results.geometry.location.lat
-    //       }
-    //   })
-    // }
+    const locationData = (data) => {
+          return filterLocation = {
+              place_id: data.results[0].place_id,
+              latitude: data.results[0].geometry.location.lat,
+              longitute: data.results[0].geometry.location.lat
+          }
+    }
 
-    // useEffect(() => {
-    //   fetchLocationData()
-    // }, [])
+    useEffect(() => {
+      console.log(location);
+    })
+
+    useEffect(() => {
+      placeData && fetchLocationData()
+    }, [placeData])
 
     return (
         <View>
@@ -66,8 +69,8 @@ const Wishlist = () => {
               placeholder='Search'
               onPress={(data, details = null) => {
         // 'details' is provided when fetchDetails = true
-              console.log(data, details);
-              const locationData = data;
+              // console.log(data);
+              setPlaceData(data);
               }}
               query={{
               key: 'AIzaSyCz8SUN9oI8b5YJ5ZdA5Jry_2sFRsm3xsw',
