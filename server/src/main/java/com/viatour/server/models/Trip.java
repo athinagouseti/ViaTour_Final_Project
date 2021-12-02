@@ -31,7 +31,7 @@ public class Trip {
     @JsonIgnoreProperties({"users", "trip"})
     @OneToMany(mappedBy = "trip", fetch = FetchType.LAZY)
     private List<Day> itinerary;
-    @JsonBackReference
+    @JsonIgnoreProperties({"trips"})
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(

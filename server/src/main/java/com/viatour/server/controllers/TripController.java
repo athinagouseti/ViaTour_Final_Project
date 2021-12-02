@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -19,5 +20,10 @@ public class TripController {
     @GetMapping(value = "/trips")
     public ResponseEntity<List<Trip>> getAllTrips() {
         return new ResponseEntity<>(tripRepository.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/trips/{id}")
+    public ResponseEntity getTrip(@PathVariable Long id) {
+        return new ResponseEntity(tripRepository.findById(id), HttpStatus.OK);
     }
 }
