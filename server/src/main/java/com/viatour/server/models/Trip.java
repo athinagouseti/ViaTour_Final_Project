@@ -1,6 +1,7 @@
 package com.viatour.server.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.viatour.server.repositories.DayRepository;
 import com.viatour.server.repositories.TripRepository;
 import org.hibernate.annotations.Cascade;
@@ -27,7 +28,7 @@ public class Trip {
     private Long id;
     @Column(name = "name")
     private String name;
-    @JsonBackReference
+    @JsonIgnoreProperties({"users", "trip"})
     @OneToMany(mappedBy = "trip", fetch = FetchType.LAZY)
     private List<Day> itinerary;
     @JsonBackReference
@@ -39,7 +40,6 @@ public class Trip {
             inverseJoinColumns = {@JoinColumn(name="user_id", nullable = true, updatable = true)}
     )
     private List<User> users;
-    @JsonBackReference
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinTable(
