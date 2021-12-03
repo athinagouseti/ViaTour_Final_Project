@@ -1,19 +1,26 @@
 package com.viatour.server.controllers;
 
+import com.viatour.server.models.Trip;
 import com.viatour.server.models.User;
+import com.viatour.server.repositories.TripRepository;
 import com.viatour.server.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    TripRepository tripRepository;
 
     @GetMapping(value = "/users")
     public ResponseEntity<List<User>> getAllUsers() {
@@ -29,5 +36,14 @@ public class UserController {
     public ResponseEntity<User> postUser(@RequestBody User user) {
         userRepository.save(user);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/users/{userId}/trips")
+    public ResponseEntity<Trip> postTrip(@RequestBody Trip trip, @PathVariable Long userId) {
+        tripRepository.save(trip);
+        User user = userRepository.getById(userId);
+        user.joinTrip(trip);
+        userRepository.save(user);
+        return new ResponseEntity<>(trip, HttpStatus.CREATED);
     }
 }
