@@ -37,9 +37,12 @@ public class TripController {
     }
 
     @PostMapping(value = "/trips/{id}/days")
-    public ResponseEntity<Day> postDay(@RequestBody Day day, @PathVariable Long tripId) {
-        Trip trip = tripRepository.getById(tripId);
+    public ResponseEntity<Day> postDay(@RequestBody Day day, @PathVariable Long id) {
+        dayRepository.save(day);
+        Trip trip = tripRepository.getById(id);
         trip.addDay(day);
+        day.setTrip(trip);
+        dayRepository.save(day);
         tripRepository.save(trip);
         return new ResponseEntity<>(day, HttpStatus.CREATED);
     }
