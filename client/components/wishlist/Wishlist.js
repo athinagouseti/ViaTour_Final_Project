@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, TextInput } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import PlaceSearch from 'react-native-placesearch';
 import { log } from "react-native-reanimated";
 
 const Wishlist = () => {
