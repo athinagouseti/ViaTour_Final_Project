@@ -8,6 +8,7 @@ import Wishlist from "../wishlist/Wishlist";
 import User from "../user/User";
 import ReactMap from "../map/ReactMap";
 import { Image , StyleSheet} from 'react-native';
+import WishlistTab from "../wishlistTab/WishlistTab";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -22,10 +23,11 @@ const Container = () => {
                     tabBarIcon: () => (<Image source={require('../navigation_icons/home_icon.png')} style={styles.homeIcon} name="home-icon" /> ), 
                     tabBarLabel: () => {return null} 
                 }}/>
-                <Tab.Screen name="Wishlist" component={Wishlist} options=
+                <Tab.Screen name="WishlistTab" component={WishlistTab} options=
                 {{
                     tabBarIcon: () => (<Image source={require('../navigation_icons/wishlist_icon.png')} style={styles.wishlistIcon} name="wishlist-icon" /> ),
-                    tabBarLabel: () => {return null} 
+                    tabBarLabel: () => {return null},
+                    headerShown: false  
                 }}/>
                 <Tab.Screen name="Map" component={ReactMap} options=
                 {{
