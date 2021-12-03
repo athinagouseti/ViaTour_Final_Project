@@ -60,8 +60,8 @@ const Register = () => {
 
            {error && <Text style={styles.loginText}>{error}</Text>}
 
-            <TouchableOpacity style={styles.loginBtn} onPress={registerUser}>
-            <Text style={styles.loginText}>REGISTER</Text>
+            <TouchableOpacity style={styles.registerButton} onPress={registerUser}>
+            <Text>REGISTER</Text>
             </TouchableOpacity>
         </View>
     )
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
       marginLeft: 20,
     },
    
-    loginBtn: {
+    registerButton: {
       width: "60%",
       borderRadius: 25,
       height: 50,

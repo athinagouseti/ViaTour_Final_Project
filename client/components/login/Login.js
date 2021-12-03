@@ -1,17 +1,27 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Image, TextInput, Button, TouchableOpacity } from "react-native";
+import auth from '@react-native-firebase/auth'
 
 const Login = () => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [error, setError] = useState()
 
     const navigation = useNavigation();
 
     const handleRegister = () => {
       navigation.navigate("Register")
     }
+
+    const loginUser = () => {
+          auth()
+          .signInWithEmailAndPassword(email, password)
+          .catch(
+              error => {setError(error.code)}
+          )
+  }
 
     return (
         <View>
@@ -38,12 +48,12 @@ const Login = () => {
         <Text style={styles.forgot_button}>Forgot Password?</Text>
         </TouchableOpacity>
  
-        <TouchableOpacity style={styles.loginBtn}>
+        <TouchableOpacity style={styles.loginButton} onPress={loginUser}>
         <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={handleRegister}>
-        <Text style={styles.forgot_button}>Register?</Text>
+        <Text>Register?</Text>
         </TouchableOpacity>
         </View>
     )
@@ -72,7 +82,7 @@ const styles = StyleSheet.create({
       marginBottom: 30,
     },
    
-    loginBtn: {
+    loginButton: {
       width: "60%",
       borderRadius: 25,
       height: 50,
