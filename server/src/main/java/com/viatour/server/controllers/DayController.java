@@ -2,6 +2,7 @@ package com.viatour.server.controllers;
 
 import com.viatour.server.models.Activity;
 import com.viatour.server.models.Day;
+import com.viatour.server.repositories.ActivityRepository;
 import com.viatour.server.repositories.DayRepository;
 import com.viatour.server.repositories.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class DayController {
     @Autowired
     TripRepository tripRepository;
 
+    @Autowired
+    ActivityRepository activityRepository;
+
     @GetMapping(value = "/days")
     public ResponseEntity<List<Day>> getAllDays() {
         return new ResponseEntity<>(dayRepository.findAll(), HttpStatus.OK);
@@ -39,5 +43,14 @@ public class DayController {
         return new ResponseEntity<>(day, HttpStatus.CREATED);
     }
 
+    @PostMapping(value = "/days/{id}/activities")
+    public ResponseEntity<Activity> postActivity(@RequestBody Activity activity, @PathVariable Long id) {
+        Day day = dayRepository.getById(id);
+        activity.setDay(day);
+        day.addActivity(activity);
+        activityRepository.save(activity);
+        dayRepository.save(day);
+        return new ResponseEntity<>(activity, HttpStatus.CREATED);
+    }
 
 }
