@@ -62,7 +62,7 @@ public class DataLoader implements ApplicationRunner {
         dayRepository.saveAll(days);
 
         byte[] content = new byte[0];
-        Image eifelTower = new Image(content, "The Eifel Tower", paris);
+        Image eifelTower = new Image("The Eifel Tower", paris);
         imageRepository.save(eifelTower);
 
 

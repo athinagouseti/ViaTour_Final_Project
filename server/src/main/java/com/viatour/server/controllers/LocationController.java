@@ -5,9 +5,7 @@ import com.viatour.server.repositories.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +23,11 @@ public class LocationController {
     @GetMapping(value = "/locations/{id}")
     public ResponseEntity getLocation(@PathVariable Long id) {
         return new ResponseEntity(locationRepository.findById(id), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/locations")
+    public ResponseEntity<Location> postLocation(@RequestBody Location location) {
+        locationRepository.save(location);
+        return new ResponseEntity<>(location, HttpStatus.CREATED);
     }
 }

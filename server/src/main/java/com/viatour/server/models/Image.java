@@ -20,8 +20,8 @@ public class Image {
     @JoinColumn(name = "location_id", nullable = false)
     private Location location;
 
-    public Image(byte[] content, String name, Location location) {
-        this.content = content;
+    public Image(String name, Location location) {
+        this.content = new byte[0];
         this.name = name;
         this.location = location;
     }
