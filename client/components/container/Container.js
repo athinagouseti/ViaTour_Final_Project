@@ -18,7 +18,6 @@ const Container = () => {
 
     return(
 <>
-        
         <NavigationContainer>
             <Tab.Navigator
              screenOptions={({ route }) => ({
