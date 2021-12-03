@@ -5,7 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Trips from "../trips/Trips";
 import Homepage from "../homepage/Homepage";
 import Wishlist from "../wishlist/Wishlist";
-import Profile from "../profile/Profile";
+import User from "../user/User";
 import ReactMap from "../map/ReactMap";
 import { Image , StyleSheet} from 'react-native';
 
@@ -37,10 +37,11 @@ const Container = () => {
                     tabBarIcon: () => (<Image source={require('../navigation_icons/trips_icon.png')} style={styles.tripsIcon} name="trips-icon" /> ),
                     tabBarLabel: () => {return null} 
                 }}/>
-                <Tab.Screen name="Profile" component={Profile} options=
+                <Tab.Screen name="User" component={User} options=
                 {{
                     tabBarIcon: () => (<Image source={require('../navigation_icons/profile_icon.png')} style={styles.profileIcon} name="profile-icon" /> ),
-                    tabBarLabel: () => {return null} 
+                    tabBarLabel: () => {return null},
+                    headerShown: false 
                 }}/>
             </Tab.Navigator>
         </NavigationContainer>

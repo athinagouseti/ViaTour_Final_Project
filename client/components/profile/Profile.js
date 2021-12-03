@@ -7,7 +7,7 @@ const Profile = () => {
 
     return(
         <View>
-            <Login />
+           <Text>Profile</Text>
         </View>
     )
 }

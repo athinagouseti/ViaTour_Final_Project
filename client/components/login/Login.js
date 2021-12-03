@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Image, TextInput, Button, TouchableOpacity } from "react-native";
 
@@ -5,6 +6,12 @@ const Login = () => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+
+    const navigation = useNavigation();
+
+    const handleRegister = () => {
+      navigation.navigate("Register")
+    }
 
     return (
         <View>
@@ -33,6 +40,10 @@ const Login = () => {
  
         <TouchableOpacity style={styles.loginBtn}>
         <Text style={styles.loginText}>LOGIN</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={handleRegister}>
+        <Text style={styles.forgot_button}>Register?</Text>
         </TouchableOpacity>
         </View>
     )
