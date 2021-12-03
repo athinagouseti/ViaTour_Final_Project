@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
 import DraggableFlatList, {ScaleDecorator} from "react-native-draggable-flatlist";
 
-const Wishlist = () => {
+const Trips_List = () => {
 
     const [data, setData] = useState([
         {
@@ -38,20 +38,28 @@ const Wishlist = () => {
       );
     
     return (
-        <DraggableFlatList
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={(item, index) => item.order.toString()}
-          onDragEnd={({data} ) => setData(data )}
-          showsVerticalScrollIndicator={false} 
-          contentContainerStyle={{ paddingBottom: 100 }}
-        />
+    
+    <View style={styles.container}>
+        <ScrollView contentContainerStyle={{ paddingBottom: 100 }}  showsVerticalScrollIndicator={false}>
+        <TouchableOpacity >
+            <Text style={styles.text}>City Name</Text>
+        </TouchableOpacity>
+        <TouchableOpacity>
+            <Text style={styles.text}>City Name</Text>
+        </TouchableOpacity>
+        <TouchableOpacity >
+            <Text style={styles.text}>City Name</Text>
+        </TouchableOpacity>
+        <TouchableOpacity >
+            <Text style={styles.text}>City Name</Text>
+        </TouchableOpacity>
+        </ScrollView>
+    </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-       backgroundColor: 'white',
        flex: 1,
       },
     text: {
@@ -68,4 +76,4 @@ const styles = StyleSheet.create({
   });
 
 
-export default Wishlist;
+export default Trips_List;

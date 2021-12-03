@@ -8,7 +8,7 @@ import Wishlist from "../wishlist/Wishlist";
 import Profile from "../profile/Profile";
 import ReactMap from "../map/ReactMap";
 
-import { Image , StyleSheet, TouchableOpacity} from 'react-native';
+import { Image , StyleSheet, TouchableOpacity, StatusBar} from 'react-native';
 import { BlurView } from 'expo-blur';
 
 const Tab = createBottomTabNavigator();
@@ -17,44 +17,42 @@ const Stack = createNativeStackNavigator();
 const Container = () => {
 
     return(
+<>
+        
         <NavigationContainer>
             <Tab.Navigator
-
              screenOptions={({ route }) => ({
                 tabBarLabelPosition: "below-icon",
                 tabBarStyle: {
                     position: 'absolute',
-                    opacity: 1,
                     backgroundColor: '#333652'
                 },
                 tabBarActiveTintColor: '#fad02C',
-                tabBarInactiveTintColor: 'white'
-            })}>
-            
-            
-                <Tab.Screen name="Home" component={Homepage}  
+                tabBarInactiveTintColor: 'white',
+                tabBarActiveBackgroundColor: 'transparent'
+            })}> 
+        <Tab.Screen name="Home" component={Homepage}  
                 options= {{
                     tabBarIcon: () => (<Image source={require('../navigation_icons/home_icon.png')}
                     style={styles.homeIcon} name="home-icon"/> ), 
                 }}/>
-                <Tab.Screen name="Wishlist" component={Wishlist} 
+        <Tab.Screen name="Wishlist" component={Wishlist} 
                 options= {{
                     tabBarIcon: () => (<Image source={require('../navigation_icons/Wishlist_Icon.png')}
                     style={styles.wishlistIcon} name="wishlist-icon" /> ),
                 }}/>
-                <Tab.Screen name=" " component={ReactMap} 
+        <Tab.Screen name=" " component={ReactMap} 
                 options={{
                     tabBarIcon: () => (<Image source={require('../navigation_icons/map_icon2.png')}
                     style={styles.mapIcon} name="map-icon"/> ),
                 }} />
-               
-                <Tab.Screen name="My Trips" component={Trips} 
+        <Tab.Screen name="My Trips" component={Trips} 
                 options={{
                     tabBarIcon: () => (<Image source={require('../navigation_icons/trips_icon.png')}
                     style={styles.tripsIcon} name="trips-icon" /> ),
                   
                 }}/>
-                <Tab.Screen name="Profile" component={Profile} 
+        <Tab.Screen name="Profile" component={Profile} 
                 options={{
                     tabBarIcon: () => (<Image source={require('../navigation_icons/profile_icon.png')}
                     style={styles.profileIcon} name="profile-icon" /> ),
@@ -63,6 +61,7 @@ const Container = () => {
             
             </Tab.Navigator>
         </NavigationContainer>
+</>
     )
 }
 
