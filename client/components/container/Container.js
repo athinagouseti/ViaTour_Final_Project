@@ -81,8 +81,8 @@ const styles = StyleSheet.create({
         tintColor: '#fad02C'
       },
     mapIcon: {
-        width: 75,
-        height: 50,
+        width: 150,
+        height: 100,
         paddingBottom: 25,
         marginBottom: 15
       },
