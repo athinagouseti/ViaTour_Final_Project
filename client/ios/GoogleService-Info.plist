@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>603930877033-a21bqhurfg83ljdegl7gevfjhd8g0556.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.603930877033-a21bqhurfg83ljdegl7gevfjhd8g0556</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAtWZbUUTnMCOrqClQXxelO67EyOezYtdA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>603930877033</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.name.ViaTour</string>
+	<key>PROJECT_ID</key>
+	<string>viatour-56112</string>
+	<key>STORAGE_BUCKET</key>
+	<string>viatour-56112.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:603930877033:ios:1f66179e90eddf977616f8</string>
+</dict>
+</plist>
