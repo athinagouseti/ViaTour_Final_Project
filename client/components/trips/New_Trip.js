@@ -3,7 +3,6 @@ import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { Picker } from '@react-native-picker/picker';
 import DatePicker from 'react-native-date-picker';
-import CalendarPicker from 'react-native-calendar-picker';
 import Calendar from '../trips/Calender.js';
 
 const New_Trip = () => {

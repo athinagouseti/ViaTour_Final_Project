@@ -47,6 +47,7 @@ const Wishlist = () => {
     
     return (
         <>
+        <View style={styles.container}>
         <DraggableFlatList
           data={data}
           renderItem={renderItem}
@@ -55,24 +56,27 @@ const Wishlist = () => {
           showsVerticalScrollIndicator={false} 
           contentContainerStyle={{ paddingBottom: 100 }}
         />
+        </View>
         </>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-       backgroundColor: 'white',
        flex: 1,
+       shadowColor: '#333652',
+       shadowOffset: { height: 2},
+       shadowOpacity: 0.5
       },
     text: {
-        borderWidth: 4,
+        borderWidth: 5,
         borderColor: '#fad02c',
         backgroundColor: '#f3f3f2',
         overflow: 'hidden',
         borderRadius: 20,
         padding: 30,
         marginTop: 15,
-        margin: 30,
+        margin: 15,
         fontWeight: 'bold',
         color: '#333652',
         fontSize: 25
@@ -80,13 +84,13 @@ const styles = StyleSheet.create({
     add:{
         width: 90,
         height: 60,
-        marginTop: -110,
+        marginTop: -95,
         marginLeft: 150
     },
     remove:{
         width: 60,
         height: 60,
-        marginTop: -108,
+        marginTop: -94,
         marginLeft: 275
     }
   });

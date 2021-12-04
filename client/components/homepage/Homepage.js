@@ -11,17 +11,18 @@ const Homepage = () => {
     return (
         <>
         <View style={styles.container}>
-        <ScrollView nestedScrollEnabled={true} showsVerticalScrollIndicator={false} stickyHeaderIndices={[2]}>
+        <ScrollView nestedScrollEnabled={true} showsVerticalScrollIndicator={false}
+            stickyHeaderIndices={[2]}>
             <Text style={styles.heading}>Latest Travel News</Text>
-            <News/>
+                <News/>
             <View style={{flexDirection:'row'}}>
-            <Text style={styles.heading}>My Upcoming Trips</Text>
+                <Text style={styles.heading}>My Upcoming Trips</Text>
             <TouchableOpacity>
-            <Image style={styles.add} source={require('../navigation_icons/add_trip.png')}/>
+                <Image style={styles.add} source={require('../navigation_icons/add_trip.png')}/>
             </TouchableOpacity>
             </View>
             <View>
-            <Trips_List/>
+                <Trips_List/>
             </View>
         </ScrollView>
         </View>
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
         width: 80,
         height: 50,
         marginTop: -48,
-        marginLeft: 250
+        marginLeft: 300
     }
   });
 
