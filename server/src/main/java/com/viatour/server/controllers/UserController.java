@@ -57,7 +57,7 @@ public class UserController {
         return new ResponseEntity<>(trip, HttpStatus.CREATED);
     }
 
-    @PostMapping(value = "/users/{userId}/wishList")
+    @PostMapping(value = "/users/{userId}/wishlist")
     public ResponseEntity<Location> addLocationToWishlist(@RequestBody Location location, @PathVariable Long userId) {
         locationRepository.save(location);
         User user = userRepository.getById(userId);
