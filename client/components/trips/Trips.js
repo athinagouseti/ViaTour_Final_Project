@@ -13,25 +13,25 @@ const Trips = () => {
             style={styles.imageContainer}>
             <View>
             <TouchableOpacity>
-            <Image source={require('../trip_icons/Budapest.jpeg')} style={styles.images}/>
+            <Image source={require('../trip_icons/Budapest.jpeg')} style={styles.upcoming}/>
             </TouchableOpacity>
             <Text style={styles.text}>Budapest - 21/10/2021 - 5 Days</Text>
             </View>
             <View>
             <TouchableOpacity>
-            <Image source={require('../trip_icons/pest.jpeg')} style={styles.images}/>
+            <Image source={require('../trip_icons/pest.jpeg')} style={styles.upcoming}/>
             </TouchableOpacity>
             <Text style={styles.text}>Budapest - 21/10/2021 - 5 Days</Text>
             </View>
             <View>
             <TouchableOpacity>
-            <Image source={require('../trip_icons/Stockholm.jpeg')} style={styles.images}/>
+            <Image source={require('../trip_icons/Stockholm.jpeg')} style={styles.upcoming}/>
             </TouchableOpacity>
             <Text style={styles.text}>Stockholm - 16/08/2022 - 7 Days</Text>
             </View>
             <View>
             <TouchableOpacity>
-            <Image source={require('../trip_icons/stock.jpg')} style={styles.images}/>
+            <Image source={require('../trip_icons/stock.jpg')} style={styles.upcoming}/>
             </TouchableOpacity>
             <Text style={styles.text}>Stockholm - 10/07/2022 - 1 Week</Text>
             </View>
@@ -133,6 +133,13 @@ const styles = StyleSheet.create({
         marginTop: 10,
         marginLeft: 10,
         fontSize: 18
+    },
+    upcoming: {
+        width: 350,
+        height: 350,
+        marginBottom: 15,
+        marginHorizontal: 10,
+        borderRadius: 10
     },
     images: {
         width: 350,

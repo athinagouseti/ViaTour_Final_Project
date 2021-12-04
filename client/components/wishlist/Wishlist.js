@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { View, Text, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
+import { View, Text, ScrollView, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import DraggableFlatList, {ScaleDecorator} from "react-native-draggable-flatlist";
 
 const Wishlist = () => {
@@ -32,12 +32,21 @@ const Wishlist = () => {
     ])
 
     const renderItem = ({ item, index, drag, isActive }) => (
+        <View >
         <TouchableOpacity onLongPress={drag} >
           <Text style={styles.text} >{item.label}</Text>
         </TouchableOpacity>
+        <TouchableOpacity>
+        <Image style={styles.add} source={require('../navigation_icons/add_trip.png')}/>
+        </TouchableOpacity>
+        <TouchableOpacity>
+        <Image style={styles.remove} source={require('../navigation_icons/remove_trip.png')}/>
+        </TouchableOpacity>
+        </View>
       );
     
     return (
+        <>
         <DraggableFlatList
           data={data}
           renderItem={renderItem}
@@ -46,6 +55,7 @@ const Wishlist = () => {
           showsVerticalScrollIndicator={false} 
           contentContainerStyle={{ paddingBottom: 100 }}
         />
+        </>
     )
 }
 
@@ -66,6 +76,18 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#333652',
         fontSize: 25
+    },
+    add:{
+        width: 90,
+        height: 60,
+        marginTop: -110,
+        marginLeft: 150
+    },
+    remove:{
+        width: 60,
+        height: 60,
+        marginTop: -108,
+        marginLeft: 275
     }
   });
 
