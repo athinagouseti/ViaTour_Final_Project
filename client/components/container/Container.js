@@ -6,7 +6,7 @@ import Trips from "../trips/Trips";
 import Homepage from "../homepage/Homepage";
 import ReactMap from "../map/ReactMap";
 import { Image , StyleSheet } from 'react-native';
-import WishlistTab from "../wishlistTab/WishlistTab";
+import WishlistTab from "../tab/WishlistTab";
 import User from "../user/User";
 
 const Tab = createBottomTabNavigator();
@@ -81,8 +81,8 @@ const styles = StyleSheet.create({
         tintColor: '#fad02C'
       },
     mapIcon: {
-        width: 150,
-        height: 100,
+        width: 75,
+        height: 50,
         paddingBottom: 25,
         marginBottom: 15
       },
