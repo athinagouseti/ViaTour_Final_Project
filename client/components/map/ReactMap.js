@@ -1,12 +1,11 @@
 import React from "react";
 import MapView, { Marker } from 'react-native-maps';
-import { View, StyleSheet, Dimensions, TextInput } from 'react-native';
-
+import { StyleSheet, Dimensions, ScrollView} from 'react-native';
 
 const ReactMap = () => {
 
     return(
-        <View>
+        <ScrollView>
             <MapView loadingEnabled={true} style={styles.map}
               initialRegion={{
                 latitude: 37.78825,
@@ -19,25 +18,7 @@ const ReactMap = () => {
               title={"Trip"}
               description={"Tap to view trip"}/>
             </MapView>
-            {/* <View style={{ position: 'absolute', top: 10, width: '100%' }}>
-              <TextInput
-                style={{
-                  borderRadius: 100,
-                  margin: 10,
-                  color: '#343652',
-                  borderColor: '#343652',
-                  backgroundColor: '#FFF',
-                  borderWidth: 5,
-                  height: 45,
-                  paddingHorizontal: 10,
-                  fontSize: 18,
-                }}
-                placeholder={'Search'}
-                placeholderTextColor={'#343652'}
-              />
-            </View> */}
-            
-        </View>
+        </ScrollView>
     )
 }
 

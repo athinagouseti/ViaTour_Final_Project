@@ -1,5 +1,8 @@
 package com.viatour.server.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.sql.Time;
 
@@ -12,6 +15,7 @@ public class Activity {
     private Long id;
     @Column(name = "description")
     private String description;
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "day_id", nullable = false)
     private Day day;
@@ -61,6 +65,11 @@ public class Activity {
         this.timeSlot = timeSlot;
     }
 
+    public Day getDay() {
+        return day;
+    }
 
-
+    public void setDay(Day day) {
+        this.day = day;
+    }
 }

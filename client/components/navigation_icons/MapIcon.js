@@ -2,7 +2,7 @@ import * as React from "react";
 import Svg, { Defs, ClipPath, Path, G } from "react-native-svg";
 
 const SvgMapLogo = (props) => (
-  <Svg xmlns="http://www.w3.org/2000/svg" width={375} height={375} {...props}>
+  <Svg xmlns="http://www.w3.org/2000/svg" width={100} height={100} {...props}>
     <Defs>
       <ClipPath id="Map_Logo_svg__a">
         <Path d="M166 130.738h44V194h-44Zm0 0" />
