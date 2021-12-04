@@ -16,6 +16,8 @@ public class Location {
     private double latitude;
     @Column(name = "longitude")
     private double longitude;
+    @Column(name = "user_id")
+    private String user_id;
 
     public Location(String place_id, double latitude, double longitude) {
         this.place_id = place_id;
@@ -57,11 +59,11 @@ public class Location {
         this.longitude = longitude;
     }
 
-    public String getPlaceId() {
-        return placeId;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setPlaceId(String placeId) {
-        this.placeId = placeId;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 }
