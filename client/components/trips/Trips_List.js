@@ -3,55 +3,50 @@ import { View, Text, ScrollView, StyleSheet, TouchableOpacity} from 'react-nativ
 import DraggableFlatList, {ScaleDecorator} from "react-native-draggable-flatlist";
 
 const Trips_List = () => {
-
-    const [data, setData] = useState([
-        {
-            order: 1,
-            label: 'Tokyo',
-          },
-          {
-            order: 2,
-            label: 'Denver',
-          },
-          {
-            order: 3,
-            label: 'Rome',
-          },
-          {
-            order: 4,
-            label: 'Berlin',
-          },
-          {
-            order: 5,
-            label: 'Paris',
-          },
-          {
-            order: 6,
-            label: 'London',
-          }
-    ])
-
-    const renderItem = ({ item, index, drag, isActive }) => (
-        <TouchableOpacity onLongPress={drag} >
-          <Text style={styles.text} >{item.label}</Text>
-        </TouchableOpacity>
-      );
     
     return (
     
     <View style={styles.container}>
         <ScrollView contentContainerStyle={{ paddingBottom: 100 }}  showsVerticalScrollIndicator={false}>
         <TouchableOpacity >
-            <Text style={styles.text}>City Name</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-            <Text style={styles.text}>City Name</Text>
-        </TouchableOpacity>
-        <TouchableOpacity >
-            <Text style={styles.text}>City Name</Text>
+        <View style={styles.trip}>
+            <Text style={styles.text}>Moscow</Text><Text style={styles.text1}>09/03/2022</Text>
+        </View>
         </TouchableOpacity>
         <TouchableOpacity >
-            <Text style={styles.text}>City Name</Text>
+        <View style={styles.trip}>
+            <Text style={styles.text}>Melbourne</Text><Text style={styles.text1}>10/05/2022</Text>
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity >
+        <View style={styles.trip}>
+            <Text style={styles.text}>Tel-Aviv</Text><Text style={styles.text1}>17/09/2022</Text>
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity >
+        <View style={styles.trip}>
+            <Text style={styles.text}>Lisbon</Text><Text style={styles.text1}>28/12/2022</Text>
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity >
+        <View style={styles.trip}>
+            <Text style={styles.text}>Moscow</Text><Text style={styles.text1}>09/03/2022</Text>
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity >
+        <View style={styles.trip}>
+            <Text style={styles.text}>Melbourne</Text><Text style={styles.text1}>10/05/2022</Text>
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity >
+        <View style={styles.trip}>
+            <Text style={styles.text}>Tel-Aviv</Text><Text style={styles.text1}>17/09/2022</Text>
+        </View>
+        </TouchableOpacity>
+        <TouchableOpacity >
+        <View style={styles.trip}>
+            <Text style={styles.text}>Lisbon</Text><Text style={styles.text1}>28/12/2022</Text>
+        </View>
         </TouchableOpacity>
         </ScrollView>
     </View>
@@ -62,16 +57,29 @@ const styles = StyleSheet.create({
     container: {
        flex: 1,
       },
-    text: {
-        borderWidth: 4,
+    trip: {
+        flexDirection: 'row',
+        borderWidth: 5,
+        backgroundColor: '#f3f3f2',
         borderColor: '#fad02c',
+        overflow: 'hidden',
+        opacity: 0.9,
         borderRadius: 20,
         padding: 30,
-        marginTop: 15,
+        marginTop: 20,
         margin: 30,
+        marginHorizontal: 30,
+        justifyContent: 'space-between'
+    },
+    text:{
         fontWeight: 'bold',
         color: '#333652',
-        fontSize: 25
+        fontSize: 22,
+    },
+    text1: {
+        fontWeight: 'normal',
+        fontSize: 15,
+        padding: 6
     }
   });
 

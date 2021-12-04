@@ -7,7 +7,7 @@ const Profile = () => {
 
     return(
         <View style={styles.container}>
-        <ScrollView>
+        <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
         <TouchableOpacity>
         <Text style={styles.login}>Login</Text>
         </TouchableOpacity>
@@ -21,10 +21,10 @@ const Profile = () => {
             <Text style={styles.text}>Trips</Text>
         </TouchableOpacity>
         <TouchableOpacity >
-            <Text style={styles.text}>Favourites</Text>
+            <Text style={styles.text}>Wishlist</Text>
         </TouchableOpacity>
         <TouchableOpacity >
-            <Text style={styles.text}>Wishlist</Text>
+            <Text style={styles.text}>Favourites</Text>
         </TouchableOpacity>
         </ScrollView>
         </View>
@@ -38,13 +38,14 @@ const styles = StyleSheet.create({
     text: {
         borderWidth: 4,
         borderColor: '#fad02c',
+        backgroundColor: '#333652',
+        overflow: 'hidden',
         borderRadius: 20,
-        backgroundColor: '#fad02c',
         padding: 25,
         marginTop: 10,
-        margin: 70,
+        margin: 80,
         fontWeight: 'bold',
-        color: '#333652',
+        color: 'white',
         fontSize: 30,
         textAlign: 'center'
     },

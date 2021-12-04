@@ -23,12 +23,10 @@ const Container = () => {
              screenOptions={({ route }) => ({
                 tabBarLabelPosition: "below-icon",
                 tabBarStyle: {
-                    position: 'absolute',
-                    backgroundColor: '#333652'
+                    position: 'absolute'
                 },
-                tabBarActiveTintColor: '#fad02C',
-                tabBarInactiveTintColor: 'white',
-                tabBarActiveBackgroundColor: 'transparent'
+                tabBarActiveTintColor: '#333652',
+                tabBarInactiveTintColor: 'white'
             })}> 
         <Tab.Screen name="Home" component={Homepage}  
                 options= {{
@@ -37,12 +35,12 @@ const Container = () => {
                 }}/>
         <Tab.Screen name="Wishlist" component={Wishlist} 
                 options= {{
-                    tabBarIcon: () => (<Image source={require('../navigation_icons/Wishlist_Icon.png')}
+                    tabBarIcon: () => (<Image source={require('../navigation_icons/wishlist_icon.png')}
                     style={styles.wishlistIcon} name="wishlist-icon" /> ),
                 }}/>
-        <Tab.Screen name=" " component={ReactMap} 
+        <Tab.Screen name="Map" component={ReactMap} 
                 options={{
-                    tabBarIcon: () => (<Image source={require('../navigation_icons/map_icon2.png')}
+                    tabBarIcon: () => (<Image source={require('../navigation_icons/Map_Logo3.png')}
                     style={styles.mapIcon} name="map-icon"/> ),
                 }} />
         <Tab.Screen name="My Trips" component={Trips} 
@@ -68,36 +66,35 @@ const styles = StyleSheet.create({
     homeIcon: {
         width: 70,
         height: 70,
-        marginTop: 15,
+        marginTop: 20,
         marginBottom: 15,
-        tintColor: '#fad02C'
+        tintColor: '#333652'
       },
     wishlistIcon: {
         width: 60,
         height: 60,
-        marginTop: 20,
+        marginTop: 22,
         marginBottom: 15,
-        tintColor: '#fad02C'
+        tintColor: '#333652'
       },
     mapIcon: {
-        width: 150,
+        width: 125,
         height: 100,
-        paddingBottom: 25,
         marginBottom: 15
       },
     tripsIcon: {
         width: 70,
         height: 70,
-        marginTop: 15,
+        marginTop: 20,
         marginBottom: 15,
-        tintColor: '#fad02C'
+        tintColor: '#333652'
       },
     profileIcon: {
         width: 70,
         height: 70,
-        marginTop: 15,
+        marginTop: 20,
         marginBottom: 15,
-        tintColor: '#fad02C'
+        tintColor: '#333652'
       },
   });
 
