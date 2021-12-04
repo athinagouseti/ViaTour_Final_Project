@@ -6,7 +6,7 @@ import Trips from "../trips/Trips";
 import Homepage from "../homepage/Homepage";
 import ReactMap from "../map/ReactMap";
 import { Image , StyleSheet } from 'react-native';
-import WishlistTab from "../tab/WishlistTab";
+import WishlistTab from "../wishlistTab/WishlistTab";
 import User from "../user/User";
 
 const Tab = createBottomTabNavigator();
