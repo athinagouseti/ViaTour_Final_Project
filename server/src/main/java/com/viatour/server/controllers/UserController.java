@@ -1,9 +1,11 @@
 package com.viatour.server.controllers;
 
 import com.viatour.server.models.Day;
+import com.viatour.server.models.Location;
 import com.viatour.server.models.Trip;
 import com.viatour.server.models.User;
 import com.viatour.server.repositories.DayRepository;
+import com.viatour.server.repositories.LocationRepository;
 import com.viatour.server.repositories.TripRepository;
 import com.viatour.server.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ public class UserController {
 
     @Autowired
     DayRepository dayRepository;
+
+    @Autowired
+    LocationRepository locationRepository;
 
     @GetMapping(value = "/users")
     public ResponseEntity<List<User>> getAllUsers() {
@@ -52,10 +57,12 @@ public class UserController {
         return new ResponseEntity<>(trip, HttpStatus.CREATED);
     }
 
-//    @PostMapping(value = "/users/{userId}/trips/{tripId}/days")
-//    public ResponseEntity<Day> postDay(@RequestBody Day day, @PathVariable Long userId, @PathVariable Long tripId) {
-//        dayRepository.save(day);
-//        User user = userRepository.getById(userId);
-//        Trip trip = tripRepository
-//    }
+    @PostMapping(value = "/users/{userId}/wishList")
+    public ResponseEntity<Location> addLocationToWishlist(@RequestBody Location location, @PathVariable Long userId) {
+        locationRepository.save(location);
+        User user = userRepository.getById(userId);
+        user.addToWishList(location);
+        userRepository.save(user);
+        return new ResponseEntity<>(location, HttpStatus.CREATED);
+    }
 }
