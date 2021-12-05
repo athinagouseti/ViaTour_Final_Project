@@ -1,9 +1,10 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity} from 'react-native';
-import New_Trip from '../trips/New_Trip';
+import NewTrip from '../trips/NewTrip';
 import DraggableFlatList, {ScaleDecorator} from "react-native-draggable-flatlist";
-import Trips_List from "../trips/Trips_List";
+import TripsList from "../trips/TripsList";
 import News from "./News";
+import TripInfo from "../trips/TripInfo";
 
 
 const Homepage = () => {
@@ -12,9 +13,9 @@ const Homepage = () => {
         <>
         <View style={styles.container}>
         <ScrollView nestedScrollEnabled={true} showsVerticalScrollIndicator={false}
-            stickyHeaderIndices={[2]}>
+            stickyHeaderIndices={[2]} contentContainerStyle={{ paddingBottom: 100 }}>
             <Text style={styles.heading}>Latest Travel News</Text>
-                {/* <News/> */}
+                <News/>
             <View style={{flexDirection:'row'}}>
                 <Text style={styles.heading}>My Upcoming Trips</Text>
             <TouchableOpacity>
@@ -22,8 +23,9 @@ const Homepage = () => {
             </TouchableOpacity>
             </View>
             <View>
-                {/* <Trips_List/> */}
-                <New_Trip/>
+                <TripsList/>
+                {/* <NewTrip/> */}
+                {/* <TripInfo/> */}
             </View>
         </ScrollView>
         </View>

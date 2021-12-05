@@ -1,8 +1,8 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity} from 'react-native';
-import New_Trip from '../trips/New_Trip';
+import NewTrip from '../trips/NewTrip';
 import DraggableFlatList, {ScaleDecorator} from "react-native-draggable-flatlist";
-import Trips_List from "../trips/Trips_List";
+import TripsList from "../trips/TripsList";
 
 const News = () => {
 

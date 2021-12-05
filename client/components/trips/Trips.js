@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, Image, ImageBackground, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import NewTrip from "./NewTrip";
 
 const Trips = () => {
 
@@ -9,7 +10,7 @@ const Trips = () => {
         <View style={styles.container} >
             <Text style={styles.heading}>My Upcoming Trips</Text>
             <TouchableOpacity>
-                <Image style={styles.add} source={require('../navigation_icons/add_trip.png')}/>
+                <Image style={styles.add} source={require('../navigation_icons/add_trip.png')} component={NewTrip}/>
             </TouchableOpacity>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} 
             pagingEnabled={true}

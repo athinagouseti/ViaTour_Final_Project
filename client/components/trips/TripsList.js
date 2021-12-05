@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { View, Text, ScrollView, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import DraggableFlatList, {ScaleDecorator} from "react-native-draggable-flatlist";
 
-const Trips_List = () => {
+const TripsList = () => {
     
     return (
     
@@ -121,4 +121,4 @@ const styles = StyleSheet.create({
   });
 
 
-export default Trips_List;
+export default TripsList;

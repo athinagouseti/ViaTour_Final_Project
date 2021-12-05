@@ -3,15 +3,16 @@ import { View, Text, TextInput, Button, StyleSheet, ScrollView} from 'react-nati
 import { useForm } from 'react-hook-form';
 import { Picker } from '@react-native-picker/picker';
 import DatePicker from 'react-native-date-picker';
-import Calendar from '../trips/Calender.js';
+import Calendar from './Calender.js';
 
-const New_Trip = () => {
+const NewTrip = () => {
 
     const [date, setDate] = useState(new Date())
     const [open, setOpen] = useState(false)
 
     return (
-        <View style={styles.container} contentContainerStyle={{ paddingBottom: 100 }}>
+      <View style={styles.container}>
+        <ScrollView contentContainerStyle={{ paddingBottom: 100 }} showsVerticalScrollIndicator={false}>
         <Text style={styles.text}>Add New Trip</Text>
           <TextInput 
             placeholder="City" style={styles.input}/>
@@ -24,6 +25,7 @@ const New_Trip = () => {
             placeholder="Day 1" style={styles.input}/>
           <TextInput
             placeholder="Day 2" style={styles.input}/>
+        </ScrollView>
         </View>
     )
 }
@@ -31,7 +33,10 @@ const New_Trip = () => {
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    height: 70,
+    borderColor: '#fad02c',
+    borderWidth: 1,
+    borderRadius: 20,
+    marginBottom: 20
   },
   input: {
     marginTop: 10,
@@ -39,7 +44,7 @@ const styles = StyleSheet.create({
     marginLeft: '25%',
     height: 50,
     width: '50%',
-    backgroundColor: '#f3f3f2',
+    backgroundColor: 'white',
     color: '#333652',
     paddingLeft: 15,
     borderWidth: 2,
@@ -57,4 +62,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default New_Trip;
+export default NewTrip;

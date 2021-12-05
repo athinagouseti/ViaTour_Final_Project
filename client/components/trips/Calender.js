@@ -60,7 +60,6 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f3f3f2',
-    padding: 5
   },
   text: {
       padding: 30
