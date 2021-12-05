@@ -12,7 +12,7 @@ import java.util.Map;
 @Scope("singleton")
 public class AuthenticationHelper {
 
-    public FirebaseToken getVerifiedToken(String authToken) {
+    public FirebaseToken getVerifiedToken(String authToken)  {
         FirebaseToken decodedToken = null;
         try {
             decodedToken= FirebaseAuth.getInstance().verifyIdToken(authToken);
@@ -23,9 +23,11 @@ public class AuthenticationHelper {
         return decodedToken;
     }
 
-    public String getUserUIDFromHeaders(Map<String, String> headers) {
+    public String getUserUIDFromHeaders(Map<String, String> headers)  {
         String token = headers.get("auth-token");
-        FirebaseToken decodedToken = this.getVerifiedToken(token);
-        return decodedToken.getUid();
+
+            FirebaseToken decodedToken = this.getVerifiedToken(token);
+            return decodedToken.getUid();
+
     }
 }

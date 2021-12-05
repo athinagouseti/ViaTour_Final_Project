@@ -1,13 +1,13 @@
 import auth from '@react-native-firebase/auth'
 
 const getToken = () => {
-  return auth().currentUser.getIdToken()
+  return auth().currentUser?.getIdToken()
 }
 
 const service = (url) => ({
   get: async () => {
     const token = await getToken()
-    return fetch(url, { "Auth-Token": token }).then((res) => res.json());
+    return fetch(url, { headers: { "Auth-Token": token }}).then((res) => res.json());
   },
   delete: async () => {
     const token = await getToken()

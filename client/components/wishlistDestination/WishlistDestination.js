@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Alert } from "react-native";
 import Request from "../../helpers/service"
 import auth from '@react-native-firebase/auth'
 import locationService from "../../helpers/locationService";
@@ -14,7 +14,7 @@ const WishlistDestination = ({ route }) => {
         fetch(url)
             .then(res => res.json())
             .then(data => setLocation(parseLocationData(data)))
-            .catch(console.error)
+            .catch((error) => console.error(error))
     }
 
     useEffect(() => {
@@ -46,12 +46,12 @@ const WishlistDestination = ({ route }) => {
 
     const addToWishlist = () => {
         const payload = {
-            place_id: location.place_id,
+            placeId: location.place_id,
             latitude: location.latitude,
-            longitude: location.longitude
+            longitude: location.longitude,
+            name: `${location.cityName}, ${location.countryName}`
         }
         locationService.post(payload)
-            .then(() => console.log("Added to wishlist"))
             .catch((error) => console.log(error))
     }
 

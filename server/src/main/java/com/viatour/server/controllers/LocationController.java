@@ -1,8 +1,5 @@
 package com.viatour.server.controllers;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthException;
-import com.google.firebase.auth.FirebaseToken;
 import com.viatour.server.helpers.AuthenticationHelper;
 import com.viatour.server.models.Location;
 import com.viatour.server.repositories.LocationRepository;
@@ -24,8 +21,12 @@ public class LocationController {
     AuthenticationHelper authenticationHelper;
 
     @GetMapping(value = "/locations")
-    public ResponseEntity<List<Location>> getAllLocations() {
-        return new ResponseEntity<>(locationRepository.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<Location>> getAllLocations(@RequestHeader Map<String, String> headers) {
+
+            String uid = authenticationHelper.getUserUIDFromHeaders(headers);
+            return new ResponseEntity<>(locationRepository.findAllByUserId(uid), HttpStatus.OK);
+
+
     }
 
     @GetMapping(value = "/locations/{id}")
@@ -35,11 +36,11 @@ public class LocationController {
 
     @PostMapping(value = "/locations")
     public ResponseEntity<Location> postLocation(@RequestBody Location location, @RequestHeader Map<String, String> headers) {
-        String uid = authenticationHelper.getUserUIDFromHeaders(headers);
-        System.out.println(uid);
 
-        location.setUser_id(uid);
-        locationRepository.save(location);
-        return new ResponseEntity<>(location, HttpStatus.CREATED);
+            String uid = authenticationHelper.getUserUIDFromHeaders(headers);
+            location.setUserId(uid);
+            locationRepository.save(location);
+            return new ResponseEntity<>(location, HttpStatus.CREATED);
+
     }
 }
