@@ -6,8 +6,8 @@ const Trips = () => {
     return (
         <>
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
-        <View style={styles.container}>
-            <Text style={styles.heading} >My Upcoming Trips</Text>
+        <View style={styles.container} >
+            <Text style={styles.heading}>My Upcoming Trips</Text>
             <TouchableOpacity>
                 <Image style={styles.add} source={require('../navigation_icons/add_trip.png')}/>
             </TouchableOpacity>
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginHorizontal: 10,
         shadowColor: '#333652',
-        shadowOffset: { height: 3},
+        shadowOffset: { height: 1},
         shadowOpacity: 0.5,
     },
     heading: {
@@ -168,10 +168,10 @@ const styles = StyleSheet.create({
         paddingTop: 150
     },
     add:{
-        width: 50,
+        width: 60,
         height: 50,
-        marginTop: -48,
-        marginLeft: 210
+        marginTop: -50,
+        marginLeft: 320
     }
   });
 

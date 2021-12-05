@@ -17,9 +17,7 @@ const New_Trip = () => {
             placeholder="City" style={styles.input}/>
           <TextInput
             placeholder="Country" style={styles.input}/>
-          <Text style={styles.text}>Arrival Date:</Text>
-          <Calendar/>
-          <Text style={styles.text}>Departure Date:</Text>
+          <Text style={styles.text}>Dates:</Text>
           <Calendar/>
           <Text style={styles.text}>Itinerary:</Text>
         </View>
