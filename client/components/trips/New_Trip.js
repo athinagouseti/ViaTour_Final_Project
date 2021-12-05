@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, ScrollView} from 'react-native';
 import { useForm } from 'react-hook-form';
 import { Picker } from '@react-native-picker/picker';
 import DatePicker from 'react-native-date-picker';
@@ -11,17 +11,19 @@ const New_Trip = () => {
     const [open, setOpen] = useState(false)
 
     return (
-        <View style={styles.container}>
-        <View>
+        <View style={styles.container} contentContainerStyle={{ paddingBottom: 100 }}>
           <TextInput 
             placeholder="City" style={styles.input}/>
           <TextInput
             placeholder="Country" style={styles.input}/>
-          <Text style={styles.text}>Dates:</Text>
+          <Text style={styles.text}>Selected Dates:</Text>
           <Calendar/>
           <Text style={styles.text}>Itinerary:</Text>
+          <TextInput 
+            placeholder="Day 1" style={styles.input}/>
+          <TextInput
+            placeholder="Day 2" style={styles.input}/>
         </View>
-      </View>
     )
 }
 
@@ -36,7 +38,7 @@ const styles = StyleSheet.create({
     marginLeft: '25%',
     height: 50,
     width: '50%',
-    backgroundColor: 'white',
+    backgroundColor: '#f3f3f2',
     color: '#333652',
     paddingLeft: 15,
     borderWidth: 2,
@@ -46,12 +48,11 @@ const styles = StyleSheet.create({
   },
   text: {
     fontWeight: 'bold', 
-        color: '#333652',
-        textTransform: 'uppercase',
-        padding: 10,
-        marginTop: 10,
-        marginLeft: 10,
-        fontSize: 15
+    color: '#333652',
+    textTransform: 'uppercase',
+    marginTop: 10,
+    marginLeft: 10,
+    fontSize: 15
   }
 });
 

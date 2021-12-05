@@ -14,7 +14,7 @@ const Homepage = () => {
         <ScrollView nestedScrollEnabled={true} showsVerticalScrollIndicator={false}
             stickyHeaderIndices={[2]}>
             <Text style={styles.heading}>Latest Travel News</Text>
-                {/* <News/> */}
+                <News/>
             <View style={{flexDirection:'row'}}>
                 <Text style={styles.heading}>My Upcoming Trips</Text>
             <TouchableOpacity>
@@ -22,8 +22,8 @@ const Homepage = () => {
             </TouchableOpacity>
             </View>
             <View>
-                {/* <Trips_List/> */}
-                <New_Trip/>
+                <Trips_List/>
+                {/* <New_Trip/> */}
             </View>
         </ScrollView>
         </View>

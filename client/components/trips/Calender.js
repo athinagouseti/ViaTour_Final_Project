@@ -32,26 +32,26 @@ export default class App extends Component {
   render() {
     const { selectedStartDate, selectedEndDate } = this.state;
     const minDate = new Date(); // Today
-    const maxDate = new Date(2022, 6, 3);
+    const maxDate = new Date(2022, 12, 12);
     const startDate = selectedStartDate ? selectedStartDate.toString() : '';
     const endDate = selectedEndDate ? selectedEndDate.toString() : '';
     
     return (
-      <View style={styles.container} selectedDayColor={'#fad02c'}>
+      <View style={styles.container}>
         <CalendarPicker
-            startFromMonday={true}
+        startFromMonday={true}
           allowRangeSelection={true}
+          showDayStragglers={false}
+          scrollable={true}
+          restrictMonthNavigation={true}
           minDate={minDate}
           maxDate={maxDate}
           todayBackgroundColor="#fad02c"
+          todayTextStyle="#333652"
           selectedDayColor="#333652"
-          selectedDayTextColor="#FFFFFF"
+          selectedDayTextColor="#fad02c"
           onDateChange={this.onDateChange}
         />
-        <View style={styles.text} style={styles.container} >
-          <Text>SELECTED ARRIVAL DATE: { startDate }</Text>
-          <Text>SELECTED DEPARTURE DATE: { endDate }</Text>
-        </View>
       </View>
     );
   }
@@ -59,9 +59,10 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f3f3f2'
+    backgroundColor: '#f3f3f2',
+    padding: 5
   },
   text: {
-      padding: 20
+      padding: 30
   }
 });
