@@ -6,14 +6,14 @@ import locationService from "../../helpers/locationService";
 
 const WishlistDestination = ({ route }) => {
     const { placeId } = route.params
-    // console.log(placeId);
+    console.log(placeId);
     const [location, setLocation] = useState(null);
+    const [city, setCity] = useState(null);
     const [amadeusToken, setAmadeusToken] = useState(null);
     const [restrictionData, setRestrictionData] = useState(null);
 
     const fetchLocationData = () => {
-        console.log(location)
-        console.log(amadeusToken)
+        setLocation(null)
         const url = `https://maps.googleapis.com/maps/api/geocode/json?place_id=${placeId}&sensor=false&key=AIzaSyCz8SUN9oI8b5YJ5ZdA5Jry_2sFRsm3xsw`
         fetch(url)
             .then(res => res.json())
@@ -21,49 +21,40 @@ const WishlistDestination = ({ route }) => {
             .catch(console.error)
     }
 
-    // const fetchAmadeusToken = () => {
-    //     var urlencoded = new URLSearchParams();
-    //     urlencoded.append("client_id", " ISLq5IWOensIl0adbLpkSRKbaGDwgyUt");
-    //     urlencoded.append("client_secret", "Ay391ITUr44mKrQu");
-    //     urlencoded.append("grant_type", "client_credentials");
-    
-    //     var requestOptions = {
-    //         method: 'POST',
-    //         body: urlencoded,
-    //         redirect: 'follow'
-    //     };
-    
-    //     fetch("https://test.api.amadeus.com/v1/security/oauth2/token", requestOptions)
-    //         .then(response => response.text())
-    //         .then(result => console.log(result))
-    //         .catch(error => console.log('error', error));
-    // }
-
     const fetchAmadeusToken = () => {
+        setAmadeusToken(null)
         fetch("https://test.api.amadeus.com/v1/security/oauth2/token", {
         body: "grant_type=client_credentials&client_id=ISLq5IWOensIl0adbLpkSRKbaGDwgyUt&client_secret=Ay391ITUr44mKrQu",
         headers: {"Content-Type": "application/x-www-form-urlencoded"},
         method: "POST"})          
             .then(res => res.json())
             .then(data => setAmadeusToken(data.access_token))
+            .catch(console.error)
+        console.log(amadeusToken)
     }
 
     const fetchCityData = () => {   
-        fetch(`https://test.api.amadeus.com/v1/reference-data/locations?subType=CITY&keyword=${location.cityName}&countryCode=GB`, {
+        fetchLocationData()
+        fetchAmadeusToken()
+        console.log("location-----", location)
+        amadeusToken? (location? fetch(`https://test.api.amadeus.com/v1/reference-data/locations?subType=CITY&keyword=${location.cityName}&countryCode=${location.countryID}`, {
               headers: {
               Authorization: `Bearer ${amadeusToken}`}})
               .then(res => res.json())
-              .then(data => console.log(data))
-              .catch(console.error)
+              .then(data => setCity(data.data[0].iataCode))
+              .catch(console.error):fetchLocationData()):fetchAmadeusToken()
+        console.log(city)
       }
 
     const fetchCovidData = () => {
-        fetch(`https://test.api.amadeus.com/v1/duty-of-care/diseases/covid19-area-report?countryCode=GB&cityCode=GLA`, {
+        console.log("location---", location)
+        console.log("city----", city);
+        amadeusToken? (location? fetch(`https://test.api.amadeus.com/v1/duty-of-care/diseases/covid19-area-report?countryCode=${location.countryID}&cityCode=${city}`, {
             headers: {
             Authorization: `Bearer ${amadeusToken}`}})
             .then(res => res.json())
-            .then(data => console.log(data))
-            .catch(console.error)
+            .then(data => setRestrictionData(data))
+            .catch(console.error):fetchLocationData()):fetchAmadeusToken()
     }
 
     // const fetchTravelRecommendations = () => { 
@@ -86,15 +77,17 @@ const WishlistDestination = ({ route }) => {
     // }
 
     useEffect(() => {
-        fetchLocationData()
         fetchAmadeusToken()
-        // fetchTravelRecommendations()
+        fetchLocationData()
         fetchCityData()
         fetchCovidData()
+
+        console.log(location)
+        console.log(amadeusToken)
+        console.log(city)
     }, [])
 
     const isLoggedIn = auth().currentUser != undefined
-
 
     const parseLocationData = (data) => {
         const resultEntry = data.results[0]
@@ -103,6 +96,7 @@ const WishlistDestination = ({ route }) => {
 
         const cityName = resultEntry.address_components.find(addressComponent => addressComponent.types.includes("locality"))?.long_name
         const countryName = resultEntry.address_components.find(addressComponent => addressComponent.types.includes("country"))?.long_name
+        const countryID = resultEntry.address_components.find(addressComponent => addressComponent.types.includes("country"))?.short_name
 
         if (!cityName || !countryName) return undefined
 
@@ -110,6 +104,7 @@ const WishlistDestination = ({ route }) => {
         return {
             cityName,
             countryName,
+            countryID,
             place_id: resultEntry.place_id,
             latitude: resultEntry.geometry.location.lat,
             longitude: resultEntry.geometry.location.lng
