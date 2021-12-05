@@ -11,25 +11,46 @@ export default class App extends Component {
     super(props);
     this.state = {
       selectedStartDate: null,
+      selectedEndDate: null,
     };
     this.onDateChange = this.onDateChange.bind(this);
   }
 
-  onDateChange(date) {
-    this.setState({
-      selectedStartDate: date,
-    });
-  }
+  onDateChange(date, type) {
+      if (type === 'END_DATE'){
+          this.setState({
+              selectedEndDate: date,
+          });
+      } else{
+          this.setState({
+              selectedStartDate: date,
+              selectedEndDate: null,
+          });
+      }  
+    }
+
   render() {
-    const { selectedStartDate } = this.state;
+    const { selectedStartDate, selectedEndDate } = this.state;
+    const minDate = new Date(); // Today
+    const maxDate = new Date(2022, 6, 3);
     const startDate = selectedStartDate ? selectedStartDate.toString() : '';
+    const endDate = selectedEndDate ? selectedEndDate.toString() : '';
+    
     return (
-      <View style={styles.container} selectedDayColor={'blue'}>
+      <View style={styles.container} selectedDayColor={'#fad02c'}>
         <CalendarPicker
+            startFromMonday={true}
+          allowRangeSelection={true}
+          minDate={minDate}
+          maxDate={maxDate}
+          todayBackgroundColor="#fad02c"
+          selectedDayColor="#333652"
+          selectedDayTextColor="#FFFFFF"
           onDateChange={this.onDateChange}
         />
         <View style={styles.text} style={styles.container} >
-          <Text>SELECTED DATE: { startDate }</Text>
+          <Text>SELECTED ARRIVAL DATE: { startDate }</Text>
+          <Text>SELECTED DEPARTURE DATE: { endDate }</Text>
         </View>
       </View>
     );
