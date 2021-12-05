@@ -6,11 +6,13 @@
  */
 
 import ExpoModulesCore
+import EXHaptics
 
 @objc(ExpoModulesProvider)
 public class ExpoModulesProvider: ModulesProvider {
   public override func getModuleClasses() -> [AnyModule.Type] {
     return [
+      HapticsModule.self
     ]
   }
 }

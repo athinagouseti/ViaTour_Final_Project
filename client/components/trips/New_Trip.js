@@ -16,11 +16,11 @@ const New_Trip = () => {
           <TextInput 
             placeholder="City" style={styles.input}/>
           <TextInput
-            placeholder="Country" style={styles.input}
-          />
+            placeholder="Country" style={styles.input}/>
+          <Text style={styles.text}>Arrival Date:</Text>
           <Calendar/>
           <Text style={styles.text}>Departure Date:</Text>
-          {/* <Button title="Select Dates" onPress={() => setOpen(true)} /> */}
+          <Calendar/>
           <Text style={styles.text}>Itinerary:</Text>
         </View>
       </View>
@@ -42,13 +42,18 @@ const styles = StyleSheet.create({
     color: '#333652',
     paddingLeft: 15,
     borderWidth: 2,
-    borderColor: '#333652',
+    borderColor: '#fad02c',
     borderRadius: 15,
     fontSize: 20
   },
   text: {
-    marginLeft: 15,
-    padding: 5
+    fontWeight: 'bold', 
+        color: '#333652',
+        textTransform: 'uppercase',
+        padding: 10,
+        marginTop: 10,
+        marginLeft: 10,
+        fontSize: 15
   }
 });
 

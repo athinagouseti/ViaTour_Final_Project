@@ -13,6 +13,8 @@ PODS:
     - ExpoModulesCore
   - EXFont (10.0.3):
     - ExpoModulesCore
+  - EXHaptics (11.0.3):
+    - ExpoModulesCore
   - EXJSONUtils (0.2.0)
   - EXKeepAwake (10.0.0):
     - ExpoModulesCore
@@ -340,7 +342,7 @@ PODS:
     - React-cxxreact (= 0.64.3)
     - React-jsi (= 0.64.3)
     - React-perflogger (= 0.64.3)
-  - RNCPicker (2.2.1):
+  - RNCPicker (2.1.0):
     - React-Core
   - RNGestureHandler (1.10.3):
     - React-Core
@@ -388,6 +390,7 @@ DEPENDENCIES:
   - EXErrorRecovery (from `../node_modules/expo-error-recovery/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXFont (from `../node_modules/expo-font/ios`)
+  - EXHaptics (from `../node_modules/expo-haptics/ios`)
   - EXJSONUtils (from `../node_modules/expo-json-utils/ios`)
   - EXKeepAwake (from `../node_modules/expo-keep-awake/ios`)
   - EXManifests (from `../node_modules/expo-manifests/ios`)
@@ -458,6 +461,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-file-system/ios"
   EXFont:
     :path: "../node_modules/expo-font/ios"
+  EXHaptics:
+    :path: "../node_modules/expo-haptics/ios"
   EXJSONUtils:
     :path: "../node_modules/expo-json-utils/ios"
   EXKeepAwake:
@@ -564,6 +569,7 @@ SPEC CHECKSUMS:
   EXErrorRecovery: 0e088d138e44f0e4a24655040e7f7c34ede8cc06
   EXFileSystem: 624eef3e3a853f19cc0c26eaffab1519001d8c35
   EXFont: 6e8f77d9741f5cd83f710adbf26ebb57a036283b
+  EXHaptics: dda8fe3a245af29227e49ed15c4ebe04992e0110
   EXJSONUtils: bafb27ed20417c018d942f334d969102e67be7e5
   EXKeepAwake: ca4071fb63b89a70b13d33f6147cf9b5433c122a
   EXManifests: 15831e369de4e989f9cfe8c3321303f26745e41d
@@ -606,7 +612,7 @@ SPEC CHECKSUMS:
   React-RCTVibration: c7f845861e79eae13dc1e8217a3cf47a3945b504
   React-runtimeexecutor: 493d9abb8b23c3f84e19ae221eeba92cadcb70dc
   ReactCommon: 8fea6422328e2fc093e25c9fac67adbcf0f04fb4
-  RNCPicker: cb57c823d5ce8d2d0b5dfb45ad97b737260dc59e
+  RNCPicker: f7a40b21b915b7a187624d52f52b7bc2f73ea413
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNReanimated: 024eff8202342abf4b24e11575a16afc441dabfe
   RNScreens: 6e1ea5787989f92b0671049b808aef64fa1ef98c

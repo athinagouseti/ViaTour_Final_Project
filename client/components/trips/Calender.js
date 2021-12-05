@@ -8,7 +8,7 @@ export default () => {
 
   return (
     <>
-      <Button title="Arrival Date" color='#333652' onPress={() => setOpen(true)} />
+      <Button title="Select Date" color='#fad02c' onPress={() => setOpen(true)} />
       <DatePicker
         modal
         mode="date"
