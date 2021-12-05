@@ -7,7 +7,10 @@ const Trips = () => {
         <>
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
         <View style={styles.container}>
-            <Text style={styles.heading}>Upcoming Trips</Text>
+            <Text style={styles.heading} >My Upcoming Trips</Text>
+            <TouchableOpacity>
+                <Image style={styles.add} source={require('../navigation_icons/add_trip.png')}/>
+            </TouchableOpacity>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} 
             pagingEnabled={true}
             style={styles.imageContainer}>
@@ -163,6 +166,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 35,
         paddingTop: 150
+    },
+    add:{
+        width: 50,
+        height: 50,
+        marginTop: -48,
+        marginLeft: 210
     }
   });
 

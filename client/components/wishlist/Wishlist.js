@@ -37,7 +37,7 @@ const Wishlist = () => {
           <Text style={styles.text} >{item.label}</Text>
         </TouchableOpacity>
         <TouchableOpacity>
-        <Image style={styles.add} source={require('../navigation_icons/add_trip.png')}/>
+        <Image style={styles.add} source={require('../navigation_icons/trip_info.png')}/>
         </TouchableOpacity>
         <TouchableOpacity>
         <Image style={styles.remove} source={require('../navigation_icons/remove_trip.png')}/>
@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
         borderWidth: 5,
         borderColor: '#fad02c',
         backgroundColor: '#f3f3f2',
+        // backgroundColor: '#fad02c',
         overflow: 'hidden',
         borderRadius: 20,
         padding: 30,
@@ -82,16 +83,17 @@ const styles = StyleSheet.create({
         fontSize: 25
     },
     add:{
-        width: 90,
-        height: 60,
-        marginTop: -95,
-        marginLeft: 150
-    },
-    remove:{
         width: 60,
         height: 60,
-        marginTop: -94,
-        marginLeft: 275
+        marginTop: -95,
+        marginLeft: 240
+    },
+    remove:{
+        width: 50,
+        height: 30,
+        marginTop: -80,
+        marginLeft: 310,
+        tintColor: 'orange'
     }
   });
 
