@@ -12,6 +12,8 @@ const WishlistDestination = ({ route }) => {
     const [restrictionData, setRestrictionData] = useState(null);
 
     const fetchLocationData = () => {
+        console.log(location)
+        console.log(amadeusToken)
         const url = `https://maps.googleapis.com/maps/api/geocode/json?place_id=${placeId}&sensor=false&key=AIzaSyCz8SUN9oI8b5YJ5ZdA5Jry_2sFRsm3xsw`
         fetch(url)
             .then(res => res.json())
@@ -47,8 +49,7 @@ const WishlistDestination = ({ route }) => {
     }
 
     const fetchCityData = () => {   
-        // 
-        fetch("https://test.api.amadeus.com/v1/reference-data/locations?subType=CITY&keyword=GLA&countryCode=GB", {
+        fetch(`https://test.api.amadeus.com/v1/reference-data/locations?subType=CITY&keyword=${location.cityName}&countryCode=GB`, {
               headers: {
               Authorization: `Bearer ${amadeusToken}`}})
               .then(res => res.json())
@@ -57,13 +58,22 @@ const WishlistDestination = ({ route }) => {
       }
 
     const fetchCovidData = () => {
-        fetch("https://test.api.amadeus.com/v1/duty-of-care/diseases/covid19-area-report?countryCode=GB&cityCode=GLA", {
+        fetch(`https://test.api.amadeus.com/v1/duty-of-care/diseases/covid19-area-report?countryCode=GB&cityCode=GLA`, {
             headers: {
             Authorization: `Bearer ${amadeusToken}`}})
             .then(res => res.json())
             .then(data => console.log(data))
             .catch(console.error)
     }
+
+    // const fetchTravelRecommendations = () => { 
+    //     fetch("https://test.api.amadeus.com/v1/reference-data/locations/pois?latitude=41.397158&longitude=-4.251806&radius=2", {
+    //         headers: {
+    //         Authorization: `Bearer ${amadeusToken}`}})
+    //         .then(res => res.json())
+    //         .then(data => console.log(data))
+    //         .catch(console.error)
+    // }
 
     // const fetchCovidData = () => {
     //     fetch("https://test.api.amadeus.com/v1/duty-of-care/diseases/covid19-area-report?countryCode=GB&cityCode=GLA", {
@@ -78,8 +88,9 @@ const WishlistDestination = ({ route }) => {
     useEffect(() => {
         fetchLocationData()
         fetchAmadeusToken()
+        // fetchTravelRecommendations()
         fetchCityData()
-        // fetchCovidData()
+        fetchCovidData()
     }, [])
 
     const isLoggedIn = auth().currentUser != undefined
