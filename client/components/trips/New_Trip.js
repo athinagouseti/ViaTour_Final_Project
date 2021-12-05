@@ -12,13 +12,14 @@ const New_Trip = () => {
 
     return (
         <View style={styles.container} contentContainerStyle={{ paddingBottom: 100 }}>
+        <Text style={styles.text}>Add New Trip</Text>
           <TextInput 
             placeholder="City" style={styles.input}/>
           <TextInput
             placeholder="Country" style={styles.input}/>
-          <Text style={styles.text}>Selected Dates:</Text>
+          <Text style={styles.text}>Select Dates</Text>
           <Calendar/>
-          <Text style={styles.text}>Itinerary:</Text>
+          <Text style={styles.text}>Itinerary</Text>
           <TextInput 
             placeholder="Day 1" style={styles.input}/>
           <TextInput

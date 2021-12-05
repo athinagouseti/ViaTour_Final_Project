@@ -49,7 +49,7 @@ export default class App extends Component {
           todayBackgroundColor="#fad02c"
           todayTextStyle="#333652"
           selectedDayColor="#333652"
-          selectedDayTextColor="#fad02c"
+          selectedDayTextColor="white"
           onDateChange={this.onDateChange}
         />
       </View>
