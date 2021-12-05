@@ -8,32 +8,7 @@ import auth from '@react-native-firebase/auth'
 
 const Wishlist = () => {
 
-    const [data, setData] = useState([
-        {
-            order: 1,
-            label: 'Tokyo',
-          },
-          {
-            order: 2,
-            label: 'Denver',
-          },
-          {
-            order: 3,
-            label: 'Rome',
-          },
-          {
-            order: 4,
-            label: 'Berlin',
-          },
-          {
-            order: 5,
-            label: 'Paris',
-          },
-          {
-            order: 6,
-            label: 'London',
-          }
-    ])
+    const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
 
     const isFocused = useIsFocused();
@@ -53,15 +28,16 @@ const Wishlist = () => {
     const navigation = useNavigation();
 
     const navigateToDestination = (data) => {
-      if(data.place_id) {
-        navigation.navigate("WishlistDestination", {placeId:data.place_id})
+      const placeId = data.place_id ?? data.placeId
+      if(placeId) {
+        navigation.navigate("WishlistDestination", {placeId})
       } else {
         Alert.alert("Location id not found")
       }
     }
 
     const renderItem = ({ item, index, drag, isActive }) => (
-        <TouchableOpacity onLongPress={drag} >
+        <TouchableOpacity onLongPress={drag} onPress={() => navigateToDestination(item)} >
           <Text style={styles.text} >{item.name}</Text>
         </TouchableOpacity>
       );
@@ -76,7 +52,6 @@ const Wishlist = () => {
       return <DraggableFlatList
         data={data}
         renderItem={renderItem}
-        // keyExtractor={(item, index) => item.order.toString()}
         keyExtractor={(item, index) => item.placeId}
         onDragEnd={({data} ) => setData(data )}
         showsVerticalScrollIndicator={false} 

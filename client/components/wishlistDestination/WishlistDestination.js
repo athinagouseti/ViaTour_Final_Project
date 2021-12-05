@@ -7,6 +7,7 @@ const WishlistDestination = ({ route }) => {
     const { placeId } = route.params
     console.log(placeId);
     const [location, setLocation] = useState(null);
+    const [alreadyOnWishlist, setAlreadyOnWishlist] = useState(false);
 
     const fetchLocationData = () => {
         const url = `https://maps.googleapis.com/maps/api/geocode/json?place_id=${placeId}&sensor=false&key=AIzaSyCz8SUN9oI8b5YJ5ZdA5Jry_2sFRsm3xsw`
@@ -16,8 +17,20 @@ const WishlistDestination = ({ route }) => {
             .catch((error) => console.error(error))
     }
 
+    const checkIfLocationOnWishlist = () => {
+        getUserWishlist().then(data => {
+            if (data.some(item => item.placeId === placeId)) {
+                setAlreadyOnWishlist(true)
+            }
+        })
+    }
+
+    const getUserWishlist = async () => userWishlistService.get()
+
+
     useEffect(() => {
         fetchLocationData()
+        checkIfLocationOnWishlist()
     }, [])
 
     const isLoggedIn = auth().currentUser != undefined
@@ -68,7 +81,7 @@ const WishlistDestination = ({ route }) => {
                                 {location.countryName}
                             </Text>
 
-                            {isLoggedIn && <TouchableOpacity onPress={addToWishlist} >
+                            {isLoggedIn && !alreadyOnWishlist &&  <TouchableOpacity onPress={addToWishlist} >
                             <Text>Add to Wishlist</Text>
                             </TouchableOpacity>}
                         </>
