@@ -18,9 +18,10 @@ const New_Trip = () => {
           <TextInput
             placeholder="Country" style={styles.input}
           />
-          <Text style={styles.text}>Length of trip: </Text>
+          <Calendar/>
+          <Text style={styles.text}>Departure Date:</Text>
           {/* <Button title="Select Dates" onPress={() => setOpen(true)} /> */}
-            {/* <Calendar/> */}
+          <Text style={styles.text}>Itinerary:</Text>
         </View>
       </View>
     )

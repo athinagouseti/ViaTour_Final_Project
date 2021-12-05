@@ -1,42 +1,33 @@
-import React, { Component } from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import CalendarPicker from 'react-native-calendar-picker';
+import React, { useState } from 'react'
+import { Button, StyleSheet } from 'react-native'
+import DatePicker from 'react-native-date-picker'
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selectedStartDate: null,
-    };
-    this.onDateChange = this.onDateChange.bind(this);
-  }
+export default () => {
+  const [date, setDate] = useState(new Date())
+  const [open, setOpen] = useState(false)
 
-  onDateChange(date) {
-    this.setState({
-      selectedStartDate: date,
-    });
-  }
-  render() {
-    const { selectedStartDate } = this.state;
-    const startDate = selectedStartDate ? selectedStartDate.toString() : '';
-    return (
-      <View style={styles.container} selectedDayColor={'blue'}>
-        <CalendarPicker
-          onDateChange={this.onDateChange}
-        />
-        <View style={styles.text} style={styles.container} >
-          <Text>SELECTED DATE: { startDate }</Text>
-        </View>
-      </View>
-    );
-  }
-}
+  return (
+    <>
+      <Button title="Arrival Date" color='#333652' onPress={() => setOpen(true)} />
+      <DatePicker
+        modal
+        mode="date"
+        open={open}
+        date={date}
+        onConfirm={(date) => {
+          setOpen(false)
+          setDate(date)
+        }}
+        onCancel={() => {
+          setOpen(false)
+        }}
+      />
+    </>
+  )
+};
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: 'white'
-  },
-  text: {
-      padding: 20
-  }
-});
+    button:{
+
+    }
+})
