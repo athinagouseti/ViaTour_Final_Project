@@ -29,8 +29,9 @@ const Wishlist = () => {
 
     const navigateToDestination = (data) => {
       const placeId = data.place_id ?? data.placeId
+      const title = data.description ?? data.name
       if(placeId) {
-        navigation.navigate("WishlistDestination", {placeId})
+        navigation.navigate("WishlistDestination", {placeId, title})
       } else {
         Alert.alert("Location id not found")
       }

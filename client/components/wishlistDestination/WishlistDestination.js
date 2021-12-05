@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, Alert } from "react-native";
 import auth from '@react-native-firebase/auth'
 import userWishlistService from "../../helpers/userWishlistService";
+import { useNavigation } from "@react-navigation/native";
 
 const WishlistDestination = ({ route }) => {
-    const { placeId } = route.params
+    const { placeId, title } = route.params
     console.log(placeId);
     const [location, setLocation] = useState(null);
     const [alreadyOnWishlist, setAlreadyOnWishlist] = useState(false);
@@ -32,6 +33,7 @@ const WishlistDestination = ({ route }) => {
         fetchLocationData()
         checkIfLocationOnWishlist()
     }, [])
+
 
     const isLoggedIn = auth().currentUser != undefined
 
@@ -63,6 +65,7 @@ const WishlistDestination = ({ route }) => {
             name: `${location.cityName}, ${location.countryName}`
         }
         userWishlistService.post(payload)
+            .then(() => setAlreadyOnWishlist(true))
             .catch((error) => console.log(error))
     }
 

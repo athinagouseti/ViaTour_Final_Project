@@ -9,7 +9,7 @@ const WishlistTab = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Wishlist" component={Wishlist} />
-      <Stack.Screen name="WishlistDestination" component={WishlistDestination} />
+      <Stack.Screen name="WishlistDestination" component={WishlistDestination} options={({ route }) => ({ title: route.params.title })}/>
     </Stack.Navigator>
   );
 };
