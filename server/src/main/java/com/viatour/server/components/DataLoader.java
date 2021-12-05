@@ -37,19 +37,19 @@ public class DataLoader implements ApplicationRunner {
     }
 
     public void run(ApplicationArguments args) {
-        Location paris = new Location("ChIJD7fiBh9u5kcRYJSMaMOCCwQ", 48.856592, 2.341309);
+        Location paris = new Location("ChIJD7fiBh9u5kcRYJSMaMOCCwQ", 48.856592, 2.341309, "Paris");
         locationRepository.save(paris);
 
-        Location london = new Location("ChIJdd4hrwug2EcRmSrV3Vo6llI",51.506108, -0.127992);
+        Location london = new Location("ChIJdd4hrwug2EcRmSrV3Vo6llI",51.506108, -0.127992, "London");
         locationRepository.save(london);
 
-        Location vienna = new Location("ChIJn8o2UZ4HbUcRRluiUYrlwv0",48.209839, 16.368413);
+        Location vienna = new Location("ChIJn8o2UZ4HbUcRRluiUYrlwv0",48.209839, 16.368413, "Vienna");
         locationRepository.save(vienna);
 
-        User carlos = new User("czubillaga", "Carlos", "Zubillaga", "car.zubillaga@gmail.com", "Scar!et1");
+        User carlos = new User("abcdefgh", "Carlos", "Zubillaga");
         userRepository.save(carlos);
 
-        User oscar = new User("osweso", "Oscar", "Webber", "osweso@gmail.com", "bojangles");
+        User oscar = new User("ijklmnop", "Oscar", "Webber");
         userRepository.save(oscar);
 
         Trip euroTrip = new Trip("Europe");

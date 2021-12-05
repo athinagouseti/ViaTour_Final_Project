@@ -10,17 +10,20 @@ public class Location {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name="place_id")
-    private String place_id;
+    @Column(name="placeId")
+    private String placeId;
     @Column(name = "latitude")
     private double latitude;
     @Column(name = "longitude")
     private double longitude;
+    @Column(name="name")
+    private String name;
 
-    public Location(String place_id, double latitude, double longitude) {
-        this.place_id = place_id;
+    public Location(String placeId, double latitude, double longitude, String name) {
+        this.placeId = placeId;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.name = name;
     }
 
     public Location() {}
@@ -33,12 +36,12 @@ public class Location {
         this.id = id;
     }
 
-    public String getPlace_id() {
-        return place_id;
+    public String getPlaceId() {
+        return placeId;
     }
 
-    public void setPlace_id(String place_id) {
-        this.place_id = place_id;
+    public void setPlaceId(String placeId) {
+        this.placeId = placeId;
     }
 
     public double getLatitude() {
@@ -57,11 +60,11 @@ public class Location {
         this.longitude = longitude;
     }
 
-    public String getPlaceId() {
-        return placeId;
+    public String getName() {
+        return name;
     }
 
-    public void setPlaceId(String placeId) {
-        this.placeId = placeId;
+    public void setName(String name) {
+        this.name = name;
     }
 }
