@@ -12,22 +12,25 @@ import java.util.Map;
 @Scope("singleton")
 public class AuthenticationHelper {
 
-    public FirebaseToken getVerifiedToken(String authToken)  {
-        FirebaseToken decodedToken = null;
+    // Gets a backend Firebase user token (contains all user info) from a given frontend Firebase auth token
+    // Will throw an exception if token invalid or fails for any other reason
+    public FirebaseToken getVerifiedToken(String frontendToken)  {
+        FirebaseToken firebaseUserToken = null;
         try {
-            decodedToken= FirebaseAuth.getInstance().verifyIdToken(authToken);
+            firebaseUserToken= FirebaseAuth.getInstance().verifyIdToken(frontendToken);
         } catch (FirebaseAuthException e) {
             e.printStackTrace();
         }
 
-        return decodedToken;
+        return firebaseUserToken;
     }
 
+    // Gets frontend Firebase authentication token from HTTP request header and returns Firebase UID
     public String getUserUIDFromHeaders(Map<String, String> headers)  {
-        String token = headers.get("auth-token");
+        String frontendToken = headers.get("auth-token");
 
-            FirebaseToken decodedToken = this.getVerifiedToken(token);
-            return decodedToken.getUid();
+        FirebaseToken firebaseUserToken = this.getVerifiedToken(frontendToken);
+        return firebaseUserToken.getUid();
 
     }
 }

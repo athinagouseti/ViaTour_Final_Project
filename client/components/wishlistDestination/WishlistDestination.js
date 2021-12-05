@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, Alert } from "react-native";
-import Request from "../../helpers/service"
 import auth from '@react-native-firebase/auth'
-import locationService from "../../helpers/locationService";
+import userWishlistService from "../../helpers/userWishlistService";
 
 const WishlistDestination = ({ route }) => {
     const { placeId } = route.params
@@ -34,7 +33,6 @@ const WishlistDestination = ({ route }) => {
 
         if (!cityName || !countryName) return undefined
 
-        
         return {
             cityName,
             countryName,
@@ -51,7 +49,7 @@ const WishlistDestination = ({ route }) => {
             longitude: location.longitude,
             name: `${location.cityName}, ${location.countryName}`
         }
-        locationService.post(payload)
+        userWishlistService.post(payload)
             .catch((error) => console.log(error))
     }
 

@@ -16,8 +16,6 @@ public class Location {
     private double latitude;
     @Column(name = "longitude")
     private double longitude;
-    @Column(name = "userId")
-    private String userId;
     @Column(name="name")
     private String name;
 
@@ -60,14 +58,6 @@ public class Location {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getName() {

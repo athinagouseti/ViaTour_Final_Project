@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, Alert} from 'react-native';
 import DraggableFlatList  from "react-native-draggable-flatlist";
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { useNavigation, useIsFocused } from "@react-navigation/native";
-import locationService from "../../helpers/locationService";
+import userWishlistService from "../../helpers/userWishlistService";
 import auth from '@react-native-firebase/auth'
 
 const Wishlist = () => {
@@ -40,7 +40,7 @@ const Wishlist = () => {
     const isLoggedIn = auth().currentUser != undefined
 
     const fetchLocationData = () => {
-      locationService.get()
+      userWishlistService.get()
       .then((data) => {setData(data) ; setLoading(false)})
       .catch((error) => console.error(error))
     }

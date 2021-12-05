@@ -1,9 +1,10 @@
 package com.viatour.server.controllers;
 
-import com.viatour.server.models.Day;
-import com.viatour.server.models.Location;
-import com.viatour.server.models.Trip;
-import com.viatour.server.models.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.UserRecord;
+import com.viatour.server.helpers.AuthenticationHelper;
+import com.viatour.server.models.*;
 import com.viatour.server.repositories.DayRepository;
 import com.viatour.server.repositories.LocationRepository;
 import com.viatour.server.repositories.TripRepository;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -32,37 +34,83 @@ public class UserController {
     @Autowired
     LocationRepository locationRepository;
 
-    @GetMapping(value = "/users")
-    public ResponseEntity<List<User>> getAllUsers() {
-        return new ResponseEntity<>(userRepository.findAll(), HttpStatus.OK);
+    @Autowired
+    AuthenticationHelper authenticationHelper;
+
+    // Changed URL from /users/ to /user/ because with authentication in, a user should only be able to request their own data
+
+    @GetMapping(value = "/user")
+    public ResponseEntity<User> getUser(@RequestHeader Map<String, String> headers) {
+        String firebaseUID = authenticationHelper.getUserUIDFromHeaders(headers);
+
+        User user = userRepository.getById(firebaseUID);
+
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/users/{id}")
-    public ResponseEntity getUser(@PathVariable Long id) {
-        return new ResponseEntity<>(userRepository.findById(id), HttpStatus.OK);
+    @PostMapping(value = "/user")
+    public ResponseEntity<User> postUser(@RequestBody PotentialUser potentialUserInfo) {
+        UserRecord.CreateRequest firebaseRequest = new UserRecord.CreateRequest()
+                .setEmail(potentialUserInfo.getEmail())
+                .setPassword(potentialUserInfo.getPassword())
+                .setEmailVerified(false)
+                .setDisabled(false);
+
+        User newUser = null;
+
+        try {
+            UserRecord firebaseUserRecord = FirebaseAuth.getInstance().createUser(firebaseRequest);
+            newUser = new User(firebaseUserRecord.getUid(), potentialUserInfo.getFirstName(), potentialUserInfo.getLastName());
+            userRepository.save(newUser);
+
+        } catch (FirebaseAuthException e) {
+            e.printStackTrace();
+        }
+
+        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
-    @PostMapping(value = "/users")
-    public ResponseEntity<User> postUser(@RequestBody User user) {
-        userRepository.save(user);
-        return new ResponseEntity<>(user, HttpStatus.CREATED);
+    @GetMapping(value = "/user/trips")
+    public ResponseEntity<List<Trip>> getTrips(@RequestHeader Map<String, String> headers) {
+        String firebaseUID = authenticationHelper.getUserUIDFromHeaders(headers);
+
+        User user = userRepository.getById(firebaseUID);
+
+        return new ResponseEntity<>(user.getTrips(), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/users/{userId}/trips")
-    public ResponseEntity<Trip> postTrip(@RequestBody Trip trip, @PathVariable Long userId) {
+    @PostMapping(value = "/user/trips")
+    public ResponseEntity<Trip> postTrip(@RequestBody Trip trip, @RequestHeader Map<String, String> headers) {
+        String firebaseUID = authenticationHelper.getUserUIDFromHeaders(headers);
+
         tripRepository.save(trip);
-        User user = userRepository.getById(userId);
+
+        User user = userRepository.getById(firebaseUID);
         user.joinTrip(trip);
         userRepository.save(user);
+
         return new ResponseEntity<>(trip, HttpStatus.CREATED);
     }
 
-    @PostMapping(value = "/users/{userId}/wishlist")
-    public ResponseEntity<Location> addLocationToWishlist(@RequestBody Location location, @PathVariable Long userId) {
+    @GetMapping(value = "/user/wishlist")
+    public ResponseEntity<List<Location>> getWishlistLocations(@RequestHeader Map<String, String> headers) {
+        String firebaseUID = authenticationHelper.getUserUIDFromHeaders(headers);
+
+        User user = userRepository.getById(firebaseUID);
+
+        return new ResponseEntity<>(user.getWishList(), HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/user/wishlist")
+    public ResponseEntity<Location> addLocationToWishlist(@RequestBody Location location, @RequestHeader Map<String, String> headers) {
+        String firebaseUID = authenticationHelper.getUserUIDFromHeaders(headers);
+
         locationRepository.save(location);
-        User user = userRepository.getById(userId);
+
+        User user = userRepository.getById(firebaseUID);
         user.addToWishList(location);
         userRepository.save(user);
+
         return new ResponseEntity<>(location, HttpStatus.CREATED);
     }
 }

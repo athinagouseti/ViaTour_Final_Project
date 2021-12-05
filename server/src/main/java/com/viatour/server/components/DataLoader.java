@@ -46,10 +46,10 @@ public class DataLoader implements ApplicationRunner {
         Location vienna = new Location("ChIJn8o2UZ4HbUcRRluiUYrlwv0",48.209839, 16.368413, "Vienna");
         locationRepository.save(vienna);
 
-        User carlos = new User("czubillaga", "Carlos", "Zubillaga", "car.zubillaga@gmail.com", "Scar!et1");
+        User carlos = new User("abcdefgh", "Carlos", "Zubillaga");
         userRepository.save(carlos);
 
-        User oscar = new User("osweso", "Oscar", "Webber", "osweso@gmail.com", "bojangles");
+        User oscar = new User("ijklmnop", "Oscar", "Webber");
         userRepository.save(oscar);
 
         Trip euroTrip = new Trip("Europe");

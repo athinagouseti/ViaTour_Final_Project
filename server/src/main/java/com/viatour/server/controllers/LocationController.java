@@ -13,34 +13,39 @@ import java.util.Map;
 
 @RestController
 public class LocationController {
-
-    @Autowired
-    LocationRepository locationRepository;
-
-    @Autowired
-    AuthenticationHelper authenticationHelper;
-
-    @GetMapping(value = "/locations")
-    public ResponseEntity<List<Location>> getAllLocations(@RequestHeader Map<String, String> headers) {
-
-            String uid = authenticationHelper.getUserUIDFromHeaders(headers);
-            return new ResponseEntity<>(locationRepository.findAllByUserId(uid), HttpStatus.OK);
+// ======
+// Locations are stored in User and retrieved through UserController
+// ======
 
 
-    }
 
-    @GetMapping(value = "/locations/{id}")
-    public ResponseEntity getLocation(@PathVariable Long id) {
-        return new ResponseEntity(locationRepository.findById(id), HttpStatus.OK);
-    }
-
-    @PostMapping(value = "/locations")
-    public ResponseEntity<Location> postLocation(@RequestBody Location location, @RequestHeader Map<String, String> headers) {
-
-            String uid = authenticationHelper.getUserUIDFromHeaders(headers);
-            location.setUserId(uid);
-            locationRepository.save(location);
-            return new ResponseEntity<>(location, HttpStatus.CREATED);
-
-    }
+//    @Autowired
+//    LocationRepository locationRepository;
+//
+//    @Autowired
+//    AuthenticationHelper authenticationHelper;
+//
+//    @GetMapping(value = "/locations")
+//    public ResponseEntity<List<Location>> getAllLocations(@RequestHeader Map<String, String> headers) {
+//
+//        String uid = authenticationHelper.getUserUIDFromHeaders(headers);
+//        return new ResponseEntity<>(locationRepository.findAllByUserId(uid), HttpStatus.OK);
+//
+//
+//    }
+//
+//    @GetMapping(value = "/locations/{id}")
+//    public ResponseEntity getLocation(@PathVariable Long id) {
+//        return new ResponseEntity(locationRepository.findById(id), HttpStatus.OK);
+//    }
+//
+//    @PostMapping(value = "/locations")
+//    public ResponseEntity<Location> postLocation(@RequestBody Location location, @RequestHeader Map<String, String> headers) {
+//
+//        String uid = authenticationHelper.getUserUIDFromHeaders(headers);
+//        location.setUserId(uid);
+//        locationRepository.save(location);
+//        return new ResponseEntity<>(location, HttpStatus.CREATED);
+//
+//    }
 }
