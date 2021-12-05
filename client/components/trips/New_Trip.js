@@ -12,16 +12,15 @@ const New_Trip = () => {
 
     return (
         <View style={styles.container}>
-        <Text styles={styles.text}> Add a New Trip </Text>
         <View>
           <TextInput 
-            placeholder="City Name" style={styles.input}/>
+            placeholder="City" style={styles.input}/>
           <TextInput
             placeholder="Country" style={styles.input}
           />
           <Text style={styles.text}>Length of trip: </Text>
           {/* <Button title="Select Dates" onPress={() => setOpen(true)} /> */}
-            <Calendar/>
+            {/* <Calendar/> */}
         </View>
       </View>
     )
@@ -29,16 +28,22 @@ const New_Trip = () => {
 
 const styles = StyleSheet.create({
   container:{
+    flex: 1,
     height: 70,
-    backgroundColor: 'white'
   },
   input: {
     marginTop: 10,
     marginBottom: 10,
-    height: 40,
-    backgroundColor: '#ffffff',
+    marginLeft: '25%',
+    height: 50,
+    width: '50%',
+    backgroundColor: 'white',
+    color: '#333652',
     paddingLeft: 15,
-    paddingRight: 15
+    borderWidth: 2,
+    borderColor: '#333652',
+    borderRadius: 15,
+    fontSize: 20
   },
   text: {
     marginLeft: 15,
