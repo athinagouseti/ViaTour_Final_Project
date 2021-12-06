@@ -102,17 +102,18 @@ const WishlistDestination = ({ route }) => {
 
     useEffect(() => {
         fetchAmadeusToken()
+    }, [isFocused])
+
+    useEffect(() => {
         fetchLocationData()
-        checkIfLocationOnWishlist()
+    }, [isFocused])
 
+    useEffect(() => {
         fetchCityData()
-        fetchCovidData()
-        // pointsOfInterest()
+    }, [isFocused])
 
-        console.log(location)
-        console.log(amadeusToken)
-        console.log(city)
-        console.log(restrictionData);
+    useEffect(() => {
+        fetchCovidData()
     }, [isFocused])
 
     const isLoggedIn = auth().currentUser != undefined
