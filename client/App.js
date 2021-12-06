@@ -7,7 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 export default function App() {
   return (
     <>
-      <StatusBar style="auto" />
+      <StatusBar style="auto"/>
       <Container />
     </>
   );
