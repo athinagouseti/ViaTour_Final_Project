@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity} from 'react-native';
-import Trips_List from "../trips/Trips_List";
+import TripsList from "../trips/TripsList";
 import NewTrip from "../trips/NewTrip";
 
 
@@ -43,8 +43,8 @@ const Homepage = () => {
 
             <View>
             <Text style={styles.heading}>My Upcoming Trips</Text>
-            <Trips_List/>
-            <NewTrip/>
+            <TripsList/>
+            {/* <NewTrip/> */}
             </View>
             </ScrollView>
         </View>
