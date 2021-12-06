@@ -651,7 +651,7 @@ SPEC CHECKSUMS:
   EXUpdates: 061b67c33f0e7f8fd335bbb48697c4a4fc8a5157
   EXUpdatesInterface: e1c01b4f5ec76bd1d6cc714938f9edf5ef6379b9
   FBLazyVector: c71c5917ec0ad2de41d5d06a5855f6d5eda06971
-  FBReactNativeSpec: 01a9d96171a6cd7a462da757e54e0cb2da907f8f
+  FBReactNativeSpec: 066b976ac18c0ef157443b5fb7b8cff900935f35
   Firebase: 44213362f1dcc52555b935dc925ed35ac55f1b20
   FirebaseAuth: 59a2d2b933b5b79e18fb1e6ad230c6abdaa73d26
   FirebaseCore: 04186597c095da37d90ff9fd3e53bc61a1ff2440
