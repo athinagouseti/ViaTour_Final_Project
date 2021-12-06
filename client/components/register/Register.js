@@ -94,7 +94,7 @@ const Register = () => {
 const styles = StyleSheet.create({
     inputView: {
         backgroundColor: "white",
-        borderRadius: 20,
+        borderRadius: 12,
         borderColor: '#fad02c',
         borderWidth: 3,
         width: 210,
@@ -102,10 +102,7 @@ const styles = StyleSheet.create({
         marginTop: 35,
         marginBottom: 20,
         marginLeft: 96,
-        alignItems: "center",
-        shadowColor: '#333652',
-        shadowOffset: { height: 0},
-        shadowOpacity: 0.2,
+        alignItems: "center"
       },
    
     TextInput: {
