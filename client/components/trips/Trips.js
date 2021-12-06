@@ -5,13 +5,19 @@ import NewTrip from "./NewTrip";
 
 const Trips = () => {
 
+    const navigation = useNavigation();
+
+    const handleAdd = () => {
+        navigation.navigate("NewTrip")
+      }
+
     return (
         <>
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 100 }}>
         <View style={styles.container} >
             <Text style={styles.heading}>My Upcoming Trips</Text>
-            <TouchableOpacity>
-                <Image style={styles.add} source={require('../navigation_icons/add_trip.png')} component={NewTrip}/>
+            <TouchableOpacity onPress={handleAdd}>
+                <Image style={styles.add} source={require('../navigation_icons/add_trip.png')}/>
             </TouchableOpacity>
             <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} 
             pagingEnabled={true}

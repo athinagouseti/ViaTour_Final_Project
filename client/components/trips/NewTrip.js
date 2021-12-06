@@ -1,14 +1,17 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { View, Text, TextInput, Button, StyleSheet, ScrollView} from 'react-native';
 import { useForm } from 'react-hook-form';
 import { Picker } from '@react-native-picker/picker';
 import DatePicker from 'react-native-date-picker';
 import Calendar from './Calender.js';
+import { useNavigation } from "@react-navigation/native"
 
 const NewTrip = () => {
 
     const [date, setDate] = useState(new Date())
     const [open, setOpen] = useState(false)
+
+    const navigation = useNavigation();
 
     return (
       <View style={styles.container}>

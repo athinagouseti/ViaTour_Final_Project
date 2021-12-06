@@ -38,14 +38,19 @@ const Wishlist = () => {
     }
 
     const renderItem = ({ item, index, drag, isActive }) => (
+      <View>
         <TouchableOpacity onLongPress={drag} onPress={() => navigateToDestination(item)} >
-          <Text style={styles.text} >{item.name}</Text>
+          <Text style={styles.item} >{item.name}</Text>
         </TouchableOpacity>
+        <TouchableOpacity>
+          <Image style={styles.remove} source={require('../navigation_icons/remove_trip.png')}/>
+        </TouchableOpacity>
+        </View>
       );
 
     const wishlistBody = () => {
       if(!isLoggedIn){
-        return <Text>You need to be logged in to view your wishlist</Text>
+        return <Text style={styles.text}>You need to be logged in to view your wishlist</Text>
       }
       if(loading) {
         return <Text>Loading...</Text>
@@ -89,22 +94,41 @@ const Wishlist = () => {
 }
 
 const styles = StyleSheet.create({
-    container: {
-       flex: 1,
-       flexDirection: 'column'
-      },
-    text: {
-        borderWidth: 4,
-        borderColor: '#fad02c',
-        borderRadius: 20,
-        padding: 30,
-        marginTop: 15,
-        margin: 30,
-        fontWeight: 'bold',
-        color: '#333652',
-        fontSize: 25
-    }
-  });
+  container: {
+    flex: 1,
+    shadowColor: '#333652',
+    shadowOffset: { height: 0},
+    shadowOpacity: 0.5,
+    flexDirection: 'column'
+   },
+ item: {
+     borderWidth: 5,
+     borderColor: '#fad02c',
+     backgroundColor: '#f3f3f2',
+     // backgroundColor: '#fad02c',
+     overflow: 'hidden',
+     borderRadius: 20,
+     padding: 30,
+     marginTop: 15,
+     margin: 15,
+     fontWeight: 'bold',
+     color: '#333652',
+     fontSize: 25
+ },
+ text:{
+   fontSize: 16,
+   marginLeft: 30,
+   marginTop: 20
+
+ },
+ remove:{
+     width: 50,
+     height: 30,
+     marginTop: -80,
+     marginLeft: 310,
+     tintColor: 'orange'
+ }
+});
 
 
 export default Wishlist;

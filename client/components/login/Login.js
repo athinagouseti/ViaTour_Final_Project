@@ -78,6 +78,9 @@ const styles = StyleSheet.create({
       marginBottom: 20,
       marginLeft: 96,
       alignItems: "center",
+      shadowColor: '#333652',
+      shadowOffset: { height: 0},
+      shadowOpacity: 0.2,
     },
    
     TextInput: {
@@ -102,7 +105,10 @@ const styles = StyleSheet.create({
       marginTop: 30,
       marginLeft: 124,
       marginBottom: 20,
-      backgroundColor: "#FAB52B"       
+      backgroundColor: "#FAB52B",
+      shadowColor: '#333652',
+      shadowOffset: { height: 0},
+      shadowOpacity: 0.2,       
     },
     loginText:{
       fontWeight: 'bold',

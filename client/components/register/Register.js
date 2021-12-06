@@ -103,6 +103,9 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         marginLeft: 96,
         alignItems: "center",
+        shadowColor: '#333652',
+        shadowOffset: { height: 0},
+        shadowOpacity: 0.2,
       },
    
     TextInput: {
@@ -120,7 +123,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginTop: 30,
         marginLeft: 122,
-        backgroundColor: "#FAB52B"          
+        backgroundColor: "#FAB52B",
+        shadowColor: '#333652',
+        shadowOffset: { height: 0},
+        shadowOpacity: 0.2,       
     },
     registerText:{
         fontWeight: 'bold',
