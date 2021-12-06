@@ -1,27 +1,31 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from "react-native";
-import auth from '@react-native-firebase/auth'
+import userService from "../../helpers/userService";
+import { useNavigation } from "@react-navigation/native"
 
 const Register = () => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
     const [error, setError] = useState()
+
+    const navigation = useNavigation()
 
     const passwordsMatch = () => password === confirmPassword;
 
     const registerUser = () => {
         if (passwordsMatch()) {
-            // Alert.alert('User would have registered')
-            auth()
-            .createUserWithEmailAndPassword(email, password)
-            .then(() => {
-                Alert.alert('User would have registered')
+            userService.post({
+                email,
+                password,
+                firstName,
+                lastName
             })
-            .catch(
-                error => {setError(error.code)}
-            )
+            .then(() => navigation.navigate("Login"))
+            .catch(error => setError(error))
         } else {
             setError("Passwords do not match"); 
         }
@@ -29,33 +33,52 @@ const Register = () => {
 
     return (
         <View>
+            
             <View style={styles.inputView}>
-            <TextInput
-            style={styles.TextInput}
-            placeholder="Email."
-            placeholderTextColor="#003f5c"
-            onChangeText={(email) => setEmail(email)}
-            />
+                <TextInput
+                style={styles.TextInput}
+                placeholder="First Name."
+                placeholderTextColor="#003f5c"
+                onChangeText={(firstName) => setFirstName(firstName)}
+                />
+            </View>
+            
+            <View style={styles.inputView}>
+                <TextInput
+                style={styles.TextInput}
+                placeholder="Last Name."
+                placeholderTextColor="#003f5c"
+                onChangeText={(lastName) => setLastName(lastName)}
+                />
             </View>
 
             <View style={styles.inputView}>
-            <TextInput
-            style={styles.TextInput}
-            placeholder="Password."
-            placeholderTextColor="#003f5c"
-            secureTextEntry={true}
-            onChangeText={(password) => setPassword(password)}
-            />
+                <TextInput
+                style={styles.TextInput}
+                placeholder="Email."
+                placeholderTextColor="#003f5c"
+                onChangeText={(email) => setEmail(email)}
+                />
+            </View>
+            
+            <View style={styles.inputView}>
+                <TextInput
+                style={styles.TextInput}
+                placeholder="Password."
+                placeholderTextColor="#003f5c"
+                secureTextEntry={true}
+                onChangeText={(password) => setPassword(password)}
+                />
             </View>
 
             <View style={styles.inputView}>
-            <TextInput
-            style={styles.TextInput}
-            placeholder="Confirm Password."
-            placeholderTextColor="#003f5c"
-            secureTextEntry={true}
-            onChangeText={(confirmPassword) => setConfirmPassword(confirmPassword)}
-            />
+                <TextInput
+                style={styles.TextInput}
+                placeholder="Confirm Password."
+                placeholderTextColor="#003f5c"
+                secureTextEntry={true}
+                onChangeText={(confirmPassword) => setConfirmPassword(confirmPassword)}
+                />
             </View>
 
            {error && <Text style={styles.loginText}>{error}</Text>}

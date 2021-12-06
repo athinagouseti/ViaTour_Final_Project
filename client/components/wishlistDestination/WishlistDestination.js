@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import Request from "../../helpers/service"
+import { View, Text, TouchableOpacity, Alert } from "react-native";
 import auth from '@react-native-firebase/auth'
-import locationService from "../../helpers/locationService";
+import userWishlistService from "../../helpers/userWishlistService";
 
 const WishlistDestination = ({ route }) => {
     const { placeId } = route.params
@@ -18,7 +17,7 @@ const WishlistDestination = ({ route }) => {
         fetch(url)
             .then(res => res.json())
             .then(data => setLocation(parseLocationData(data)))
-            .catch(console.error)
+            .catch((error) => console.error(error))
     }
 
     const fetchAmadeusToken = () => {
@@ -36,7 +35,6 @@ const WishlistDestination = ({ route }) => {
     const fetchCityData = () => {   
         fetchLocationData()
         fetchAmadeusToken()
-        console.log("location-----", location)
         amadeusToken? (location? fetch(`https://test.api.amadeus.com/v1/reference-data/locations?subType=CITY&keyword=${location.cityName}&countryCode=${location.countryID}`, {
               headers: {
               Authorization: `Bearer ${amadeusToken}`}})
@@ -49,6 +47,7 @@ const WishlistDestination = ({ route }) => {
     const fetchCovidData = () => {
         console.log("location---", location)
         console.log("city----", city);
+        console.log("restrictions----", restrictionData);
         amadeusToken? (location? fetch(`https://test.api.amadeus.com/v1/duty-of-care/diseases/covid19-area-report?countryCode=${location.countryID}&cityCode=${city}`, {
             headers: {
             Authorization: `Bearer ${amadeusToken}`}})
@@ -56,6 +55,18 @@ const WishlistDestination = ({ route }) => {
             .then(data => setRestrictionData(data))
             .catch(console.error):fetchLocationData()):fetchAmadeusToken()
     }
+
+    // const pointsOfInterest = () => {
+    //     console.log("location---", location)
+    //     console.log("city----", city);
+    //     console.log("restrictions----", restrictionData);
+    //     amadeusToken? (location? fetch(`https://test.api.amadeus.com/v1/reference-data/locations/pois?latitude=41.397158&longitude=2.160873&radius=2`, {
+    //         headers: {
+    //         Authorization: `Bearer ${amadeusToken}`}})
+    //         .then(res => res.json())
+    //         .then(data => console.log(data))
+    //         .catch(console.error):fetchLocationData()):fetchAmadeusToken()
+    // }
 
     // const fetchTravelRecommendations = () => { 
     //     fetch("https://test.api.amadeus.com/v1/reference-data/locations/pois?latitude=41.397158&longitude=-4.251806&radius=2", {
@@ -81,10 +92,12 @@ const WishlistDestination = ({ route }) => {
         fetchLocationData()
         fetchCityData()
         fetchCovidData()
+        // pointsOfInterest()
 
         console.log(location)
         console.log(amadeusToken)
         console.log(city)
+        console.log(restrictionData);
     }, [])
 
     const isLoggedIn = auth().currentUser != undefined
@@ -100,7 +113,6 @@ const WishlistDestination = ({ route }) => {
 
         if (!cityName || !countryName) return undefined
 
-        
         return {
             cityName,
             countryName,
@@ -111,14 +123,35 @@ const WishlistDestination = ({ route }) => {
         }
     }
 
+    // const parseRestrictionData = (data) => {
+    //     const resultEntry = data
+
+    //     if (!resultEntry) return undefined
+
+    //     const text = resultEntry.address_components.find(addressComponent => addressComponent.types.includes("locality"))?.long_name
+    //     const countryName = resultEntry.address_components.find(addressComponent => addressComponent.types.includes("country"))?.long_name
+    //     const countryID = resultEntry.address_components.find(addressComponent => addressComponent.types.includes("country"))?.short_name
+
+    //     if (!cityName || !countryName) return undefined
+
+    //     return {
+    //         cityName,
+    //         countryName,
+    //         countryID,
+    //         place_id: resultEntry.place_id,
+    //         latitude: resultEntry.geometry.location.lat,
+    //         longitude: resultEntry.geometry.location.lng
+    //     }
+    // }
+
     const addToWishlist = () => {
         const payload = {
-            place_id: location.place_id,
+            placeId: location.place_id,
             latitude: location.latitude,
-            longitude: location.longitude
+            longitude: location.longitude,
+            name: `${location.cityName}, ${location.countryName}`
         }
-        locationService.post(payload)
-            .then(() => console.log("Added to wishlist"))
+        userWishlistService.post(payload)
             .catch((error) => console.log(error))
     }
 
@@ -132,6 +165,9 @@ const WishlistDestination = ({ route }) => {
                         <> 
                             <Text>
                                 {location.cityName}
+                            </Text>
+                            <Text>
+                                {location.countryName}
                             </Text>
                             <Text>
                                 {location.countryName}

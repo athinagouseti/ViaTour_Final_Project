@@ -1,8 +1,10 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Alert} from 'react-native';
 import DraggableFlatList  from "react-native-draggable-flatlist";
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useIsFocused } from "@react-navigation/native";
+import userWishlistService from "../../helpers/userWishlistService";
+import auth from '@react-native-firebase/auth'
 
 const Wishlist = () => {
 
@@ -32,6 +34,21 @@ const Wishlist = () => {
             label: 'London',
           }
     ])
+    const [loading, setLoading] = useState(true)
+
+    const isFocused = useIsFocused();
+    const isLoggedIn = auth().currentUser != undefined
+
+    const fetchLocationData = () => {
+      userWishlistService.get()
+      .then((data) => {setData(data) ; setLoading(false)})
+      .catch((error) => console.error(error))
+    }
+
+    useEffect(() => {
+      if(isFocused && isLoggedIn) {
+      fetchLocationData()
+    }}, [isFocused])
 
     const navigation = useNavigation();
 
@@ -45,9 +62,27 @@ const Wishlist = () => {
 
     const renderItem = ({ item, index, drag, isActive }) => (
         <TouchableOpacity onLongPress={drag} >
-          <Text style={styles.text} >{item.label}</Text>
+          <Text style={styles.text} >{item.name}</Text>
         </TouchableOpacity>
       );
+
+    const wishlistBody = () => {
+      if(!isLoggedIn){
+        return <Text>You need to be logged in to view your wishlist</Text>
+      }
+      if(loading) {
+        return <Text>Loading...</Text>
+      }
+      return <DraggableFlatList
+        data={data}
+        renderItem={renderItem}
+        // keyExtractor={(item, index) => item.order.toString()}
+        keyExtractor={(item, index) => item.placeId}
+        onDragEnd={({data} ) => setData(data )}
+        showsVerticalScrollIndicator={false} 
+        contentContainerStyle={{ paddingBottom: 150 }}
+        />
+    }
     
     return (
       <View style={styles.container}>
@@ -68,14 +103,7 @@ const Wishlist = () => {
                 />
         </View>
         <View style={{ zIndex: 1, flexGrow: 1 }}>
-          <DraggableFlatList
-            data={data}
-            renderItem={renderItem}
-            keyExtractor={(item, index) => item.order.toString()}
-            onDragEnd={({data} ) => setData(data )}
-            showsVerticalScrollIndicator={false} 
-            contentContainerStyle={{ paddingBottom: 150 }}
-          />
+        {wishlistBody()}
         </View>
       </View>
     )
