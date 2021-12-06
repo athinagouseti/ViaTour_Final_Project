@@ -21,10 +21,9 @@ const NewTrip = () => {
           <Text style={styles.text}>Select Dates</Text>
           <Calendar/>
           <Text style={styles.text}>Itinerary</Text>
-          <TextInput 
-            placeholder="Day 1" style={styles.input}/>
-          <TextInput
-            placeholder="Day 2" style={styles.input}/>
+          <Button 
+          title="Add Trip" 
+          />
         </ScrollView>
         </View>
     )
