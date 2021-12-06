@@ -15,6 +15,8 @@ const Stack = createNativeStackNavigator();
 const Container = () => {
 
     return (
+
+        // To name top of tab use { title: } in options
         <NavigationContainer>
             <Tab.Navigator
              screenOptions={({ route }) => ({
