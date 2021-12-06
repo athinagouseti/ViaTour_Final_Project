@@ -14,18 +14,18 @@ const Homepage = () => {
         <View style={styles.container}>
         <ScrollView nestedScrollEnabled={true} showsVerticalScrollIndicator={false}
             stickyHeaderIndices={[2]} contentContainerStyle={{ paddingBottom: 100 }}>
-            <Text style={styles.heading}>Latest Travel News</Text>
-                <News/>
+            {/* <Text style={styles.heading}>Latest Travel News</Text> */}
+                {/* <News/> */}
             <View style={{flexDirection:'row'}}>
-                <Text style={styles.heading}>My Upcoming Trips</Text>
+                {/* <Text style={styles.heading}>My Upcoming Trips</Text> */}
             <TouchableOpacity>
-                <Image style={styles.add} source={require('../navigation_icons/add_trip.png')}/>
+                {/* <Image style={styles.add} source={require('../navigation_icons/add_trip.png')}/> */}
             </TouchableOpacity>
             </View>
             <View>
-                <TripsList/>
+                {/* <TripsList/> */}
                 {/* <NewTrip/> */}
-                {/* <TripInfo/> */}
+                <TripInfo/>
             </View>
         </ScrollView>
         </View>
