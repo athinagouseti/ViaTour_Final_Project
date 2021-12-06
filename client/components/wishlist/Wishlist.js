@@ -50,6 +50,9 @@ const Wishlist = () => {
       if(loading) {
         return <Text>Loading...</Text>
       }
+      if(data.length === 0){
+        return <Text>You have no destinations, search and add destinations to your wishlist</Text>
+      }
       return <DraggableFlatList
         data={data}
         renderItem={renderItem}

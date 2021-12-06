@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
-import React, { useState } from "react";
-import { StyleSheet, Text, View, Image, TextInput, Button, TouchableOpacity } from "react-native";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, View, Image, TextInput, Button, TouchableOpacity, Alert } from "react-native";
 import auth from '@react-native-firebase/auth'
 
 const Login = () => {
@@ -10,6 +10,12 @@ const Login = () => {
     const [error, setError] = useState()
 
     const navigation = useNavigation();
+
+    useEffect(() => {
+      if (error) {
+        Alert.alert("Login Error", error, [{text: "OK", onPress: () => setError(undefined)}])
+      }
+    }, [error])
 
     const handleRegister = () => {
       navigation.navigate("Register")
@@ -55,6 +61,7 @@ const Login = () => {
         <TouchableOpacity onPress={handleRegister}>
         <Text>Register?</Text>
         </TouchableOpacity>
+
         </View>
     )
 }

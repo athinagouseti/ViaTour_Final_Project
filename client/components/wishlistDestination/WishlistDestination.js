@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, Alert } from "react-native";
 import auth from '@react-native-firebase/auth'
 import userWishlistService from "../../helpers/userWishlistService";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation,  useIsFocused  } from "@react-navigation/native";
 
 const WishlistDestination = ({ route }) => {
     const { placeId, title } = route.params
     console.log(placeId);
     const [location, setLocation] = useState(null);
     const [alreadyOnWishlist, setAlreadyOnWishlist] = useState(false);
+    const isFocused = useIsFocused();
 
     const fetchLocationData = () => {
         const url = `https://maps.googleapis.com/maps/api/geocode/json?place_id=${placeId}&sensor=false&key=AIzaSyCz8SUN9oI8b5YJ5ZdA5Jry_2sFRsm3xsw`
@@ -32,7 +33,7 @@ const WishlistDestination = ({ route }) => {
     useEffect(() => {
         fetchLocationData()
         checkIfLocationOnWishlist()
-    }, [])
+    }, [isFocused])
 
 
     const isLoggedIn = auth().currentUser != undefined
