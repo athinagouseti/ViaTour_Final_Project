@@ -4,9 +4,9 @@ import { useForm } from 'react-hook-form';
 import { Picker } from '@react-native-picker/picker';
 import DatePicker from 'react-native-date-picker';
 import CalendarPicker from 'react-native-calendar-picker';
-import Calendar from '../trips/Calender.js';
+import Calendar from './Calender.js';
 
-const New_Trip = () => {
+const NewTrip = () => {
 
     const [date, setDate] = useState(new Date())
     const [open, setOpen] = useState(false)
@@ -47,4 +47,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default New_Trip;
+export default NewTrip;
