@@ -7,10 +7,11 @@ import News from "./News";
 import TripInfo from "../trips/TripInfo";
 
 
+
+
 const Homepage = () => {
 
     return (
-        <>
         <View style={styles.container}>
         <ScrollView nestedScrollEnabled={true} showsVerticalScrollIndicator={false}
             stickyHeaderIndices={[2]} contentContainerStyle={{ paddingBottom: 100 }}>
@@ -29,7 +30,6 @@ const Homepage = () => {
             </View>
         </ScrollView>
         </View>
-        </>
     )
 }
 

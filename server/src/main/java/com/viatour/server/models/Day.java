@@ -1,5 +1,7 @@
 package com.viatour.server.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -17,22 +19,17 @@ public class Day {
     private Date date;
     @OneToMany(mappedBy = "day", fetch = FetchType.LAZY)
     private List<Activity> activities;
+    @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "trip_id", nullable = false)
+    @JoinColumn(name = "trip_id")
     private Trip trip;
-
-    public Trip getTrip() {
-        return trip;
-    }
 
     public Day(Trip trip) {
         this.trip = trip;
         this.activities = new ArrayList<>();
     }
 
-    public Day() {
-
-    }
+    public Day() {}
 
     public Date getDate() {
         return date;
@@ -65,4 +62,14 @@ public class Day {
     public void removeActivity(Activity activity) {
         this.activities.remove(activity);
     }
+
+    public Trip getTrip() {
+        return this.trip;
+    }
+
+    public void setTrip(Trip trip) {
+        this.trip = trip;
+    }
+
+
 }

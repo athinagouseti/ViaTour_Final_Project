@@ -1,9 +1,0 @@
-need to build icon to svg
-which will autogenerate new svg.js
-then need to add to this folder and then pass as a react component and import it
-
-options=
-{{
-    tabBarIcon: () => {}
-    tabBarIconStyle: { color: 'red', height: 100, width: 50 } 
-}} 

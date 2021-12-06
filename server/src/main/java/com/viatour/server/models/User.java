@@ -13,19 +13,12 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id;
-    @Column(name = "userName")
-    private String userName;
+    private String id; // Matches with UID in Firebase
     @Column(name = "firstName")
     private String firstName;
     @Column(name = "lastName")
     private String lastName;
-    @Column(name = "email")
-    private String email;
-    @Column(name = "password")
-    private String password;
     @JsonIgnoreProperties({"users"})
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
@@ -45,33 +38,21 @@ public class User {
     )
     private List<Location> wishList;
 
-    public User(String userName, String firstName, String lastName, String email, String password) {
-        this.userName = userName;
+    public User(String id, String firstName, String lastName) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
-        this.password = password;
         this.trips = new ArrayList<>();
         this.wishList = new ArrayList<>();
     }
 
     public User() {}
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+    // No setter for id, so that it doesn't create opportunities for ID mismatches with Firebase
 
     public String getFirstName() {
         return firstName;
@@ -87,22 +68,6 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public List<Trip> getTrips() {

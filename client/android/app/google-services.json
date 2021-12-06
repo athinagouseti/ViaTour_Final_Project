@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "603930877033",
+    "project_id": "viatour-56112",
+    "storage_bucket": "viatour-56112.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:603930877033:android:fa7c440b59efadc07616f8",
+        "android_client_info": {
+          "package_name": "com.viatour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "603930877033-m1vv0j5jnt92lku8jgg2b4oqdq6qk9cf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7RNGFYyj1SVQTGiFecSRIxaO7vB8stYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "603930877033-m1vv0j5jnt92lku8jgg2b4oqdq6qk9cf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

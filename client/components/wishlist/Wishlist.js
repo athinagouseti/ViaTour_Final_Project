@@ -1,40 +1,46 @@
-import React, {useState} from "react";
-import { View, Text, ScrollView, StyleSheet, Image, TouchableOpacity} from 'react-native';
-import DraggableFlatList, {ScaleDecorator} from "react-native-draggable-flatlist";
+import React, {useEffect, useState} from "react";
+import { View, Text, StyleSheet, TouchableOpacity, Alert} from 'react-native';
+import DraggableFlatList, {ScaleDecorator}  from "react-native-draggable-flatlist";
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { useNavigation, useIsFocused } from "@react-navigation/native";
+import userWishlistService from "../../helpers/userWishlistService";
+import auth from '@react-native-firebase/auth'
 
 const Wishlist = () => {
 
-    const [data, setData] = useState([
-        {
-            order: 1,
-            label: 'Tokyo',
-          },
-          {
-            order: 2,
-            label: 'Denver',
-          },
-          {
-            order: 3,
-            label: 'Rome',
-          },
-          {
-            order: 4,
-            label: 'Berlin',
-          },
-          {
-            order: 5,
-            label: 'Paris',
-          },
-          {
-            order: 6,
-            label: 'London',
-          }
-    ])
+    const [data, setData] = useState([])
+    const [loading, setLoading] = useState(true)
+
+    const isFocused = useIsFocused();
+    const isLoggedIn = auth().currentUser != undefined
+
+    const fetchLocationData = () => {
+      userWishlistService.get()
+      .then((data) => {setData(data) ; setLoading(false)})
+      .catch((error) => console.error(error))
+    }
+
+    useEffect(() => {
+      if(isFocused && isLoggedIn) {
+      fetchLocationData()
+    }}, [isFocused])
+
+    const navigation = useNavigation();
+
+    const navigateToDestination = (data) => {
+      const placeId = data.place_id ?? data.placeId
+      const title = data.description ?? data.name
+      if(placeId) {
+        navigation.navigate("WishlistDestination", {placeId, title})
+      } else {
+        Alert.alert("Location id not found")
+      }
+    }
 
     const renderItem = ({ item, index, drag, isActive }) => (
-        <View >
-        <TouchableOpacity onLongPress={drag} >
-          <Text style={styles.text} >{item.label}</Text>
+        <View>
+        <TouchableOpacity onLongPress={drag} onPress={() => navigateToDestination(item)} >
+          <Text style={styles.text} >{item.name}</Text>
         </TouchableOpacity>
         <TouchableOpacity>
         <Image style={styles.add} source={require('../navigation_icons/trip_info.png')}/>
@@ -44,20 +50,49 @@ const Wishlist = () => {
         </TouchableOpacity>
         </View>
       );
+
+    const wishlistBody = () => {
+      if(!isLoggedIn){
+        return <Text>You need to be logged in to view your wishlist</Text>
+      }
+      if(loading) {
+        return <Text>Loading...</Text>
+      }
+      if(data.length === 0){
+        return <Text>You have no destinations, search and add destinations to your wishlist</Text>
+      }
+      return <DraggableFlatList
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={(item, index) => item.placeId}
+        onDragEnd={({data} ) => setData(data )}
+        showsVerticalScrollIndicator={false} 
+        contentContainerStyle={{ paddingBottom: 150 }}
+        />
+    }
     
     return (
-        <>
-        <View style={styles.container}>
-        <DraggableFlatList
-          data={data}
-          renderItem={renderItem}
-          keyExtractor={(item, index) => item.order.toString()}
-          onDragEnd={({data} ) => setData(data )}
-          showsVerticalScrollIndicator={false} 
-          contentContainerStyle={{ paddingBottom: 100 }}
-        />
+      <View style={styles.container}>
+        <View style={{ width: '100%', marginVertical: 10, zIndex: 1000, height: 50, }}>
+            <GooglePlacesAutocomplete placeholder='Add a destination...' onPress={navigateToDestination} 
+              query={{ 
+                key: 'AIzaSyCz8SUN9oI8b5YJ5ZdA5Jry_2sFRsm3xsw',
+                language: 'en',
+                type: "(cities)"
+                }}
+                styles={{
+                  container: {
+                    position: "absolute",
+                    width: "100%",
+                    paddingHorizontal: 10
+                  },
+                }}
+                />
         </View>
-        </>
+        <View style={{ zIndex: 1, flexGrow: 1 }}>
+        {wishlistBody()}
+        </View>
+      </View>
     )
 }
 
@@ -66,7 +101,8 @@ const styles = StyleSheet.create({
        flex: 1,
        shadowColor: '#333652',
        shadowOffset: { height: 2},
-       shadowOpacity: 0.5
+       shadowOpacity: 0.5,
+       flexDirection: 'column'
       },
     text: {
         borderWidth: 5,

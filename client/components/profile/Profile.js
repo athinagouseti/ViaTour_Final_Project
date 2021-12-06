@@ -1,31 +1,25 @@
-import React from "react";
+import React from 'react';
 import { View, Text, ScrollView, StyleSheet, TouchableOpacity, Linking} from 'react-native';
-import Trips from "../trips/Trips";
-import ReactMap from "../map/ReactMap";
+import auth from '@react-native-firebase/auth';
+import { useNavigation } from "@react-navigation/native";
 
 const Profile = () => {
 
-    return(
+    const navigation = useNavigation();
+    const user = auth().currentUser;
+
+    const logoutUser = () => {
+        auth()
+        .signOut()
+    }
+
+    return (
         <View style={styles.container}>
-        <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
-        <TouchableOpacity>
-        <Text style={styles.login}>Login</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-        <Text style={styles.login}>Logout</Text>
-        </TouchableOpacity>
-        <TouchableOpacity >
-            <Text style={styles.text}>Map</Text>
-        </TouchableOpacity>
-        <TouchableOpacity>
-            <Text style={styles.text}>Trips</Text>
-        </TouchableOpacity>
-        <TouchableOpacity >
-            <Text style={styles.text}>Wishlist</Text>
-        </TouchableOpacity>
-        <TouchableOpacity >
-            <Text style={styles.text}>Favourites</Text>
-        </TouchableOpacity>
+        <ScrollView>
+           <Text style={styles.text}>{user.email}</Text>
+           <TouchableOpacity onPress={logoutUser}>
+                <Text style={styles.login} >Log Out</Text>
+            </TouchableOpacity>
         </ScrollView>
         </View>
     )
