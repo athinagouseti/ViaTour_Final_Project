@@ -37,8 +37,8 @@ const Register = () => {
             <View style={styles.inputView}>
                 <TextInput
                 style={styles.TextInput}
-                placeholder="First Name."
-                placeholderTextColor="#003f5c"
+                placeholder="First Name"
+                placeholderTextColor="gray"
                 onChangeText={(firstName) => setFirstName(firstName)}
                 />
             </View>
@@ -46,8 +46,8 @@ const Register = () => {
             <View style={styles.inputView}>
                 <TextInput
                 style={styles.TextInput}
-                placeholder="Last Name."
-                placeholderTextColor="#003f5c"
+                placeholder="Last Name"
+                placeholderTextColor="gray"
                 onChangeText={(lastName) => setLastName(lastName)}
                 />
             </View>
@@ -55,8 +55,8 @@ const Register = () => {
             <View style={styles.inputView}>
                 <TextInput
                 style={styles.TextInput}
-                placeholder="Email."
-                placeholderTextColor="#003f5c"
+                placeholder="Email"
+                placeholderTextColor="gray"
                 onChangeText={(email) => setEmail(email)}
                 />
             </View>
@@ -64,8 +64,8 @@ const Register = () => {
             <View style={styles.inputView}>
                 <TextInput
                 style={styles.TextInput}
-                placeholder="Password."
-                placeholderTextColor="#003f5c"
+                placeholder="Password"
+                placeholderTextColor="gray"
                 secureTextEntry={true}
                 onChangeText={(password) => setPassword(password)}
                 />
@@ -74,17 +74,17 @@ const Register = () => {
             <View style={styles.inputView}>
                 <TextInput
                 style={styles.TextInput}
-                placeholder="Confirm Password."
-                placeholderTextColor="#003f5c"
+                placeholder="Confirm Password"
+                placeholderTextColor="gray"
                 secureTextEntry={true}
                 onChangeText={(confirmPassword) => setConfirmPassword(confirmPassword)}
                 />
             </View>
 
-           {error && <Text style={styles.loginText}>{error}</Text>}
+           {error && <Text style={styles.registerText}>{error}</Text>}
 
             <TouchableOpacity style={styles.registerButton} onPress={registerUser}>
-            <Text>REGISTER</Text>
+            <Text style={styles.registerText}>Register</Text>
             </TouchableOpacity>
         </View>
     )
@@ -93,31 +93,41 @@ const Register = () => {
 
 const styles = StyleSheet.create({
     inputView: {
-      backgroundColor: "#FAD02B",
-      borderRadius: 30,
-      width: "70%",
-      height: 45,
-      marginBottom: 20,
-   
-      alignItems: "center",
-    },
+        backgroundColor: "white",
+        borderRadius: 20,
+        borderColor: '#fad02c',
+        borderWidth: 3,
+        width: 210,
+        height: 45,
+        marginTop: 35,
+        marginBottom: 20,
+        marginLeft: 96,
+        alignItems: "center",
+      },
    
     TextInput: {
       height: 50,
       flex: 1,
-      padding: 10,
-      marginLeft: 20,
+      padding: 10
     },
    
     registerButton: {
-      width: "60%",
-      borderRadius: 25,
-      height: 50,
-      alignItems: "center",
-      justifyContent: "center",
-      marginTop: 40,
-      backgroundColor: "#FAB52B",       
-    }
+        width: 150,
+        borderRadius: 20,
+        borderColor: '#333652',
+        height: 50,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 30,
+        marginLeft: 122,
+        backgroundColor: "#FAB52B"          
+    },
+    registerText:{
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
+        color: 'white',
+        fontSize: 20
+      }
     })
 
 

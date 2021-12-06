@@ -34,8 +34,8 @@ const Login = () => {
         <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="Email."
-          placeholderTextColor="#003f5c"
+          placeholder="Email"
+          placeholderTextColor="gray"
           onChangeText={(email) => setEmail(email)}
         />
         </View>
@@ -43,23 +43,23 @@ const Login = () => {
         <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="Password."
-          placeholderTextColor="#003f5c"
+          placeholder="Password"
+          placeholderTextColor="gray"
           secureTextEntry={true}
           onChangeText={(password) => setPassword(password)}
         />
         </View>
  
         <TouchableOpacity>
-        <Text style={styles.forgot_button}>Forgot Password?</Text>
+        <Text style={styles.button}>Forgot Password?</Text>
         </TouchableOpacity>
  
         <TouchableOpacity style={styles.loginButton} onPress={loginUser}>
-        <Text style={styles.loginText}>LOGIN</Text>
+        <Text style={styles.loginText}>Login</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={handleRegister}>
-        <Text>Register?</Text>
+        <Text style={styles.button}>Register Account</Text>
         </TouchableOpacity>
 
         </View>
@@ -68,35 +68,46 @@ const Login = () => {
 
 const styles = StyleSheet.create({
     inputView: {
-      backgroundColor: "#FAD02B",
-      borderRadius: 30,
-      width: "70%",
+      backgroundColor: "white",
+      borderRadius: 20,
+      borderColor: '#fad02c',
+      borderWidth: 3,
+      width: 210,
       height: 45,
+      marginTop: 35,
       marginBottom: 20,
-   
+      marginLeft: 95,
       alignItems: "center",
     },
    
     TextInput: {
       height: 50,
+      marginRight: 10,
       flex: 1,
-      padding: 10,
-      marginLeft: 20,
     },
    
-    forgot_button: {
-      height: 30,
+    button: {
       marginBottom: 30,
+      marginTop: 10,
+      marginLeft: 145
     },
    
     loginButton: {
-      width: "60%",
-      borderRadius: 25,
+      width: 150,
+      borderRadius: 20,
+      borderColor: '#333652',
       height: 50,
       alignItems: "center",
       justifyContent: "center",
-      marginTop: 40,
-      backgroundColor: "#FAB52B",       
+      marginTop: 30,
+      marginLeft: 125,
+      backgroundColor: "#FAB52B"       
+    },
+    loginText:{
+      fontWeight: 'bold',
+      textTransform: 'uppercase',
+      color: 'white',
+      fontSize: 20
     }
     })
 

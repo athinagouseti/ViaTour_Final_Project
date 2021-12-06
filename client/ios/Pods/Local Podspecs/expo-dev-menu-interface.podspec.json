@@ -4,7 +4,9 @@
   "summary": "Interface for expo-dev-menu",
   "description": "Interface for expo-dev-menu",
   "license": "MIT",
-  "authors": "650 Industries, Inc.",
+  "authors": {
+    "name": "650 Industries, Inc."
+  },
   "homepage": "https://docs.expo.io",
   "platforms": {
     "ios": "11.0"

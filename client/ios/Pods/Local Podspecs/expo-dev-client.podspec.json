@@ -4,7 +4,9 @@
   "summary": "Expo Development Client",
   "description": "Expo Development Client",
   "license": "MIT",
-  "authors": "650 Industries, Inc.",
+  "authors": {
+    "name": "650 Industries, Inc."
+  },
   "homepage": "https://docs.expo.dev/clients/introduction/",
   "platforms": {
     "ios": "11.0"
