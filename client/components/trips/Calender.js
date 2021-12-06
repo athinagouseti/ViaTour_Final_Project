@@ -11,26 +11,47 @@ export default class App extends Component {
     super(props);
     this.state = {
       selectedStartDate: null,
+      selectedEndDate: null,
     };
     this.onDateChange = this.onDateChange.bind(this);
   }
 
-  onDateChange(date) {
-    this.setState({
-      selectedStartDate: date,
-    });
-  }
+  onDateChange(date, type) {
+      if (type === 'END_DATE'){
+          this.setState({
+              selectedEndDate: date,
+          });
+      } else{
+          this.setState({
+              selectedStartDate: date,
+              selectedEndDate: null,
+          });
+      }  
+    }
+
   render() {
-    const { selectedStartDate } = this.state;
+    const { selectedStartDate, selectedEndDate } = this.state;
+    const minDate = new Date(); // Today
+    const maxDate = new Date(2022, 12, 12);
     const startDate = selectedStartDate ? selectedStartDate.toString() : '';
+    const endDate = selectedEndDate ? selectedEndDate.toString() : '';
+    
     return (
-      <View style={styles.container} selectedDayColor={'blue'}>
+      <View style={styles.container}>
         <CalendarPicker
+        startFromMonday={true}
+          allowRangeSelection={true}
+          showDayStragglers={false}
+          scrollable={true}
+          restrictMonthNavigation={true}
+          minDate={minDate}
+          maxDate={maxDate}
+          todayBackgroundColor="#fad02c"
+          todayTextStyle="#333652"
+          selectedDayColor="#333652"
+          selectedDayTextColor="white"
           onDateChange={this.onDateChange}
         />
-        <View style={styles.text} style={styles.container} >
-          <Text>SELECTED DATE: { startDate }</Text>
-        </View>
       </View>
     );
   }
@@ -38,9 +59,9 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white'
+    backgroundColor: '#f3f3f2',
   },
   text: {
-      padding: 20
+      padding: 30
   }
 });
