@@ -74,9 +74,9 @@ const styles = StyleSheet.create({
       borderWidth: 3,
       width: 210,
       height: 45,
-      marginTop: 35,
+      marginTop: 20,
       marginBottom: 20,
-      marginLeft: 95,
+      marginLeft: 96,
       alignItems: "center",
     },
    
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
    
     button: {
       marginBottom: 30,
-      marginTop: 10,
+      marginTop: 5,
       marginLeft: 145
     },
    
@@ -100,14 +100,15 @@ const styles = StyleSheet.create({
       alignItems: "center",
       justifyContent: "center",
       marginTop: 30,
-      marginLeft: 125,
+      marginLeft: 124,
+      marginBottom: 20,
       backgroundColor: "#FAB52B"       
     },
     loginText:{
       fontWeight: 'bold',
       textTransform: 'uppercase',
       color: 'white',
-      fontSize: 20
+      fontSize: 22
     }
     })
 

@@ -56,8 +56,7 @@ const Container = () => {
                 options={{
                     tabBarIcon: () => (<Image source={require('../navigation_icons/profile_icon.png')}
                     style={styles.profileIcon} name="profile-icon" /> ),
-                    headerShown: false ,
-                    
+                    headerShown: false
                 }}/>
             
             </Tab.Navigator>
