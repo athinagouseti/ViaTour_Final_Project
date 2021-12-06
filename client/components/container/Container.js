@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     mapIcon: {
         width: 125,
         height: 100,
-        marginBottom: 15
+        marginBottom: 18
       },
     tripsIcon: {
         width: 70,
