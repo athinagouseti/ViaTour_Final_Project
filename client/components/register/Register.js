@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from "react-native";
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView, Alert } from "react-native";
 import userService from "../../helpers/userService";
 import { useNavigation } from "@react-navigation/native"
 
@@ -33,6 +33,7 @@ const Register = () => {
 
     return (
         <View>
+        <ScrollView contentContainerStyle={{paddingBottom: 100}}>
             
             <View style={styles.inputView}>
                 <TextInput
@@ -86,6 +87,7 @@ const Register = () => {
             <TouchableOpacity style={styles.registerButton} onPress={registerUser}>
             <Text style={styles.registerText}>Register</Text>
             </TouchableOpacity>
+            </ScrollView>
         </View>
     )
 }
