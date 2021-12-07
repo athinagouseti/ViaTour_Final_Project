@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Alert} from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Alert} from 'react-native';
 import DraggableFlatList  from "react-native-draggable-flatlist";
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { useNavigation, useIsFocused } from "@react-navigation/native";
