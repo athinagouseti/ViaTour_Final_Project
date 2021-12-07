@@ -53,7 +53,7 @@ const Wishlist = () => {
         return <Text style={styles.text}>You need to be logged in to view your wishlist</Text>
       }
       if(loading) {
-        return <Text>Loading...</Text>
+        return <Text style={styles.text}>Loading...</Text>
       }
       if(data.length === 0){
         return <Text>You have no destinations, search and add destinations to your wishlist</Text>
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
      width: 50,
      height: 30,
      marginTop: -100,
-     marginLeft: 325,
+     marginLeft: 320,
      tintColor: 'orange'
  }
 });

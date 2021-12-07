@@ -31,24 +31,31 @@ const styles = StyleSheet.create({
       },
     text: {
         borderWidth: 4,
+        overflow: 'hidden',
         borderColor: '#fad02c',
-        borderRadius: 20,
         backgroundColor: '#fad02c',
+        marginLeft: 50,
+        marginRight: 45,
         padding: 25,
-        marginTop: 10,
-        margin: 70,
+        marginTop: 20,
+        marginBottom: 20,
         fontWeight: 'bold',
         color: '#333652',
         fontSize: 30,
         textAlign: 'center'
     },
     login:{
-        flex: 1,
-        width: 70,
-        color: '#333652',
-        fontSize: 20,
+        width: 125,
+        color: 'white',
+        fontSize: 25,
+        marginLeft: 135,
+        padding: 10,
         textAlign: 'center',
-        fontWeight: 'bold'
+        backgroundColor: '#333652',
+        overflow: 'hidden',
+        borderColor: '#fad02c',
+        borderWidth: 3,
+        borderRadius: 10
     }
   });
 

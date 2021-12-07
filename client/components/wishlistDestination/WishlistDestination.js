@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity, Alert } from "react-native";
+import { View, Text, TouchableOpacity, Alert, StyleSheet } from "react-native";
 import auth from '@react-native-firebase/auth'
 import userWishlistService from "../../helpers/userWishlistService";
 import { useNavigation,  useIsFocused  } from "@react-navigation/native";
@@ -179,26 +179,60 @@ const WishlistDestination = ({ route }) => {
                 restrictionData ?
                     (
                         <> 
-                            <Text>
+                            <Text style={styles.heading}>
                                 {location.cityName}
                             </Text>
-                            <Text>
+                            <Text style={styles.heading1}>
                                 {location.countryName}
                             </Text>
-                            <Text>{restrictionData.data.areaAccessRestriction.declarationDocuments.text.replace(/<\/?[^>]+(>|$)/g, "")}</Text>
-
                             {isLoggedIn && !alreadyOnWishlist &&  <TouchableOpacity onPress={addToWishlist} >
-                            <Text>Add to Wishlist</Text>
+                            <Text style={styles.add}>Add to Wishlist</Text>
                             </TouchableOpacity>}
+                            <Text style={styles.text}>{restrictionData.data.areaAccessRestriction.declarationDocuments.text.replace(/<\/?[^>]+(>|$)/g, "")}</Text>
                         </>
                     ) :
                     (
-                        <Text>Loading...</Text>
+                        <Text style={styles.heading1}>Loading...</Text>
                     )
             }
 
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    heading:{
+        fontWeight: 'bold',
+        color: '#333652',
+        fontSize: 30,
+        textAlign: 'center',
+        marginBottom: 15,
+        marginTop: 10,
+    },
+    heading1:{
+        color: '#333652',
+        fontSize: 25,
+        textAlign: 'center',
+        marginBottom: 15,
+    },
+    text:{
+        color: '#333652',
+        fontSize: 20,
+        marginBottom: 15,
+        marginTop: 10,
+        textAlign: 'justify',
+        marginHorizontal: 15,
+        borderColor: '#fad02c',
+        borderWidth: 3,
+        borderRadius: 20,
+        padding: 10
+    },
+    add:{
+        color: 'dodgerblue',
+        fontSize: 20,
+        textAlign: 'center',
+        marginBottom: 15,
+    }
+});
 
 export default WishlistDestination;
