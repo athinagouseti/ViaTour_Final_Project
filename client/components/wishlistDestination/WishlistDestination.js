@@ -203,7 +203,7 @@ const WishlistDestination = ({ route }) => {
                                 description={"Tap to view trip"}/>
                             </MapView>
                             </ScrollView>
-                            <Text>{restrictionData.data.areaAccessRestriction.declarationDocuments.text.replace(/<\/?[^>]+(>|$)/g, "")}</Text>
+                            {/* <Text>{restrictionData.data.areaAccessRestriction.declarationDocuments.text.replace(/<\/?[^>]+(>|$)/g, "")}</Text> */}
                         </>
                     ) :
                     (
@@ -254,7 +254,7 @@ const styles = StyleSheet.create({
         height: 300,
         borderRadius: 25,
         borderColor: '#fad02c',
-        borderWidth: 0.5,
+        borderWidth: 1,
         marginLeft: 20
     },
 });

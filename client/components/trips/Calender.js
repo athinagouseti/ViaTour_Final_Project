@@ -42,7 +42,7 @@ export default class App extends Component {
         startFromMonday={true}
           allowRangeSelection={true}
           showDayStragglers={false}
-          scrollable={false}
+          scrollable={true}
           restrictMonthNavigation={true}
           minDate={minDate}
           maxDate={maxDate}
@@ -52,6 +52,7 @@ export default class App extends Component {
           selectedDayTextColor="white"
           onDateChange={this.onDateChange}
         />
+
       </View>
     );
   }
@@ -59,7 +60,16 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#f3f3f2',
+    backgroundColor: 'white',
+    marginBottom: 20,
+    paddingTop: 15,
+    borderWidth: 1,
+    borderColor: '#fad02c',
+    borderRadius: 10,
+    marginHorizontal: 8,
+    shadowColor: '#333652',
+    shadowOffset: { height: 0},
+    shadowOpacity: 0.1
   },
   text: {
       padding: 30

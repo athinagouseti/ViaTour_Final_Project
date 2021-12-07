@@ -24,15 +24,15 @@ const Trips = () => {
             style={styles.imageContainer}>
             <View>
             <TouchableOpacity>
-            <Image source={require('../trip_icons/Budapest.jpeg')} style={styles.upcoming}/>
+            <Image source={require('../trip_icons/pest.jpeg')} style={styles.upcoming}/>
             </TouchableOpacity>
             <Text style={styles.text}>Budapest - 21/10/2021 - 5 Days</Text>
             </View>
             <View>
             <TouchableOpacity>
-            <Image source={require('../trip_icons/pest.jpeg')} style={styles.upcoming}/>
+            <Image source={require('../trip_icons/Antwerp.jpeg')} style={styles.upcoming}/>
             </TouchableOpacity>
-            <Text style={styles.text}>Budapest - 21/10/2021 - 5 Days</Text>
+            <Text style={styles.text}>Antwerp - 15/03/2022 - 3 Days</Text>
             </View>
             <View>
             <TouchableOpacity>
@@ -42,9 +42,9 @@ const Trips = () => {
             </View>
             <View>
             <TouchableOpacity>
-            <Image source={require('../trip_icons/stock.jpg')} style={styles.upcoming}/>
+            <Image source={require('../trip_icons/Berlin.jpeg')} style={styles.upcoming}/>
             </TouchableOpacity>
-            <Text style={styles.text}>Stockholm - 10/07/2022 - 1 Week</Text>
+            <Text style={styles.text}>Berlin - 10/07/2022 - 4 Days</Text>
             </View>
             </ScrollView>
         </View>
@@ -55,30 +55,30 @@ const Trips = () => {
             pagingEnabled={true}
             style={styles.imageContainer}>
             <TouchableOpacity>
-            <ImageBackground source={require('../trip_icons/Sweden.jpeg')} style={styles.images} imageStyle={{borderRadius: 10}}>
+            <ImageBackground source={require('../trip_icons/Bratislava.jpeg')} style={styles.images} imageStyle={{borderRadius: 10}}>
             <View>
-            <Text style={styles.imagetext}>Sweden - 2019</Text>
-            </View>
-            </ImageBackground>
-            </TouchableOpacity>
-            <TouchableOpacity>
-            <ImageBackground source={require('../trip_icons/pest.jpeg')} style={styles.images} imageStyle={{borderRadius: 10}}>
-            <View>
-            <Text style={styles.imagetext}>Hungary - 2019</Text>
+            <Text style={styles.imagetext}>Slovakia - 2020</Text>
             </View>
             </ImageBackground>
             </TouchableOpacity>
             <TouchableOpacity>
             <ImageBackground source={require('../trip_icons/Budapest.jpeg')} style={styles.images} imageStyle={{borderRadius: 10}}>
             <View>
-            <Text style={styles.imagetext}>Budapest - 2019</Text>
+            <Text style={styles.imagetext}>Hungary - 2019</Text>
+            </View>
+            </ImageBackground>
+            </TouchableOpacity>
+            <TouchableOpacity>
+            <ImageBackground source={require('../trip_icons/Canada.jpeg')} style={styles.images} imageStyle={{borderRadius: 10}}>
+            <View>
+            <Text style={styles.imagetext}>Canada - 2019</Text>
             </View>
             </ImageBackground>
             </TouchableOpacity>
             <TouchableOpacity>
             <ImageBackground source={require('../trip_icons/stock.jpg')} style={styles.images} imageStyle={{borderRadius: 10}}>
             <View>
-            <Text style={styles.imagetext}>Stockholm - 2019</Text>
+            <Text style={styles.imagetext}>Sweden - 2018</Text>
             </View>
             </ImageBackground>
             </TouchableOpacity>
@@ -91,30 +91,30 @@ const Trips = () => {
             pagingEnabled={true}
             style={styles.imageContainer}>
           <TouchableOpacity>
+            <ImageBackground source={require('../trip_icons/ams.jpg')} style={styles.images} imageStyle={{borderRadius: 10}}>
+            <View>
+            <Text style={styles.imagetext}>Amsterdam</Text>
+            </View>
+            </ImageBackground>
+            </TouchableOpacity>
+            <TouchableOpacity>
+            <ImageBackground source={require('../trip_icons/dunnet.jpeg')} style={styles.images} imageStyle={{borderRadius: 10}}>
+            <View>
+            <Text style={styles.imagetext}>Scotland</Text>
+            </View>
+            </ImageBackground>
+            </TouchableOpacity>
+            <TouchableOpacity>
             <ImageBackground source={require('../trip_icons/Sweden.jpeg')} style={styles.images} imageStyle={{borderRadius: 10}}>
             <View>
-            <Text style={styles.imagetext}>Sweden</Text>
+            <Text style={styles.imagetext}>Lake Norrviken</Text>
             </View>
             </ImageBackground>
             </TouchableOpacity>
             <TouchableOpacity>
-            <ImageBackground source={require('../trip_icons/pest.jpeg')} style={styles.images} imageStyle={{borderRadius: 10}}>
+            <ImageBackground source={require('../trip_icons/Ramelton.jpeg')} style={styles.images} imageStyle={{borderRadius: 10}}>
             <View>
-            <Text style={styles.imagetext}>Hungary</Text>
-            </View>
-            </ImageBackground>
-            </TouchableOpacity>
-            <TouchableOpacity>
-            <ImageBackground source={require('../trip_icons/Budapest.jpeg')} style={styles.images} imageStyle={{borderRadius: 10}}>
-            <View>
-            <Text style={styles.imagetext}>Budapest</Text>
-            </View>
-            </ImageBackground>
-            </TouchableOpacity>
-            <TouchableOpacity>
-            <ImageBackground source={require('../trip_icons/stock.jpg')} style={styles.images} imageStyle={{borderRadius: 10}}>
-            <View>
-            <Text style={styles.imagetext}>Stockholm</Text>
+            <Text style={styles.imagetext}>Ireland</Text>
             </View>
             </ImageBackground>
             </TouchableOpacity>

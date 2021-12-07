@@ -81,7 +81,10 @@ const Wishlist = () => {
                   container: {
                     position: "absolute",
                     width: "100%",
-                    paddingHorizontal: 10
+                    paddingHorizontal: 10,
+                    shadowColor: '#333652',
+                    shadowOffset: { height: 0},
+                    shadowOpacity: 0.5
                   },
                 }}
                 />
@@ -96,16 +99,15 @@ const Wishlist = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    shadowColor: '#333652',
-    shadowOffset: { height: 0},
-    shadowOpacity: 0.5,
+    // shadowColor: '#333652',
+    // shadowOffset: { height: 0},
+    // shadowOpacity: 0.5,
     flexDirection: 'column'
    },
  item: {
      borderWidth: 5,
      borderColor: '#fad02c',
      backgroundColor: '#f3f3f2',
-     // backgroundColor: '#fad02c',
      overflow: 'hidden',
      borderRadius: 20,
      padding: 30,
@@ -113,7 +115,10 @@ const styles = StyleSheet.create({
      margin: 15,
      fontWeight: 'bold',
      color: '#333652',
-     fontSize: 20
+     fontSize: 20,
+     shadowColor: '#333652',
+     shadowOffset: { height: 1},
+     shadowOpacity: 0.5
  },
  text:{
    fontSize: 16,
@@ -124,9 +129,9 @@ const styles = StyleSheet.create({
  remove:{
      width: 50,
      height: 30,
-     marginTop: -100,
-     marginLeft: 320,
-     tintColor: 'orange'
+     marginTop: -80,
+     marginLeft: 325,
+     tintColor: 'black'
  }
 });
 

@@ -15,15 +15,14 @@ const NewTrip = () => {
 
     return (
       <View style={styles.container}>
-        <ScrollView contentContainerStyle={{ paddingBottom: 100 }} showsVerticalScrollIndicator={false}>
-        <Text style={styles.text}>Add New Trip</Text>
+        <ScrollView contentContainerStyle={{ paddingBottom: 50 }} showsVerticalScrollIndicator={false}>
+        <Text style={styles.heading}>Add New Trip</Text>
           <TextInput 
             placeholder="City" style={styles.input}/>
           <TextInput
             placeholder="Country" style={styles.input}/>
           <Text style={styles.text}>Select Dates</Text>
           <Calendar/>
-          <Text style={styles.text}>Itinerary</Text>
           <Button 
           title="Add Trip" 
           />
@@ -35,10 +34,8 @@ const NewTrip = () => {
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    borderColor: '#fad02c',
-    borderWidth: 1,
-    borderRadius: 20,
-    marginBottom: 20
+    marginBottom: 5,
+    marginTop: 25
   },
   input: {
     marginTop: 10,
@@ -52,6 +49,18 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#fad02c',
     borderRadius: 15,
+    fontSize: 20,
+    shadowColor: '#333652',
+    shadowOffset: { height: 0},
+    shadowOpacity: 0.2
+  },
+  heading: {
+    fontWeight: 'bold', 
+    color: '#333652',
+    textTransform: 'uppercase',
+    marginTop: 10,
+    marginBottom: 20,
+    marginLeft: 10,
     fontSize: 20
   },
   text: {
@@ -59,8 +68,9 @@ const styles = StyleSheet.create({
     color: '#333652',
     textTransform: 'uppercase',
     marginTop: 10,
+    marginBottom: 20,
     marginLeft: 10,
-    fontSize: 15
+    fontSize: 15,
   }
 });
 
