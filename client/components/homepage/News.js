@@ -15,26 +15,26 @@ const News = () => {
             style={styles.imageContainer}>
             <View>
             <TouchableOpacity>
-            <Image source={require('../trip_icons/Budapest.jpeg')} style={styles.images}/>
-            <Text style={styles.imagetext}>Article Name</Text>
+            <Image source={require('../trip_icons/freedom.jpeg')} style={styles.images}/>
+            <Text style={styles.imagetext}>COVID-19 Over!</Text>
             </TouchableOpacity>
             </View>
             <View>
             <TouchableOpacity>
-            <Image source={require('../trip_icons/pest.jpeg')} style={styles.images}/>
-            <Text style={styles.imagetext}>Article Name</Text>
+            <Image source={require('../trip_icons/plane.jpeg')} style={styles.images}/>
+            <Text style={styles.imagetext}>Free Flights for All?!</Text>
             </TouchableOpacity>
             </View>
             <View>
             <TouchableOpacity>
-            <Image source={require('../trip_icons/Stockholm.jpeg')} style={styles.images}/>
-            <Text style={styles.imagetext}>Article Name</Text>
+            <Image source={require('../trip_icons/lake.jpeg')} style={styles.images}/>
+            <Text style={styles.imagetext}>Win a Free Trip Here!</Text>
             </TouchableOpacity>
             </View>
             <View>
             <TouchableOpacity>
-            <Image source={require('../trip_icons/stock.jpg')} style={styles.images}/>
-            <Text style={styles.imagetext}>Article Name</Text>
+            <Image source={require('../trip_icons/map.jpeg')} style={styles.images}/>
+            <Text style={styles.imagetext}>Top 100 Places To Go!</Text>
             </TouchableOpacity>
             </View>
             </ScrollView>
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     },
     imageContainer: {
         flex: 1,
-        marginHorizontal: 10,
+        marginHorizontal: 5,
     },
     heading: {
         fontWeight: 'bold', 
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         marginTop: 5,
         marginHorizontal: 15,
-        borderRadius: 10
+        borderRadius: 5
     },
     imagetext:{
         justifyContent:'center',

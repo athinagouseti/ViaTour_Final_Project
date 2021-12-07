@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
   input: {
     marginTop: 10,
-    marginBottom: 10,
+    marginBottom: 15,
     marginLeft: '25%',
     height: 50,
     width: '50%',
@@ -59,8 +59,8 @@ const styles = StyleSheet.create({
     color: '#333652',
     textTransform: 'uppercase',
     marginTop: 10,
-    marginBottom: 20,
     marginLeft: 10,
+    padding: 10,
     fontSize: 20
   },
   text: {
@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 20,
     marginLeft: 10,
+    padding: 10,
     fontSize: 15,
   }
 });
