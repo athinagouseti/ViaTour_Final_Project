@@ -61,7 +61,7 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    marginBottom: 20,
+    marginBottom: 15,
     paddingTop: 15,
     borderWidth: 1,
     borderColor: '#fad02c',

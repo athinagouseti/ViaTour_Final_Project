@@ -63,9 +63,9 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
     images: {
-        width: 210,
-        height: 180,
-        marginBottom: 15,
+        width: 220,
+        height: 200,
+        marginBottom: 10,
         marginTop: 5,
         marginHorizontal: 15,
         borderRadius: 5
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     imagetext:{
         justifyContent:'center',
         marginLeft: 15,
-        padding: 5,
+        // padding: 5,
         color: '#333652',
         fontSize: 20
     }

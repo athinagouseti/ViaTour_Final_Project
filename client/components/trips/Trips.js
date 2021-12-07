@@ -8,7 +8,7 @@ const Trips = () => {
     const navigation = useNavigation();
 
     const handleAdd = () => {
-        navigation.navigate("NewTrip")
+        navigation.navigate("Home")
       }
 
     return (
@@ -132,9 +132,9 @@ const styles = StyleSheet.create({
     imageContainer: {
         flex: 1,
         marginHorizontal: 10,
-        shadowColor: '#333652',
-        shadowOffset: { height: 1},
-        shadowOpacity: 0.5,
+        // shadowColor: '#333652',
+        // shadowOffset: { height: 1},
+        // shadowOpacity: 0.5,
     },
     heading: {
         fontWeight: 'bold', 
@@ -150,22 +150,28 @@ const styles = StyleSheet.create({
         height: 350,
         marginBottom: 15,
         marginHorizontal: 10,
-        borderRadius: 10
+        borderRadius: 5,
+        shadowColor: '#333652',
+        shadowOffset: { height: 1},
+        shadowOpacity: 0.5,
     },
     images: {
         width: 350,
         height: 225,
         marginBottom: 15,
         marginHorizontal: 10,
-        borderRadius: 10
+        borderRadius: 12,
+        shadowColor: '#333652',
+        shadowOffset: { height: 2},
+        shadowOpacity: 0.5,
     },
     text:{
         alignItems:'flex-start',
         justifyContent:'center',
         marginLeft: 10,
         color: '#333652',
-        fontSize: 20,
-        paddingBottom: 20
+        fontSize: 22,
+        paddingBottom: 15
     },
     imagetext:{
         textAlign:'center',
@@ -179,7 +185,10 @@ const styles = StyleSheet.create({
         width: 60,
         height: 50,
         marginTop: -50,
-        marginLeft: 320
+        marginLeft: 320,
+        shadowColor: '#333652',
+        shadowOffset: { height: 1},
+        shadowOpacity: 0.3,
     }
   });
 

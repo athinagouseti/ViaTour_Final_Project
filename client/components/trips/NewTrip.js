@@ -15,8 +15,8 @@ const NewTrip = () => {
 
     return (
       <View style={styles.container}>
-        <ScrollView contentContainerStyle={{ paddingBottom: 50 }} showsVerticalScrollIndicator={false}>
-        <Text style={styles.heading}>Add New Trip</Text>
+        <ScrollView contentContainerStyle={{ paddingBottom: 10 }} showsVerticalScrollIndicator={false}  >
+        <Text style={styles.heading}>Plan A New Trip</Text>
           <TextInput 
             placeholder="City" style={styles.input}/>
           <TextInput
@@ -34,7 +34,6 @@ const NewTrip = () => {
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    marginBottom: 5,
     marginTop: 25
   },
   input: {
@@ -52,7 +51,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     shadowColor: '#333652',
     shadowOffset: { height: 0},
-    shadowOpacity: 0.2
+    shadowOpacity: 0.1
   },
   heading: {
     fontWeight: 'bold', 

@@ -14,7 +14,7 @@ const Homepage = () => {
     return (
         <View style={styles.container}>
         <ScrollView nestedScrollEnabled={true} showsVerticalScrollIndicator={false}
-            stickyHeaderIndices={[2]} contentContainerStyle={{ paddingBottom: 100 }}>
+         contentContainerStyle={{ paddingBottom: 85 }}>
             <Text style={styles.heading}>Latest Travel News</Text>
                 <News/>
             <View style={{flexDirection:'row'}}>
@@ -41,14 +41,14 @@ const styles = StyleSheet.create({
         color: '#333652',
         textTransform: 'uppercase',
         padding: 10,
-        marginTop: 10,
+        // marginTop: 10,
         marginLeft: 10,
         fontSize: 20
     },
     add:{
         width: 80,
         height: 50,
-        marginTop: -48,
+        marginTop: -40,
         marginLeft: 300
     }
   });
