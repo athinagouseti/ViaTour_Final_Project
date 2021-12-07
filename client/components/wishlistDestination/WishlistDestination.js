@@ -25,7 +25,9 @@ const WishlistDestination = ({ route }) => {
     }
 
     const checkIfLocationOnWishlist = () => {
-        getUserWishlist().then(data => {
+        getUserWishlist()
+        .then(response => response.json())
+        .then(data => {
             if (data.some(item => item.placeId === placeId)) {
                 setAlreadyOnWishlist(true)
             }
@@ -89,7 +91,7 @@ const WishlistDestination = ({ route }) => {
 
     useEffect(() => {
         checkIfLocationOnWishlist()
-    })
+    }, [])
 
     useEffect(() => {
         fetchAmadeusToken()

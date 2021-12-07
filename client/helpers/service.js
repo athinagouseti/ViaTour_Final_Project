@@ -8,7 +8,7 @@ const getToken = () => {
 const service = (url) => ({
   get: async () => {
     const token = await getToken() // Get new token each time a request is made
-    return fetch(url, { headers: { "auth-token": token }}).then((res) => res.json()); // Add token to HTTP header
+    return fetch(url, { headers: { "auth-token": token }}); // Add token to HTTP header
   },
   delete: async () => {
     const token = await getToken()

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import MapView, { Marker } from 'react-native-maps';
-import { StyleSheet, Dimensions, ScrollView} from 'react-native';
+import { StyleSheet, Dimensions, ScrollView, Alert } from 'react-native';
 import { useNavigation, useIsFocused } from "@react-navigation/native";
 import auth from '@react-native-firebase/auth'
 import userWishlistService from "../../helpers/userWishlistService";
-import { log } from "react-native-reanimated";
 
 const ReactMap = () => {
 
@@ -15,6 +14,13 @@ const ReactMap = () => {
 
   const fetchLocationData = () => {
     userWishlistService.get()
+    .then(response => {
+      if (response.status === 200) {
+        return response.json() 
+      } else {
+        Alert.alert("Server error", "Could not get wishlist")
+        return []
+      }})
     .then((data) => {setData(data)})
     .catch((error) => console.error(error))
   }
@@ -22,7 +28,10 @@ const ReactMap = () => {
   useEffect(() => {
     if(isFocused && isLoggedIn) {
     fetchLocationData()
-  }}, [isFocused])
+    } else if (!isLoggedIn) {
+      setData([])
+    }
+  }, [isFocused])
 
   const navigation = useNavigation();
 

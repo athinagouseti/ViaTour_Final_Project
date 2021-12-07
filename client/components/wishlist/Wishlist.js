@@ -10,13 +10,24 @@ const Wishlist = () => {
 
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true)
+    console.log(data)
 
     const isFocused = useIsFocused();
     const isLoggedIn = auth().currentUser != undefined
 
     const fetchLocationData = () => {
       userWishlistService.get()
-      .then((data) => {setData(data) ; setLoading(false)})
+      .then(response => {
+        if (response.status === 200) {
+          return response.json() 
+        } else {
+          Alert.alert("Server error", "Could not get wishlist")
+          return []
+        }})
+      .then ((data) => {
+          setData(data); 
+          setLoading(false)
+      })
       .catch((error) => console.error(error))
     }
 
@@ -56,7 +67,7 @@ const Wishlist = () => {
         return <Text style={styles.text}>Loading...</Text>
       }
       if(data.length === 0){
-        return <Text>You have no destinations, search and add destinations to your wishlist</Text>
+        return <Text style={styles.text}>You have no destinations, search and add destinations to your wishlist</Text>
       }
       return <DraggableFlatList
         data={data}
