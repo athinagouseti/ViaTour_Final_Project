@@ -25,7 +25,7 @@ const Homepage = () => {
             </View>
             <View>
                 {/* <TripsList/> */}
-                {/* <NewTrip/> */}
+                <NewTrip/>
                 {/* <TripInfo/> */}
             </View>
         </ScrollView>

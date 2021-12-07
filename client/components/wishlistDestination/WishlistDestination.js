@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TouchableOpacity, Alert, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, Alert, StyleSheet, ScrollView } from "react-native";
+import MapView, { Marker } from 'react-native-maps';
 import auth from '@react-native-firebase/auth'
 import userWishlistService from "../../helpers/userWishlistService";
 import { useNavigation,  useIsFocused  } from "@react-navigation/native";
@@ -188,7 +189,21 @@ const WishlistDestination = ({ route }) => {
                             {isLoggedIn && !alreadyOnWishlist &&  <TouchableOpacity onPress={addToWishlist} >
                             <Text style={styles.add}>Add to Wishlist</Text>
                             </TouchableOpacity>}
-                            <Text style={styles.text}>{restrictionData.data.areaAccessRestriction.declarationDocuments.text.replace(/<\/?[^>]+(>|$)/g, "")}</Text>
+                            <ScrollView>
+                            <MapView style={styles.map}
+                                initialRegion={{
+                                latitude: location.latitude,
+                                longitude: location.longitude,
+                                latitudeDelta: 0.0922,
+                                longitudeDelta: 0.0421,
+                                }}>
+                            <Marker coordinate = {{latitude: location.latitude,longitude: location.longitude}}
+                                pinColor = {"red"} 
+                                title={"Trip"}
+                                description={"Tap to view trip"}/>
+                            </MapView>
+                            </ScrollView>
+                            <Text>{restrictionData.data.areaAccessRestriction.declarationDocuments.text.replace(/<\/?[^>]+(>|$)/g, "")}</Text>
                         </>
                     ) :
                     (
@@ -214,6 +229,7 @@ const styles = StyleSheet.create({
         fontSize: 25,
         textAlign: 'center',
         marginBottom: 15,
+        marginTop: 10,
     },
     text:{
         color: '#333652',
@@ -232,7 +248,15 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center',
         marginBottom: 15,
-    }
+    },
+    map: {
+        width: 350,
+        height: 300,
+        borderRadius: 25,
+        borderColor: '#fad02c',
+        borderWidth: 0.5,
+        marginLeft: 20
+    },
 });
 
 export default WishlistDestination;
