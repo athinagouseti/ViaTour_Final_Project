@@ -42,7 +42,7 @@ export default class App extends Component {
         startFromMonday={true}
           allowRangeSelection={true}
           showDayStragglers={false}
-          scrollable={true}
+          scrollable={false}
           restrictMonthNavigation={true}
           minDate={minDate}
           maxDate={maxDate}

@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
      margin: 15,
      fontWeight: 'bold',
      color: '#333652',
-     fontSize: 25
+     fontSize: 20
  },
  text:{
    fontSize: 16,
@@ -124,8 +124,8 @@ const styles = StyleSheet.create({
  remove:{
      width: 50,
      height: 30,
-     marginTop: -80,
-     marginLeft: 310,
+     marginTop: -100,
+     marginLeft: 325,
      tintColor: 'orange'
  }
 });
