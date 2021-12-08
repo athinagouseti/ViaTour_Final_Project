@@ -38,7 +38,7 @@ const WishlistDestination = ({ route }) => {
 
     const fetchAmadeusToken = () => {
         fetch("https://test.api.amadeus.com/v1/security/oauth2/token", {
-        body: "grant_type=client_credentials&client_id=ISLq5IWOensIl0adbLpkSRKbaGDwgyUt&client_secret=Ay391ITUr44mKrQu",
+        body: "grant_type=client_credentials&client_id=cs1HmziHs2ZP3inHGQr5zASKD6NaGZAW&client_secret=GPYgkL1YaweiAXAE",
         headers: {"Content-Type": "application/x-www-form-urlencoded"},
         method: "POST"})          
             .then(res => res.json())
@@ -122,12 +122,15 @@ const WishlistDestination = ({ route }) => {
 
     const parseLocationData = (data) => {
         const resultEntry = data.results[0]
+        console.log("result enty", resultEntry)
 
         if (!resultEntry) return undefined
 
         const cityName = resultEntry.address_components.find(addressComponent => addressComponent.types.includes("locality"))?.long_name
         const countryName = resultEntry.address_components.find(addressComponent => addressComponent.types.includes("country"))?.long_name
         const countryID = resultEntry.address_components.find(addressComponent => addressComponent.types.includes("country"))?.short_name
+        console.log("city name", cityName)
+        console.log("country id", countryID)
 
         if (!cityName || !countryName) return undefined
 
@@ -205,7 +208,7 @@ const WishlistDestination = ({ route }) => {
                                 description={"Tap to view trip"}/>
                             </MapView>
                             </ScrollView>
-                            {/* <Text>{restrictionData.data.areaAccessRestriction.declarationDocuments.text.replace(/<\/?[^>]+(>|$)/g, "")}</Text> */}
+                            <Text>{restrictionData.data.areaAccessRestriction.declarationDocuments.text.replace(/<\/?[^>]+(>|$)/g, "")}</Text>
                         </>
                     ) :
                     (
