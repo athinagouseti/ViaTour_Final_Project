@@ -185,6 +185,8 @@ const WishlistDestination = ({ route }) => {
                 restrictionData ?
                     (
                         <> 
+                        <ScrollView showsVerticalScrollIndicator={false}
+                        contentContainerStyle={{paddingBottom: 150}}>
                             <Text style={styles.heading}>
                                 {location.cityName}
                             </Text>
@@ -208,7 +210,8 @@ const WishlistDestination = ({ route }) => {
                                 description={"Tap to view trip"}/>
                             </MapView>
                             </ScrollView>
-                            <Text>{restrictionData.data.areaAccessRestriction.declarationDocuments.text.replace(/<\/?[^>]+(>|$)/g, "")}</Text>
+                            <Text style={styles.text}>{restrictionData.data.areaAccessRestriction.declarationDocuments.text.replace(/<\/?[^>]+(>|$)/g, "")}</Text>
+                            </ScrollView>
                         </>
                     ) :
                     (
@@ -240,9 +243,9 @@ const styles = StyleSheet.create({
         color: '#333652',
         fontSize: 20,
         marginBottom: 15,
-        marginTop: 10,
-        textAlign: 'justify',
-        marginHorizontal: 15,
+        marginTop: 20,
+        textAlign: 'center',
+        marginHorizontal: 20,
         borderColor: '#fad02c',
         borderWidth: 3,
         borderRadius: 20,
